@@ -80,9 +80,9 @@ public class GameController {
 				System.out.println(k);
 				for (int i = 0; i<menu.size();i++){
 					if(menu.get(i).getStatus() == k)
-						menu.get(i).setName("res/Rocks");
+						menu.get(i).setName("res/1player");
 					else if(menu.get(i).getStatus() == k - 1)
-						menu.get(i).setName("res/Bomb");
+						menu.get(i).setName("res/2playersbombs");
 				}
 				k-=1;
 				pressedOnce = false;
@@ -92,9 +92,9 @@ public class GameController {
 				System.out.println(k);
 				for (int i = 0; i<menu.size();i++){
 					if(menu.get(i).getStatus() == k)
-						menu.get(i).setName("res/Rock");
+						menu.get(i).setName("res/2players");
 					else if(menu.get(i).getStatus() == k + 1)
-						menu.get(i).setName("res/Bomb");
+						menu.get(i).setName("res/1playerbombs");
 
 				}
 				k+=1;
