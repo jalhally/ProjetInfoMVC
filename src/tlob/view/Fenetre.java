@@ -36,27 +36,41 @@ public class Fenetre extends JFrame implements KeyListener{
 		});
 		timer.start();
 	}
+	
+	public void setGameController (GameController controller){
+		this.controller = controller;
+	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 	    int keyCode = e.getKeyCode();
 	    if (keyCode == KeyEvent.VK_RIGHT)
 	    	controller.setRightPressed(true);
+	    
     	else if(keyCode == KeyEvent.VK_LEFT) {
     		controller.setLeftPressed(true);
     	}
+	    
     	else if(keyCode == KeyEvent.VK_DOWN) {
     		controller.setDownPressed(true);
     	}
+	    
     	else if(keyCode == KeyEvent.VK_UP) {
     		controller.setUpPressed(true);
     	}
+	    
+    	else if (keyCode == KeyEvent.VK_ENTER){
+    		controller.setEnterPressed(true);
+    	}
+    	
     	else if(keyCode == KeyEvent.VK_X){
     		controller.setFireArrow(true);
     	}
+	    
     	else if(keyCode == KeyEvent.VK_SPACE){
     		controller.setSetBomb(true);
     	}
+	    
     	else if(keyCode == KeyEvent.VK_C) {
     		controller.setUseStaff(true);
     	}
@@ -69,12 +83,15 @@ public class Fenetre extends JFrame implements KeyListener{
 	    if (keyCode == KeyEvent.VK_RIGHT){
 	    	controller.setRightPressed(false);
 	    }
+	    
     	else if(keyCode == KeyEvent.VK_LEFT){
     		controller.setLeftPressed(false);
     	}
+	    
     	else if(keyCode == KeyEvent.VK_DOWN) {
     		controller.setDownPressed(false);
     	}
+	    
     	else if(keyCode == KeyEvent.VK_UP) {
     		controller.setUpPressed(false);
     	}

@@ -13,8 +13,15 @@ public class Level{
 	private List<BombDeflagration> bombDeflagration;
 	private List<Arrow> arrow;
 	private List<Bonus> bonus;
+	private List<Menu> menu;
+	private int status = 0;
 	
-	public Level(Map map){
+	public Level(List<Menu> menu){
+		this.menu = menu;
+		
+	}
+	
+	public void createLevel(Map map){
 		this.map = map;
 		char[][] tableau = new char[16][16];
 		tableau = map.loadRoom();
@@ -35,6 +42,13 @@ public class Level{
 
 	public Map getMap(){
 		return this.map;
+	}
+	
+	public void setStatus(int status){
+		this.status = status;
+	}
+	public int getStatus(){
+		return this.status;
 	}
 	
 	public List<Link> getLink(){
@@ -63,6 +77,10 @@ public class Level{
 	
 	public List<Bonus> getBonus(){
 		return this.bonus;
+	}
+
+	public List<Menu> getMenu() {
+		return this.menu;
 	}
 
 }

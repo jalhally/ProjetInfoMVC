@@ -38,75 +38,82 @@ public class Panel extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		g.drawImage(statusBar,0,0,null);
-		for(int i =0; i<15;i++){
-			for(int j=0;j<15;j++) {
-				g.drawImage(bg,i*40,j*40+dec,null);				
+		
+		if(level.getStatus() == 0){
+			for (Menu menu : level.getMenu()){
+				g.drawImage(loadIAD.stringToIAD(menu.getName()).getImage(), menu.getXPos(), menu.getYPos()+dec,null);
 			}
 		}
-		
-		for(Decor decor : level.getDecor()) {
-			g.drawImage(loadIAD.stringToIAD(decor.getName()).getImage(), decor.getXPos(), decor.getYPos()+dec,null);
-		}
-		
-		for(Bomb bomb : level.getBomb()) {
-			g.drawImage(loadIAD.stringToIAD(bomb.getName()).getImage(), bomb.getXPos(), bomb.getYPos()+dec,null);
-		}
-		
-		for(Bonus bonus : level.getBonus()){
-			g.drawImage(loadIAD.stringToIAD(bonus.getName()).getImage(), bonus.getXPos()+10, bonus.getYPos()+dec+10,null);
-		}
-		
-		for(Link link : level.getLink()) {
-			g.drawImage(loadIAD.stringToIAD(link.getName()).getImageAnime(link), link.getXPos(), link.getYPos()+dec,null);
-			for(int i=0; i<link.getLifePoint();i++) {
-				g.drawImage(heart,180+i*15,45,null);				
-			}
-			g.drawImage(charNumber[link.getNumberBomb()],485,42,null);
-			//g.drawImage(charNumber[l.getNumberArrow()-data2.size()],0,0,null);
-		}
-		
-		for(Arrow arrow : level.getArrow()) {
-			g.drawImage(loadIAD.stringToIAD(arrow.getName()).getImageAnime(arrow), arrow.getXPos(), arrow.getYPos()+dec,null);
-		}
-		
-		for(Monster monster : level.getMonster()) {
-			g.drawImage(loadIAD.stringToIAD(monster.getName()).getImageAnime(monster), monster.getXPos(), monster.getYPos()+dec,null);
-		}
-		
-		for(BombDeflagration bombDef : level.getBombDeflagration()) {
-			for(int j = 0; j< bombDef.getUp().size(); j++){
-				if(j==bombDef.getUp().size()-1){
-					g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(2).get(1), bombDef.getXPos(), bombDef.getUp().get(j)+dec,null);
-				}
-				else{
-					g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(2).get(0), bombDef.getXPos(), bombDef.getUp().get(j)+dec,null);
+		else if (level.getStatus() == 2){
+			g.drawImage(statusBar,0,0,null);
+			for(int i =0; i<15;i++){
+				for(int j=0;j<15;j++) {
+					g.drawImage(bg,i*40,j*40+dec,null);				
 				}
 			}
-			for(int j = 0; j< bombDef.getDown().size(); j++){
-				if(j==bombDef.getUp().size()-1){
-					g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(3).get(1), bombDef.getXPos(), bombDef.getDown().get(j)+dec,null);
+			for(Decor decor : level.getDecor()) {
+				g.drawImage(loadIAD.stringToIAD(decor.getName()).getImage(), decor.getXPos(), decor.getYPos()+dec,null);
+			}
+			
+			for(Bomb bomb : level.getBomb()) {
+				g.drawImage(loadIAD.stringToIAD(bomb.getName()).getImage(), bomb.getXPos(), bomb.getYPos()+dec,null);
+			}
+			
+			for(Bonus bonus : level.getBonus()){
+				g.drawImage(loadIAD.stringToIAD(bonus.getName()).getImage(), bonus.getXPos()+10, bonus.getYPos()+dec+10,null);
+			}
+			
+			for(Link link : level.getLink()) {
+				g.drawImage(loadIAD.stringToIAD(link.getName()).getImageAnime(link), link.getXPos(), link.getYPos()+dec,null);
+				for(int i=0; i<link.getLifePoint();i++) {
+					g.drawImage(heart,180+i*15,45,null);				
 				}
-				else{
-					g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(3).get(0), bombDef.getXPos(), bombDef.getDown().get(j)+dec,null);
+				g.drawImage(charNumber[link.getNumberBomb()],485,42,null);
+				//g.drawImage(charNumber[l.getNumberArrow()-data2.size()],0,0,null);
+			}
+			
+			for(Arrow arrow : level.getArrow()) {
+				g.drawImage(loadIAD.stringToIAD(arrow.getName()).getImageAnime(arrow), arrow.getXPos(), arrow.getYPos()+dec,null);
+			}
+			
+			for(Monster monster : level.getMonster()) {
+				g.drawImage(loadIAD.stringToIAD(monster.getName()).getImageAnime(monster), monster.getXPos(), monster.getYPos()+dec,null);
+			}
+			
+			for(BombDeflagration bombDef : level.getBombDeflagration()) {
+				for(int j = 0; j< bombDef.getUp().size(); j++){
+					if(j==bombDef.getUp().size()-1){
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(2).get(1), bombDef.getXPos(), bombDef.getUp().get(j)+dec,null);
+					}
+					else{
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(2).get(0), bombDef.getXPos(), bombDef.getUp().get(j)+dec,null);
+					}
+				}
+				for(int j = 0; j< bombDef.getDown().size(); j++){
+					if(j==bombDef.getUp().size()-1){
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(3).get(1), bombDef.getXPos(), bombDef.getDown().get(j)+dec,null);
+					}
+					else{
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(3).get(0), bombDef.getXPos(), bombDef.getDown().get(j)+dec,null);
+					}
+				}
+				for(int j = 0; j< bombDef.getLeft().size(); j++){
+					if(j==bombDef.getUp().size()-1){
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(0).get(1), bombDef.getLeft().get(j), bombDef.getYPos()+dec,null);
+					}
+					else{
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(0).get(0), bombDef.getLeft().get(j), bombDef.getYPos()+dec,null);
+					}
+				}
+				for(int j = 0; j< bombDef.getRight().size(); j++){
+					if(j==bombDef.getUp().size()-1){
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(1).get(1), bombDef.getRight().get(j), bombDef.getYPos()+dec,null);
+					}
+					else{
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(1).get(0), bombDef.getRight().get(j), bombDef.getYPos()+dec,null);
+					}
 				}
 			}
-			for(int j = 0; j< bombDef.getLeft().size(); j++){
-				if(j==bombDef.getUp().size()-1){
-					g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(0).get(1), bombDef.getLeft().get(j), bombDef.getYPos()+dec,null);
-				}
-				else{
-					g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(0).get(0), bombDef.getLeft().get(j), bombDef.getYPos()+dec,null);
-				}
 			}
-			for(int j = 0; j< bombDef.getRight().size(); j++){
-				if(j==bombDef.getUp().size()-1){
-					g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(1).get(1), bombDef.getRight().get(j), bombDef.getYPos()+dec,null);
-				}
-				else{
-					g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(1).get(0), bombDef.getRight().get(j), bombDef.getYPos()+dec,null);
-				}
-			}
-		}
 		}
 	}

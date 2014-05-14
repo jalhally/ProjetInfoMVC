@@ -37,7 +37,7 @@ private Image img;
 
   public void mouseEntered(MouseEvent event) {    //change l image du bouton (surbrillance ou quoi
     try {
-      img = ImageIO.read(new File("2.png"));   
+      img = ImageIO.read(new File("res/2.png"));   
     } catch (IOException e) {
       e.printStackTrace();
     }    
@@ -45,7 +45,7 @@ private Image img;
 
   public void mouseExited(MouseEvent event) { // remet l image de base
     try {
-      img = ImageIO.read(new File("1.png"));
+      img = ImageIO.read(new File("res/1.png"));
     } catch (IOException e) {
       e.printStackTrace();
     }    
@@ -53,7 +53,7 @@ private Image img;
 
   public void mousePressed(MouseEvent event) { // jcrois qu on pourrais faire le action listener directement ici, a voir
     try {
-      img = ImageIO.read(new File("fondBoutonClic.png"));
+      img = ImageIO.read(new File("res/1.png"));
     } catch (IOException e) {
       e.printStackTrace();
     }    
