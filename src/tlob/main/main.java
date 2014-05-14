@@ -18,7 +18,7 @@ public class main {
 		*/
 		List<Menu> menu = new ArrayList<Menu>();
 		Menu homescreen = new Menu(0,0,"res/menu", 0);
-		Menu solo = new Menu(8*20,13*40,"res/1playerbombs",2);
+		Menu solo = new Menu(17*10,13*40,"res/1playerbombs",2);
 		Menu option = new Menu(7*20,15*40,"res/2players", 1);
 		menu.add(homescreen);
 		menu.add(solo);
