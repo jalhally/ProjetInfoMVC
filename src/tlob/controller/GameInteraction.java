@@ -3,6 +3,7 @@ package tlob.controller;
 import java.util.List;
 
 import tlob.model.*;
+import tlob.view.Sound;
 
 public class GameInteraction {
 	
@@ -388,6 +389,8 @@ public class GameInteraction {
 						((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						decor.remove(i);
 						decor.get(i-1).setName("res/ForestBrokenJar");
+						Sound soundJar = new Sound();
+						soundJar.playSound("jarbroken");
 					}
 					bombDef.setL(0);
 				}
@@ -400,6 +403,8 @@ public class GameInteraction {
 						((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						decor.remove(i);
 						decor.get(i-1).setName("res/ForestBrokenJar");
+						Sound soundJar = new Sound();
+						soundJar.playSound("jarbroken");
 					}
 					bombDef.setR(0);
 				}
@@ -412,7 +417,8 @@ public class GameInteraction {
 						((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						decor.remove(i);
 						decor.get(i-1).setName("res/ForestBrokenJar");
-						
+						Sound soundJar = new Sound();
+						soundJar.playSound("jarbroken");						
 					}
 					bombDef.setU(0);
 					}
@@ -427,6 +433,8 @@ public class GameInteraction {
 						((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						decor.remove(i);
 						decor.get(i-1).setName("res/ForestBrokenJar");
+						Sound soundJar = new Sound();
+						soundJar.playSound("jarbroken");
 					}
 					bombDef.setD(0);
 				}

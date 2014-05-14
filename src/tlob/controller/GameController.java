@@ -3,6 +3,7 @@ package tlob.controller;
 
 import java.util.List;
 import tlob.model.*;
+import tlob.view.*;
 
 public class GameController {
 	
@@ -26,6 +27,7 @@ public class GameController {
 	private int k = 2; // va modifier le status dans le menu
 	private Level level;
 	private boolean pressedOnce = true; // premiere foi qu on appuie
+	private Sound sound = new Sound();
 	
 	public GameController(Level level){
 		this.level = level;
@@ -36,6 +38,7 @@ public class GameController {
 		this.arrow = level.getArrow();
 		this.bombDeflagration = level.getBombDeflagration();
 		this.interaction = new GameInteraction(level);
+		this.sound.playSound("swag");
 
 	}
 		
@@ -65,6 +68,10 @@ public class GameController {
 	
 	public void update() {
 		if (status == 0){
+			if(sound.isFinished(sound.getAudioStream()))
+			{
+				sound.playSound("swag");
+			}
 			if (downPressed && pressedOnce && k > 1 ){
 				System.out.println(k);
 				for (int i = 0; i<menu.size();i++){
@@ -74,7 +81,6 @@ public class GameController {
 						menu.get(i).setName("res/Bomb");
 				}
 				k-=1;
-				System.out.println(k);
 				pressedOnce = false;
 
 			}
@@ -88,7 +94,6 @@ public class GameController {
 
 				}
 				k+=1;
-				System.out.println(k);
 				pressedOnce = false;
 			}
 			else if (!downPressed && !upPressed && !enterPressed){
@@ -96,17 +101,26 @@ public class GameController {
 			}
 			
 			else if (enterPressed){ // lance le solo
-				System.out.println("coucou");
 				status = k;
+				if(status == 2){
+					sound.soundEnd(sound.getAudioStream());
+					sound.playSound("yolo");
+				}
 				level.setStatus(status);
 
 			}
 		}
 		else if (status == 1){
-			System.out.println("coucou");
+
+			// mode multi
+	
 		}
 		
 		else if(status == 2){
+				if(sound.isFinished(sound.getAudioStream()))
+			{
+				sound.playSound("yolo");
+			}
 			for(int i = 0; i < link.size(); i++){
 						
 				if(link.get(i).getInvincible() == 0){
@@ -208,6 +222,8 @@ public class GameController {
 					if(bomb.get(p).getTime() == 15){ //changer dans deflagration si changement de temps
 						bombDeflagration.add(new BombDeflagration(bomb.get(p).getXPos(),bomb.get(p).getYPos(),"res/Deflagration",2));
 						bomb.remove(p);
+						Sound soundBomb = new Sound();
+						soundBomb.playSound("bomb");
 					}
 				}
 			}

@@ -41,7 +41,7 @@ public class Panel extends JPanel{
 		
 		if(level.getStatus() == 0){
 			for (Menu menu : level.getMenu()){
-				g.drawImage(loadIAD.stringToIAD(menu.getName()).getImage(), menu.getXPos(), menu.getYPos()+dec,null);
+				g.drawImage(loadIAD.stringToIAD(menu.getName()).getImage(), menu.getXPos(), menu.getYPos(),null);
 			}
 		}
 		else if (level.getStatus() == 2){
