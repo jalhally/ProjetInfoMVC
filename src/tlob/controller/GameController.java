@@ -38,7 +38,7 @@ public class GameController {
 		this.arrow = level.getArrow();
 		this.bombDeflagration = level.getBombDeflagration();
 		this.interaction = new GameInteraction(level);
-		this.sound.playSound("swag");
+		this.sound.playSound("menu");
 
 	}
 		
@@ -67,10 +67,13 @@ public class GameController {
 	}
 	
 	public void update() {
+		Sound soundChange = new Sound();
+		Sound soundChoose = new Sound();
+
 		if (status == 0){
 			if(sound.isFinished(sound.getAudioStream()))
 			{
-				sound.playSound("swag");
+				sound.playSound("menu");
 			}
 			if (downPressed && pressedOnce && k > 1 ){
 				System.out.println(k);
@@ -82,7 +85,7 @@ public class GameController {
 				}
 				k-=1;
 				pressedOnce = false;
-
+				soundChange.playSound("menuchange");
 			}
 			else if (upPressed && pressedOnce & k < 2){
 				System.out.println(k);
@@ -95,6 +98,8 @@ public class GameController {
 				}
 				k+=1;
 				pressedOnce = false;
+				soundChange.playSound("menuchange");
+
 			}
 			else if (!downPressed && !upPressed && !enterPressed){
 				pressedOnce = true;
@@ -105,6 +110,8 @@ public class GameController {
 				if(status == 2){
 					sound.soundEnd(sound.getAudioStream());
 					sound.playSound("yolo");
+					soundChange.playSound("menuchoose");
+
 				}
 				level.setStatus(status);
 
