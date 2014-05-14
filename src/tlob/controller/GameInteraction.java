@@ -270,6 +270,17 @@ public class GameInteraction {
 		for(int i = 0; i < bonus.size(); i++){
 			if(touchMonster(link.getXPos(),link.getYPos(),bonus.get(i).getXPos(),bonus.get(i).getYPos()) != -1){
 				bonus.get(i).activation(link);
+				
+				if(bonus.get(i).getName() == "res/Rubis") { 
+					Sound soundRupee = new Sound();
+					soundRupee.playSound("rupee");	
+				}
+				
+				else {
+					Sound soundBonus = new Sound();
+					soundBonus.playSound("bonus");
+				}
+				
 				bonus.remove(i);
 			}
 		}

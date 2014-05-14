@@ -24,7 +24,18 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/Root"));
 		dataIAD.add(new ImageAnimeDirection("res/Bomb"));
 		dataIAD.add(new ImageAnimeDirection("res/ForestBrokenJar"));
-		//dataIAD.add(new ImageAnimeDirection(""));
+		dataIAD.add(new ImageAnimeDirection("res/Heart"));
+		dataIAD.add(new ImageAnimeDirection("res/BombPlus"));
+		dataIAD.add(new ImageAnimeDirection("res/BombRange"));
+		dataIAD.add(new ImageAnimeDirection("res/Rubis"));
+		dataIAD.add(new ImageAnimeDirection("res/FireStaff"));
+		dataIAD.add(new ImageAnimeDirection("res/IceStaff"));
+		dataIAD.add(new ImageAnimeDirection("res/Gauntlet2"));
+		dataIAD.add(new ImageAnimeDirection("res/Key"));
+		dataIAD.add(new ImageAnimeDirection("res/SpeedBonus"));
+		dataIAD.add(new ImageAnimeDirection("res/ArrowPlus"));
+		dataIAD.add(new ImageAnimeDirection("res/TreasureChest1"));
+		dataIAD.add(new ImageAnimeDirection("res/TreasureChest2"));
 	}
 	
 	public ImageAnimeDirection stringToIAD(String name){

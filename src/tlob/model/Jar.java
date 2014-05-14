@@ -5,11 +5,9 @@ import java.util.List;
 
 public class Jar extends Decor {
 	
-	//view
-	/*
-	Image heart = Toolkit.getDefaultToolkit().getImage("res/Heart.png");
-	Image kirby = Toolkit.getDefaultToolkit().getImage("res/2.png");
-	*/
+	private String imageBonus[] ={"res/Heart","res/BombPlus","res/BombRange","res/ArrowPlus","res/SpeedBonus",
+			"res/Gauntlet2","res/Key","res/FireStaff","res/IceStaff","res/Rubis"};
+	
 	
 	public Jar(int xPos, int yPos, String name) {
 		super(xPos,yPos,name);
@@ -24,7 +22,6 @@ public class Jar extends Decor {
 	*/
 	
 	public void randomBonus(List<Bonus> bonus, int x, int y) {
-		//random a faire ici
 		int bonusType=-1;
 		java.util.Random r=new java.util.Random( ) ; 
 		int random = r.nextInt(100);
@@ -41,8 +38,7 @@ public class Jar extends Decor {
 			else{bonusType=3;}
 		}
 		if(bonusType>=0) {
-		//gerer avec string
-		//bonus.add(new Bonus(x,y,kirby,bonusType));
+		bonus.add(new Bonus(x,y,imageBonus[bonusType],bonusType));
 		}
 	}
 	
