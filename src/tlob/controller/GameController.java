@@ -15,6 +15,7 @@ public class GameController {
 	boolean fireArrow = false;
 	boolean setBomb = false;
 	boolean useStaff = false;
+	java.util.Random r=new java.util.Random( ) ;
 	
 	private List<Link> link;
 	private List<Monster> monster;
@@ -109,7 +110,7 @@ public class GameController {
 				status = k;
 				if(status == 2){
 					sound.soundEnd(sound.getAudioStream());
-					sound.playSound("yolo");
+					sound.playSound("forest1");
 					soundChange.playSound("menuchoose");
 
 				}
@@ -124,9 +125,15 @@ public class GameController {
 		}
 		
 		else if(status == 2){
-				if(sound.isFinished(sound.getAudioStream()))
+			if(sound.isFinished(sound.getAudioStream()))
 			{
-				sound.playSound("yolo");
+				int random = r.nextInt(2);
+				if (random == 0){
+					sound.playSound("forest1");
+				}
+				else if(random == 1){
+					sound.playSound("forest2");
+				}
 			}
 			for(int i = 0; i < link.size(); i++){
 						
