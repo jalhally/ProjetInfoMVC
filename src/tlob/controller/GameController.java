@@ -303,6 +303,7 @@ public class GameController {
 					if(monster.get(i).getLifePoint() == 0){
 						monster.remove(i);
 					}
+					interaction.moveRandom(monster.get(i));
 				}
 			}	
 
@@ -465,6 +466,7 @@ public class GameController {
 						if(monster.get(i).getLifePoint() == 0){
 							monster.remove(i);
 						}
+						interaction.moveRandom(monster.get(i));
 					}
 				}	
 	

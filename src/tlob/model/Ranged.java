@@ -23,6 +23,7 @@ public class Ranged extends Monster {
 		 
 	}
 	
+	/*
 	public void IARanged(Link Link)
 	{
 		while (this.xPos != Link.getXPos() || this.yPos != Link.getYPos() )
@@ -69,5 +70,5 @@ public class Ranged extends Monster {
 		}
 		
 	}
-
+*/
 }

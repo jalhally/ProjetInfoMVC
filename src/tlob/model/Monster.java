@@ -7,28 +7,25 @@ public class Monster extends Character {
 		super (lifePoint, xPos, yPos, speed, direction, name);
 	}
 	
-	public void moveUp ()
-	{
-		setYPos(yPos + getFrozen()*speed);
-		direction = 1;
-	}
+	public void move()
 
-	public void moveDown ()
 	{
-		setYPos(yPos - getFrozen()*speed);
-		direction = 2;
-	}
-
-	public void moveRight ()
-	{
-		setXPos(xPos + getFrozen()*speed);
-		direction = 3;
-	}
-
-	public void moveLeft ()
-	{
-		setXPos(xPos - getFrozen()*speed);
-		direction = 4;
+		if(direction == 0){
+			setXPos(getXPos() - getFrozen()*getL()*speed);
+			//tick(3,5);
+		}
+		if(direction == 1){
+			setXPos(getXPos() + getFrozen()*getR()*speed);
+			//tick(3,5);
+		}
+		if(direction == 2){
+			setYPos(getYPos() - getFrozen()*getU()*speed);
+			//tick(3,5);
+		}
+		if(direction == 3){
+			setYPos(getYPos() + getFrozen()*getD()*speed);
+			//tick(3,5);
+		}
 	}
 	
 }

@@ -32,6 +32,8 @@ public class Underground extends Monster{
 		setUnderGround(false);
 	}
 	
+	/*
+	
 	public void IA(Link Link)
 	
 	{
@@ -55,5 +57,5 @@ public class Underground extends Monster{
 			moveDown();
 		}
 	}
-
+*/
 }

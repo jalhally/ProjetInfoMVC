@@ -1,5 +1,6 @@
 package tlob.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import tlob.model.*;
@@ -539,5 +540,185 @@ public class GameInteraction {
 				}
 			}
 		}
+	}
+	
+	public void moveRandom(Monster monster){
+		monster.setR(1);
+		monster.setL(1);
+		monster.setD(1);
+		monster.setU(1);
+		for(int i = 0; i < this.monster.size(); i++){
+			if(this.monster.get(i) != monster){
+				if(touchDecor(monster.getXPos()-monster.getSpeed(),monster.getYPos(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
+						&& monster.getDirection() == 0){
+					monster.setDirection(1);
+					System.out.println("collision");
+				}
+				if(touchDecor(monster.getXPos()+monster.getSpeed(),monster.getYPos(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
+						&& monster.getDirection() == 1){
+					monster.setDirection(0);
+					System.out.println("collision");
+				}
+				if(touchDecor(monster.getXPos(),monster.getYPos()-monster.getSpeed(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
+						&& monster.getDirection() == 2){
+					monster.setDirection(3);
+					System.out.println("collision");
+				}
+				if(touchDecor(monster.getXPos(),monster.getYPos()-monster.getSpeed(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
+						&& monster.getDirection() == 3){
+					monster.setDirection(2);
+					System.out.println("collision");
+				}
+			}
+		}
+		if(monster.getXPos()%40 == 0 && monster.getYPos()%40 == 0){
+			for(int i = 0; i < decor.size(); i++){
+				if(decor.get(i).getClass() != Floor.class){
+					if(touchDecor(monster.getXPos()+5,monster.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) == 0){
+						monster.setR(0);
+					}
+
+					if(touchDecor(monster.getXPos()-5,monster.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) == 1){
+						monster.setL(0);
+					}
+
+					if(touchDecor(monster.getXPos(),monster.getYPos()+5,decor.get(i).getXPos(),decor.get(i).getYPos()) == 2){
+						monster.setD(0);
+					}
+
+					if(touchDecor(monster.getXPos(),monster.getYPos()-5,decor.get(i).getXPos(),decor.get(i).getYPos()) == 3){
+						monster.setU(0);
+					}
+
+				}
+			}
+			for(int i = 0; i < bomb.size(); i++){
+
+				if(touchDecor(monster.getXPos()+5,monster.getYPos(),bomb.get(i).getXPos(),bomb.get(i).getYPos()) == 0){
+					monster.setR(0);
+				}
+
+				if(touchDecor(monster.getXPos()-5,monster.getYPos(),bomb.get(i).getXPos(),bomb.get(i).getYPos()) == 1){
+					monster.setL(0);
+				}
+
+				if(touchDecor(monster.getXPos(),monster.getYPos()+5,bomb.get(i).getXPos(),bomb.get(i).getYPos()) == 2){
+					monster.setD(0);
+				}
+
+				if(touchDecor(monster.getXPos(),monster.getYPos()-5,bomb.get(i).getXPos(),bomb.get(i).getYPos()) == 3){
+					monster.setU(0);
+				}
+
+			}
+			
+			if(monster.getDirection() == 0){
+				if(monster.getL() == 0 && monster.getU() == 0 && monster.getD() == 0){
+					monster.setDirection(1);
+				}
+				else if(monster.getU() == 0 && monster.getD() == 0){
+
+				}
+				else{
+					List<Integer> dir = new ArrayList<Integer>();
+					if(monster.getL() == 1){
+						dir.add(0);
+					}
+					if(monster.getR() == 1){
+						dir.add(1);
+					}
+					if(monster.getU() == 1){
+						dir.add(2);
+					}
+					if(monster.getD() == 1){
+						dir.add(3);
+					}
+					java.util.Random r=new java.util.Random();
+					int random = r.nextInt(dir.size()+1);
+					monster.setDirection(random);
+					
+				}
+			}
+			else if(monster.getDirection() == 1){
+				if(monster.getR() == 0 && monster.getU() == 0 && monster.getD() == 0){
+					monster.setDirection(0);
+				}
+				else if(monster.getU() == 0 && monster.getD() == 0){
+
+				}
+				else{
+					List<Integer> dir = new ArrayList<Integer>();
+					if(monster.getL() == 1){
+						dir.add(0);
+					}
+					if(monster.getR() == 1){
+						dir.add(1);
+					}
+					if(monster.getU() == 1){
+						dir.add(2);
+					}
+					if(monster.getD() == 1){
+						dir.add(3);
+					}
+					java.util.Random r=new java.util.Random() ;
+					int random = r.nextInt(dir.size()+1);
+					monster.setDirection(random);
+					
+				}
+			}
+			else if(monster.getDirection() == 2){
+				if(monster.getU() == 0 && monster.getL() == 0 && monster.getR() == 0){
+					monster.setDirection(3);
+				}
+				else if(monster.getL() == 0 && monster.getR() == 0){
+
+				}
+				else{
+					List<Integer> dir = new ArrayList<Integer>();
+					if(monster.getL() == 1){
+						dir.add(0);
+					}
+					if(monster.getR() == 1){
+						dir.add(1);
+					}
+					if(monster.getU() == 1){
+						dir.add(2);
+					}
+					if(monster.getD() == 1){
+						dir.add(3);
+					}
+					java.util.Random r=new java.util.Random() ;
+					int random = r.nextInt(dir.size()+1);
+					monster.setDirection(random);
+				}
+			}
+			else{
+				if(monster.getD() == 0 && monster.getL() == 0 && monster.getR() == 0){
+					monster.setDirection(2);
+				}
+				else if(monster.getL() == 0 && monster.getR() == 0){
+
+				}
+				else{
+					List<Integer> dir = new ArrayList<Integer>();
+					if(monster.getL() == 1){
+						dir.add(0);
+					}
+					if(monster.getR() == 1){
+						dir.add(1);
+					}
+					if(monster.getU() == 1){
+						dir.add(2);
+					}
+					if(monster.getD() == 1){
+						dir.add(3);
+					}
+					java.util.Random r=new java.util.Random() ;
+					int random = r.nextInt(dir.size()+1);
+					monster.setDirection(random);
+				}
+			}
+		}
+		monster.move();
 	}
 }

@@ -12,10 +12,6 @@ private boolean gauntlet = false;
 private boolean key = false;
 private int staff=-1; //0=fire //1=ice
 private int numberCoin = 0;
-private int U = 1;
-private int D = 1;
-private int L = 1;
-private int R = 1;
 private int player;
 
 public Link (int lifePoint, int xPos, int yPos, int speed,int direction, String image, int player)
@@ -97,64 +93,32 @@ public void setNumberCoin(int numberCoin) {
 	this.numberCoin=numberCoin;
 }
 
-public int getU(){
-	return this.U;
-}
-
-public void setU(int U){
-	this.U = U;
-}
-
-public int getD(){
-	return this.D;
-}
-
-public void setD(int D){
-	this.D = D;
-}
-
-public int getL(){
-	return this.L;
-}
-
-public void setL(int L){
-	this.L = L;
-}
-
-public int getR(){
-	return this.R;
-}
-
-public void setR(int R){
-	this.R = R;
-}
-
 public void moveUp ()
 
 {
 	direction = 2;
-	setYPos(yPos - getFrozen()*U*speed);
+	setYPos(yPos - getFrozen()*getU()*speed);
 	tick(6,5);
 }
 
 public void moveDown ()
 {
 	direction = 3;
-	setYPos(yPos + getFrozen()*D*speed);
+	setYPos(yPos + getFrozen()*getD()*speed);
 	tick(6,5);
 }
 
 public void moveRight ()
 {
 	direction = 1;
-	setXPos(xPos + getFrozen()*R*speed);
+	setXPos(xPos + getFrozen()*getR()*speed);
 	tick(6,5);
 }
 
 public void moveLeft ()
 {
 	direction = 0;
-	setXPos(xPos - getFrozen()*L*speed);
+	setXPos(xPos - getFrozen()*getL()*speed);
 	tick(6,5);
 }
 
