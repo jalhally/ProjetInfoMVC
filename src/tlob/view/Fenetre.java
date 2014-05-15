@@ -17,12 +17,11 @@ public class Fenetre extends JFrame implements KeyListener{
 
 	private Panel panel;
 	private GameController controller;
-	private boolean close = false;
 	
 	public Fenetre(Level level, final GameController controller, LoadIAD loadIAD)  {
 	    setVisible(true) ;
 	    setSize(800, 15*42+8+120);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		addKeyListener(this);
 		this.controller = controller;
 		panel = new Panel(level, loadIAD);
