@@ -362,7 +362,7 @@ public class GameController {
 				status = 3;
 				level.setStatus(status);
 				sound.soundEnd(sound.getAudioStream());
-				sound.playSound("swag");
+				sound.playSound("gameOver");
 			}
 			else{
 				if(sound.isFinished(sound.getAudioStream()))
