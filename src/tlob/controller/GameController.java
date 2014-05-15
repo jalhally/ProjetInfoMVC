@@ -187,7 +187,6 @@ public class GameController {
 				}
 			
 				if(fireArrow){
-					link.get(0).setName("res/LinkArrow");
 					link.get(0).fireArrow(arrow);
 					System.out.print(link.get(0).getActualFrame());
 					if(link.get(0).getActualFrame() == 6){
@@ -248,10 +247,7 @@ public class GameController {
 				}
 			
 				if(fireArrow2){
-					link.get(1).setName("res/LinkArrow");
 					link.get(1).fireArrow(arrow);
-					System.out.println(arrow);
-					System.out.print(link.get(1).getActualFrame());
 					if(link.get(1).getActualFrame() == 6){
 						fireArrow2 = false;
 						link.get(1).setActualFrame(1);
@@ -308,14 +304,13 @@ public class GameController {
 			}	
 
 			if(arrow.size()>0){
-				System.out.println(arrow);
 				for(int p = 0; p < arrow.size(); p++){
 					int a = interaction.arrowInteraction(arrow.get(p));
 					if(a != 0){
 						if(a == 2){
 							arrow.get(p).tick(5);
 							//arrow.get(p).setActualFrame(1);
-							if(arrow.get(p).getTime() == 15){
+							if(arrow.get(p).getTime() == 3){
 								arrow.remove(p);
 							}
 						}
@@ -422,7 +417,6 @@ public class GameController {
 					}
 				
 					if(fireArrow){
-						link.get(0).setName("res/LinkArrow");
 						link.get(0).fireArrow(arrow);
 						System.out.print(link.get(0).getActualFrame());
 						if(link.get(0).getActualFrame() == 6){

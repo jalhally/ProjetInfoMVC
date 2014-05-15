@@ -310,16 +310,16 @@ decor.add(new Wall(40*i,40*j,null));*/
 					//case 'l':
 						//decor.add(new Link(3,(...)));
 					case 'q':
-						monster.add(new Ranged(1,40*i,40*j,2,3,null)); //Ranged
+						monster.add(new Ranged(1,40*i,40*j,1,3,null)); //Ranged
 						break;
 					case 's':
-						monster.add(new Bomber(1,40*i,40*j,2,3,null)); //Bomber
+						monster.add(new Bomber(1,40*i,40*j,1,3,null)); //Bomber
 						break;
 					case 'd':
-						monster.add(new Melee(2,40*i,40*j,2,3,"res/MeleeRun"));
+						monster.add(new Melee(2,40*i,40*j,1,3,"res/MeleeRun"));
 						break;
 					case 'f':
-						monster.add(new Underground(1,40*i,40*j,2,3,null,true)); //Underground
+						monster.add(new Underground(1,40*i,40*j,1,3,null,true)); //Underground
 						break;
 					
 						}

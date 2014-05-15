@@ -12,19 +12,19 @@ public class Monster extends Character {
 	{
 		if(direction == 0){
 			setXPos(getXPos() - getFrozen()*getL()*speed);
-			//tick(3,5);
+			tick(4,5);
 		}
 		if(direction == 1){
 			setXPos(getXPos() + getFrozen()*getR()*speed);
-			//tick(3,5);
+			tick(4,5);
 		}
 		if(direction == 2){
 			setYPos(getYPos() - getFrozen()*getU()*speed);
-			//tick(3,5);
+			tick(4,5);
 		}
 		if(direction == 3){
 			setYPos(getYPos() + getFrozen()*getD()*speed);
-			//tick(3,5);
+			tick(4,5);
 		}
 	}
 	
