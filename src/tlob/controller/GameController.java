@@ -111,7 +111,7 @@ public class GameController {
 				if(status == 2){
 					sound.soundEnd(sound.getAudioStream());
 					sound.playSound("forest1");
-					soundChange.playSound("menuchoose");
+					soundChoose.playSound("menuchoose");
 
 				}
 				level.setStatus(status);
