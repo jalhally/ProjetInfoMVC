@@ -14,7 +14,6 @@ public class ImageAnimeDirection {
 	public final static int DROITE = 1;
 	public final static int HAUT = 2;
 	public final static int BAS = 3;
-	private int constant;
 	String nomBase;
 	private int frames;
 	private Image image;
@@ -24,10 +23,9 @@ public class ImageAnimeDirection {
 		this.image = Toolkit.getDefaultToolkit().getImage(nomBase + ".png");
 	}
 	
-	public ImageAnimeDirection(String nomBase, int frames, int constant) {
+	public ImageAnimeDirection(String nomBase, int frames) {
 		this.frames = frames;
 		this.nomBase = nomBase;
-		this.constant = constant;
 		liste = new ArrayList<Image>();
 		for(String dir : new String[]{"Left", "Right", "Up", "Down"}){
 			for(int i = 1; i<= frames; i++){

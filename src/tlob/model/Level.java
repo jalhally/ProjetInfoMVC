@@ -14,10 +14,12 @@ public class Level{
 	private List<Arrow> arrow;
 	private List<Bonus> bonus;
 	private List<Menu> menu;
+	private List<Menu> gameOver;
 	private int status = 0;
 	
-	public Level(List<Menu> menu){
+	public Level(List<Menu> menu, List<Menu>gameOver){
 		this.menu = menu;
+		this.gameOver = gameOver;
 		
 	}
 	
@@ -46,6 +48,9 @@ public class Level{
 		return this.map;
 	}
 	
+	public void setMap(Map map){
+		this.map = map;
+	}
 	public void setStatus(int status){
 		this.status = status;
 	}
@@ -85,4 +90,7 @@ public class Level{
 		return this.menu;
 	}
 
+	public List<Menu> getGameOver() {
+		return this.gameOver;
+	}
 }

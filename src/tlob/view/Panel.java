@@ -46,6 +46,12 @@ public class Panel extends JPanel{
 				g.drawImage(loadIAD.stringToIAD(menu.getName()).getImage(), menu.getXPos(), menu.getYPos(),null);
 			}
 		}
+		else if (level.getStatus() == 3){
+			for(Menu gameOver : level.getGameOver()){
+				g.drawImage(loadIAD.stringToIAD(gameOver.getName()).getImage(), gameOver.getXPos(), gameOver.getYPos(),null);
+
+			}
+		}
 		else if (level.getStatus() == 2 || level.getStatus()==1){
 			
 			g.drawImage(sideBackground,-10,70,null);

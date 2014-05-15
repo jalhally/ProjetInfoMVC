@@ -17,6 +17,7 @@ public class Fenetre extends JFrame implements KeyListener{
 
 	private Panel panel;
 	private GameController controller;
+	private boolean close = false;
 	
 	public Fenetre(Level level, final GameController controller, LoadIAD loadIAD)  {
 	    setVisible(true) ;
@@ -111,7 +112,13 @@ public class Fenetre extends JFrame implements KeyListener{
     	else if(keyCode == KeyEvent.VK_DOWN) {
     		controller.setDownPressedMenu(true);
     	}
+    	else if(keyCode == KeyEvent.VK_LEFT){
+    		controller.setLeftPressed(true);
+    	}
 	    
+    	else if(keyCode == KeyEvent.VK_RIGHT){
+    		controller.setRightPressed(true);
+    	}
 	    
 	}
 
@@ -159,6 +166,15 @@ public class Fenetre extends JFrame implements KeyListener{
     	else if(keyCode == KeyEvent.VK_DOWN) {
     		controller.setDownPressedMenu(false);
     	}
+	    
+    	else if(keyCode == KeyEvent.VK_LEFT){
+    		controller.setLeftPressed(false);
+    	}
+	    
+       	else if(keyCode == KeyEvent.VK_RIGHT){
+    		controller.setRightPressed(false);
+    	}
+
 
 		
 	}
