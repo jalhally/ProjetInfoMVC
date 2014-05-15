@@ -19,6 +19,7 @@ public class Panel extends JPanel{
 	Image bg = Toolkit.getDefaultToolkit().getImage("res/BackgroundForest.png");
 	Image heart = Toolkit.getDefaultToolkit().getImage("res/Heart.png");
 	Image statusBar = Toolkit.getDefaultToolkit().getImage("res/StatusBar.png");
+	Image sideBackground = Toolkit.getDefaultToolkit().getImage("res/SideBackground.png");
 	Image Char0 = Toolkit.getDefaultToolkit().getImage("res/Char0.png");
 	Image Char1 = Toolkit.getDefaultToolkit().getImage("res/Char1.png");
 	Image Char2 = Toolkit.getDefaultToolkit().getImage("res/Char2.png");
@@ -45,7 +46,11 @@ public class Panel extends JPanel{
 				g.drawImage(loadIAD.stringToIAD(menu.getName()).getImage(), menu.getXPos(), menu.getYPos(),null);
 			}
 		}
-		else if (level.getStatus() == 2){
+		else if (level.getStatus() == 2 || level.getStatus()==1){
+			
+			g.drawImage(sideBackground,-10,70,null);
+			g.drawImage(sideBackground,15*40+decX,70,null);
+			
 			g.drawImage(statusBar,0,0,null);
 			for(int i =0; i<15;i++){
 				for(int j=0;j<15;j++) {

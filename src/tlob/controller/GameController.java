@@ -15,6 +15,17 @@ public class GameController {
 	boolean fireArrow = false;
 	boolean setBomb = false;
 	boolean useStaff = false;
+	boolean rightPressed2 = false;
+	boolean leftPressed2 = false;
+	boolean downPressed2 = false;
+	boolean upPressed2 = false;
+	boolean enterPressed2 = false;
+	boolean fireArrow2 = false;
+	boolean setBomb2 = false;
+	boolean useStaff2 = false;
+	boolean upPressedMenu = false;
+	boolean downPressedMenu = false;
+	
 	java.util.Random r=new java.util.Random( ) ;
 	
 	private List<Link> link;
@@ -76,7 +87,7 @@ public class GameController {
 			{
 				sound.playSound("menu");
 			}
-			if (downPressed && pressedOnce && k > 1 ){
+			if (downPressedMenu && pressedOnce && k > 1 ){
 				System.out.println(k);
 				for (int i = 0; i<menu.size();i++){
 					if(menu.get(i).getStatus() == k)
@@ -88,7 +99,7 @@ public class GameController {
 				pressedOnce = false;
 				soundChange.playSound("menuchange");
 			}
-			else if (upPressed && pressedOnce & k < 2){
+			else if (upPressedMenu && pressedOnce & k < 2){
 				System.out.println(k);
 				for (int i = 0; i<menu.size();i++){
 					if(menu.get(i).getStatus() == k)
@@ -102,13 +113,13 @@ public class GameController {
 				soundChange.playSound("menuchange");
 
 			}
-			else if (!downPressed && !upPressed && !enterPressed){
+			else if (!downPressedMenu && !upPressedMenu && !enterPressed){
 				pressedOnce = true;
 			}
 			
 			else if (enterPressed){ // lance le solo
 				status = k;
-				if(status == 2){
+				if(status == 2 || status == 1){
 					sound.soundEnd(sound.getAudioStream());
 					sound.playSound("forest1");
 					soundChoose.playSound("menuchoose");
@@ -121,8 +132,150 @@ public class GameController {
 		else if (status == 1){
 
 			// mode multi
-	
+			if(sound.isFinished(sound.getAudioStream()))
+			{
+				int random = r.nextInt(2);
+				if (random == 0){
+					sound.playSound("forest1");
+				}
+				else if(random == 1){
+					sound.playSound("forest2");
+				}
+			}
+			for(int i = 0; i < link.size(); i++){
+						
+				if(link.get(i).getInvincible() == 0){
+					link.get(i).tickInvicible();
+				}
+			
+				interaction.linkInteraction(link.get(i));
+
+				if(rightPressed){
+					link.get(0).setName("res/LinkRun");
+					link.get(0).moveRight();
+				
+				}
+				if(leftPressed){
+					link.get(0).setName("res/LinkRun");
+					link.get(0).moveLeft();
+				}
+			
+				if(downPressed){
+					link.get(0).setName("res/LinkRun");
+					link.get(0).moveDown();
+				}
+			
+				if(upPressed){
+					link.get(0).setName("res/LinkRun");
+					link.get(0).moveUp();
+				}
+			
+				if(fireArrow){
+					link.get(0).setName("res/LinkArrow");
+					link.get(0).fireArrow(arrow);
+					System.out.print(link.get(0).getActualFrame());
+					if(link.get(0).getActualFrame() == 6){
+						fireArrow = false;
+						link.get(0).setActualFrame(1);
+					}
+				}
+				if(setBomb){
+					if(bomb.size()< link.get(0).getNumberBomb()){
+						link.get(0).setBomb(bomb);				
+					}
+					setBomb = false;
+				}
+				if(useStaff==true && link.get(0).getStaff()!=-1) {
+					if(link.get(0).getStaff()==0) {
+						for (Monster m : monster) {
+							m.getDamage(1);			
+						}
+						useStaff=false; 
+						link.get(0).setStaff(-1); 
+					}
+					else if(link.get(0).getStaff()==1) {
+						for (Monster m : monster) {
+							m.setFrozen();
+							m.tickFrozen();	
+							if(m.getFrozen()==1) {
+								useStaff=false; 
+								link.get(0).setStaff(-1); 
+							}
+					}
+				}
+			}
 		}
+		
+		
+			if(monster.size() > 0){
+				for(int i = 0; i < monster.size(); i++){
+					if(monster.get(i).getInvincible() == 0){
+					monster.get(i).tickInvicible();
+					}
+					if(monster.get(i).getLifePoint() == 0){
+						monster.remove(i);
+					}
+				}
+			}	
+
+			if(arrow.size()>0){
+				for(int p = 0; p < arrow.size(); p++){
+					int a = interaction.arrowInteraction(arrow.get(p));
+					if(a != 0){
+						if(a == 2){
+							arrow.get(p).tick(5);
+							//arrow.get(p).setActualFrame(1);
+							if(arrow.get(p).getTime() == 15){
+								arrow.remove(p);
+							}
+						}
+						else{
+							arrow.remove(p);
+						}
+					}
+				}
+			}
+	
+			if(bomb.size()>0){
+				for(int p = 0; p < bomb.size(); p++){
+					interaction.bombInteraction(bomb.get(p));
+					bomb.get(p).tick();
+					if(bomb.get(p).getTime() == 15){ //changer dans deflagration si changement de temps
+						bombDeflagration.add(new BombDeflagration(bomb.get(p).getXPos(),bomb.get(p).getYPos(),"res/Deflagration",2));
+						bomb.remove(p);
+						Sound soundBomb = new Sound();
+						soundBomb.playSound("bomb");
+					}
+				}
+			}
+			if(bombDeflagration.size()>0){
+				for(int p = 0; p < bombDeflagration.size(); p++){
+					bombDeflagration.get(p).tick(2);
+					if(bombDeflagration.get(p).getPortee() < link.get(0).getRangeBomb()*4+2){
+						interaction.deflagrationAppear(bombDeflagration.get(p), link.get(0).getRangeBomb());
+						interaction.defInteraction(bombDeflagration.get(p));
+					}
+					else{
+						bombDeflagration.remove(p);
+					}
+				}
+			}
+			
+			/*
+			if(feu.size()>0){
+				for(int p = 0; p < feu.size(); p++){
+					feu.get(p).tick();
+					feu.get(p).move();
+					//System.out.println(feu.get(p).getXPos()+ " " + feu.get(p).getYPos());
+						if(feu.get(p).getList().size() < feu.get(p).getPos()-1){
+							feu.remove(p);
+						}
+				}
+			}
+			*/
+		}
+	
+		
 		
 		else if(status == 2){
 			if(sound.isFinished(sound.getAudioStream()))
@@ -299,5 +452,45 @@ public class GameController {
 	
 	public void setUseStaff(boolean bool){
 		this.useStaff = bool;
+	}
+	
+	public void setRightPressed2(boolean bool){
+		this.rightPressed2 = bool;
+	}
+	
+	public void setLeftPressed2(boolean bool){
+		this.leftPressed2 = bool;
+	}
+	
+	public void setDownPressed2(boolean bool){
+		this.downPressed2 = bool;
+	}
+	
+	public void setUpPressed2(boolean bool){
+		this.upPressed2 = bool;
+	}
+	
+	public void setEnterPressed2(boolean bool){
+		this.enterPressed2 = bool;
+	}
+	
+	public void setFireArrow2(boolean bool){
+		this.fireArrow2 = bool;
+	}
+	
+	public void setSetBomb2(boolean bool){
+		this.setBomb2 = bool;
+	}
+	
+	public void setUseStaff2(boolean bool){
+		this.useStaff2 = bool;
+	}
+	
+	public void setUpPressedMenu(boolean bool){
+		this.upPressedMenu = bool;
+	}
+	
+	public void setDownPressedMenu(boolean bool){
+		this.downPressedMenu = bool;
 	}
 }
