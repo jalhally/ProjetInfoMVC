@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class BombDeflagration extends Item implements Tick{
 	
-	private int damage;
+	private int player;
 	
-	public BombDeflagration(int xPos, int yPos, String name,int damage){
+	public BombDeflagration(int xPos, int yPos, String name,int player){
 		super(xPos,yPos, name); 
-		this.damage = damage;
+		this.player = player;
 		
 	}
 	
@@ -41,6 +41,9 @@ public class BombDeflagration extends Item implements Tick{
 		return l;
 	}
 	
+	public int getPlayer(){
+		return this.player;
+	}
 	//view 
 	
 	/*
@@ -55,10 +58,6 @@ public class BombDeflagration extends Item implements Tick{
 	
 	public int getPortee(){
 		return this.portee;
-	}
-	
-	public int getDamage(){
-		return this.damage;
 	}
 	
 	public int getU(){

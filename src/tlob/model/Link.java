@@ -5,7 +5,7 @@ import java.util.List;
 public class Link extends Character {
 	
 
-private int numberBomb = 1;
+private int numberBomb = 2;
 private int rangeBomb = 2;
 private int numberArrow = 0;
 private boolean gauntlet = false;
@@ -16,10 +16,16 @@ private int U = 1;
 private int D = 1;
 private int L = 1;
 private int R = 1;
+private int player;
 
-public Link (int lifePoint, int xPos, int yPos, int speed,int direction, String image)
+public Link (int lifePoint, int xPos, int yPos, int speed,int direction, String image, int player)
 {
 	super(lifePoint, xPos, yPos, speed, direction, image);
+	this.player = player;
+}
+
+public int getPlayer(){
+	return this.player;
 }
 
 public int getStaff() {
@@ -174,7 +180,7 @@ public List<Bomb> setBomb(List<Bomb> liste)
 		}
 	}
 	if (k == 1 && getInvincible() == 1){
-		liste.add( new Bomb(x+5, y+5, "res/Bomb")) ;
+		liste.add( new Bomb(x+5, y+5, "res/Bomb", player)) ;
 	}
 	return liste;
 }

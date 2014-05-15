@@ -471,12 +471,12 @@ public class GameInteraction {
 		for(int j = 0; j < bombDef.getUp().size(); j++){
 			for(int i = 0; i< link.size(); i++){
 				if(touchArrow(bombDef.getXPos(),bombDef.getUp().get(j),link.get(i).getXPos(),link.get(i).getYPos()) != -1){
-					link.get(i).getDamage(2);
+					link.get(i).getDamage(1);
 				}
 			}
 			for(int i = 0; i< monster.size(); i++){
 				if(touchArrow(bombDef.getXPos(),bombDef.getUp().get(j),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
-					monster.get(i).getDamage(2);
+					monster.get(i).getDamage(1);
 				}
 			}
 			for(int i = 0; i< bomb.size(); i++){
@@ -489,12 +489,12 @@ public class GameInteraction {
 		for(int j = 0; j < bombDef.getDown().size(); j++){
 			for(int i = 0; i< link.size(); i++){
 				if(touchArrow(bombDef.getXPos(),bombDef.getDown().get(j),link.get(i).getXPos(),link.get(i).getYPos()) != -1){
-					link.get(i).getDamage(2);
+					link.get(i).getDamage(1);
 				}
 			}
 			for(int i = 0; i< monster.size(); i++){
 				if(touchArrow(bombDef.getXPos(),bombDef.getDown().get(j),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
-					monster.get(i).getDamage(2);
+					monster.get(i).getDamage(1);
 				}
 			}
 			for(int i = 0; i< bomb.size(); i++){
@@ -507,12 +507,12 @@ public class GameInteraction {
 		for(int j = 0; j < bombDef.getLeft().size(); j++){
 			for(int i = 0; i< link.size(); i++){
 				if(touchArrow(bombDef.getLeft().get(j),bombDef.getYPos(),link.get(i).getXPos(),link.get(i).getYPos()) != -1){
-					link.get(i).getDamage(2);
+					link.get(i).getDamage(1);
 				}
 			}
 			for(int i = 0; i< monster.size(); i++){
 				if(touchArrow(bombDef.getLeft().get(j),bombDef.getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
-					monster.get(i).getDamage(2);
+					monster.get(i).getDamage(1);
 				}
 			}
 			for(int i = 0; i< bomb.size(); i++){
@@ -525,12 +525,12 @@ public class GameInteraction {
 		for(int j = 0; j < bombDef.getRight().size(); j++){
 			for(int i = 0; i< link.size(); i++){
 				if(touchArrow(bombDef.getRight().get(j),bombDef.getYPos(),link.get(i).getXPos(),link.get(i).getYPos()) != -1){
-					link.get(i).getDamage(2);
+					link.get(i).getDamage(1);
 				}
 			}
 			for(int i = 0; i< monster.size(); i++){
 				if(touchArrow(bombDef.getRight().get(j),bombDef.getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
-					monster.get(i).getDamage(2);
+					monster.get(i).getDamage(1);
 				}
 			}
 			for(int i = 0; i< bomb.size(); i++){

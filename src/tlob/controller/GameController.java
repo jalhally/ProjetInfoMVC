@@ -195,7 +195,13 @@ public class GameController {
 					}
 				}
 				if(setBomb){
-					if(bomb.size()< link.get(0).getNumberBomb()){
+					int bomb0 = 0;
+					for(Bomb b : bomb){
+						if(b.getPlayer() == 0){
+							bomb0++;
+						}
+					}
+					if(bomb0< link.get(0).getNumberBomb()){
 						link.get(0).setBomb(bomb);				
 					}
 					setBomb = false;
@@ -251,11 +257,18 @@ public class GameController {
 					}
 				}
 				if(setBomb2){
-					if(bomb.size()< link.get(1).getNumberBomb()){
+					int bomb1 = 0;
+					for(Bomb b : bomb){
+						if(b.getPlayer() == 1){
+							bomb1++;
+						}
+					}
+					if(bomb1< link.get(1).getNumberBomb()){
 						link.get(1).setBomb(bomb);				
 					}
 					setBomb2 = false;
 				}
+				
 				if(useStaff2==true && link.get(1).getStaff()!=-1) {
 					if(link.get(1).getStaff()==0) {
 						link.get(0).getDamage(1);
@@ -316,7 +329,8 @@ public class GameController {
 					interaction.bombInteraction(bomb.get(p));
 					bomb.get(p).tick();
 					if(bomb.get(p).getTime() == 15){ //changer dans deflagration si changement de temps
-						bombDeflagration.add(new BombDeflagration(bomb.get(p).getXPos(),bomb.get(p).getYPos(),"res/Deflagration",2));
+						System.out.println(bomb.get(p).getPlayer() + " hihi");
+						bombDeflagration.add(new BombDeflagration(bomb.get(p).getXPos(),bomb.get(p).getYPos(),"res/Deflagration",bomb.get(p).getPlayer()));
 						bomb.remove(p);
 						Sound soundBomb = new Sound();
 						soundBomb.playSound("bomb");
@@ -326,8 +340,9 @@ public class GameController {
 			if(bombDeflagration.size()>0){
 				for(int p = 0; p < bombDeflagration.size(); p++){
 					bombDeflagration.get(p).tick(2);
-					if(bombDeflagration.get(p).getPortee() < link.get(0).getRangeBomb()*4+2){
-						interaction.deflagrationAppear(bombDeflagration.get(p), link.get(0).getRangeBomb());
+					if(bombDeflagration.get(p).getPortee() < link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb()*4+2){
+						System.out.println(link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb() + " portee");
+						interaction.deflagrationAppear(bombDeflagration.get(p), link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb());
 						interaction.defInteraction(bombDeflagration.get(p));
 					}
 					else{

@@ -5,10 +5,16 @@ public class Bomb extends Item {
 	private int time;
 	private int mytick;
 	private int direction = -1;
+	private int player;
 	
-	public Bomb(int xPos, int yPos, String name)
+	public Bomb(int xPos, int yPos, String name, int player)
 	{
 		super(xPos,yPos,name);	
+		this.player = player;
+	}
+	
+	public int getPlayer(){
+		return this.player;
 	}
 	
 	public int getDirection(){
