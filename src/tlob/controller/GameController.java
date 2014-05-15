@@ -26,8 +26,9 @@ public class GameController {
 	boolean setBomb2 = false;
 	boolean useStaff2 = false;
 	boolean upPressedMenu = false;
-
 	boolean downPressedMenu = false;
+	boolean leftPressedMenu = false;
+	boolean rightPressedMenu = false;
 	
 	java.util.Random r=new java.util.Random( ) ;
 	
@@ -155,7 +156,9 @@ public class GameController {
 				}
 			}
 			for(int i = 0; i < link.size(); i++){
-						
+				
+				link.get(i).setSpeed(1);
+				
 				if(link.get(i).getInvincible() == 0){
 					link.get(i).tickInvicible();
 				}
@@ -199,23 +202,82 @@ public class GameController {
 				}
 				if(useStaff==true && link.get(0).getStaff()!=-1) {
 					if(link.get(0).getStaff()==0) {
-						for (Monster m : monster) {
-							m.getDamage(1);			
-						}
+						link.get(1).getDamage(1);			
 						useStaff=false; 
 						link.get(0).setStaff(-1); 
 					}
 					else if(link.get(0).getStaff()==1) {
-						for (Monster m : monster) {
-							m.setFrozen();
-							m.tickFrozen();	
-							if(m.getFrozen()==1) {
+							link.get(1).setFrozen();
+							link.get(1).tickFrozen();	
+							if(link.get(1).getFrozen()==1) {
 								useStaff=false; 
 								link.get(0).setStaff(-1); 
 							}
-					}
+					
 				}
 			}
+				else {
+					useStaff = false;
+				}
+			
+				if(rightPressed2){
+					link.get(1).setName("res/LinkRun");
+					link.get(1).moveRight();
+				
+				}
+				if(leftPressed2){
+					link.get(1).setName("res/LinkRun");
+					link.get(1).moveLeft();
+				}
+			
+				if(downPressed2){
+					link.get(1).setName("res/LinkRun");
+					link.get(1).moveDown();
+				}
+			
+				if(upPressed2){
+					link.get(1).setName("res/LinkRun");
+					link.get(1).moveUp();
+				}
+			
+				if(fireArrow2){
+					link.get(1).setName("res/LinkArrow");
+					link.get(1).fireArrow(arrow);
+					System.out.println(arrow);
+					System.out.print(link.get(1).getActualFrame());
+					if(link.get(1).getActualFrame() == 6){
+						fireArrow2 = false;
+						link.get(1).setActualFrame(1);
+					}
+				}
+				if(setBomb2){
+					if(bomb.size()< link.get(1).getNumberBomb()){
+						link.get(1).setBomb(bomb);				
+					}
+					setBomb2 = false;
+				}
+				if(useStaff2==true && link.get(1).getStaff()!=-1) {
+					if(link.get(1).getStaff()==0) {
+						link.get(0).getDamage(1);
+						useStaff2=false; 
+						link.get(1).setStaff(-1); 
+					}
+					else if(link.get(1).getStaff()==1) {
+							link.get(0).setFrozen();
+							link.get(0).tickFrozen();
+							if(link.get(0).getFrozen()==1) {
+								useStaff2=false; 
+								link.get(1).setStaff(-1); 
+							}
+					
+				}
+			}
+				
+				else {
+					useStaff2 = false;
+				}
+				
+				interaction.linkInteraction(link.get(i));
 		}
 		
 		
@@ -231,6 +293,7 @@ public class GameController {
 			}	
 
 			if(arrow.size()>0){
+				System.out.println(arrow);
 				for(int p = 0; p < arrow.size(); p++){
 					int a = interaction.arrowInteraction(arrow.get(p));
 					if(a != 0){
@@ -290,6 +353,11 @@ public class GameController {
 		
 		
 		else if(status == 2){
+			
+			if(link.size()==2) {
+				link.remove(1);
+			}
+			
 			if (gameOver(link.get(0))){
 				status = 3;
 				level.setStatus(status);
@@ -307,6 +375,7 @@ public class GameController {
 						sound.playSound("forest2");
 					}
 				}
+				
 				for(int i = 0; i < link.size(); i++){
 							
 					if(link.get(i).getInvincible() == 0){
@@ -390,7 +459,7 @@ public class GameController {
 							if(a == 2){
 								arrow.get(p).tick(5);
 								//arrow.get(p).setActualFrame(1);
-								if(arrow.get(p).getTime() == 15){
+								if(arrow.get(p).getTime() == 3){
 									arrow.remove(p);
 								}
 							}
@@ -446,7 +515,7 @@ public class GameController {
 				sound.playSound("swag");
 			}
 				
-			if (leftPressed && pressedOnce & k < 2 ){
+			if (leftPressedMenu && pressedOnce & k < 2 ){
 				for (int i = 0; i<gameOver.size();i++){
 					if(gameOver.get(i).getStatus() == k)
 						gameOver.get(i).setName("res/no");		
@@ -458,7 +527,7 @@ public class GameController {
 				soundChange.playSound("menuchange");
 
 			}
-			else if (rightPressed && pressedOnce && k > 1){
+			else if (rightPressedMenu && pressedOnce && k > 1){
 				for (int i = 0; i<gameOver.size();i++){
 					if(gameOver.get(i).getStatus() == k)
 						gameOver.get(i).setName("res/yes");	
@@ -472,7 +541,7 @@ public class GameController {
 
 
 			}
-			else if (!leftPressed && !rightPressed && !enterPressed){
+			else if (!leftPressedMenu && !rightPressedMenu && !enterPressed){
 				pressedOnce = true;
 			}
 			
@@ -588,5 +657,13 @@ public class GameController {
 	
 	public void setDownPressedMenu(boolean bool){
 		this.downPressedMenu = bool;
+	}
+	
+	public void setLeftPressedMenu(boolean bool){
+		this.leftPressedMenu = bool;
+	}
+	
+	public void setRightPressedMenu(boolean bool){
+		this.rightPressedMenu = bool;
 	}
 }

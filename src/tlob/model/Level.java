@@ -31,8 +31,7 @@ public class Level{
 		monster = map.mapToListMonster(tableau);
 		link = new ArrayList<Link>();
 		link.add(new Link(3,200,200,2,1,"res/LinkRun"));
-		//link.add(new Link(3,240,200,2,1,"res/LinkRun"));
-		
+		link.add(new Link(3,240,200,2,1,"res/LinkRun"));
 		
 		link.get(0).setGauntlet(true);
 		link.get(0).setNumberBomb(5);

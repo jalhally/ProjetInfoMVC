@@ -19,6 +19,7 @@ public class Panel extends JPanel{
 	Image bg = Toolkit.getDefaultToolkit().getImage("res/BackgroundForest.png");
 	Image heart = Toolkit.getDefaultToolkit().getImage("res/Heart.png");
 	Image statusBar = Toolkit.getDefaultToolkit().getImage("res/StatusBar.png");
+	Image statusBarVersus = Toolkit.getDefaultToolkit().getImage("res/StatusBarVersus.png");
 	Image sideBackground = Toolkit.getDefaultToolkit().getImage("res/SideBackground.png");
 	Image Char0 = Toolkit.getDefaultToolkit().getImage("res/Char0.png");
 	Image Char1 = Toolkit.getDefaultToolkit().getImage("res/Char1.png");
@@ -48,11 +49,11 @@ public class Panel extends JPanel{
 		}
 		else if (level.getStatus() == 3){
 			for(Menu gameOver : level.getGameOver()){
-				g.drawImage(loadIAD.stringToIAD(gameOver.getName()).getImage(), gameOver.getXPos(), gameOver.getYPos(),null);
+				g.drawImage(loadIAD.stringToIAD(gameOver.getName()).getImage(), gameOver.getXPos(), gameOver.getYPos()-decY,null);
 
 			}
 		}
-		else if (level.getStatus() == 2 || level.getStatus()==1){
+		else if (level.getStatus() == 2){
 			
 			g.drawImage(sideBackground,-10,70,null);
 			g.drawImage(sideBackground,15*40+decX,70,null);
@@ -156,5 +157,98 @@ public class Panel extends JPanel{
 				}
 			}
 			}
+		
+		else if(level.getStatus() == 1) {
+			
+			g.drawImage(sideBackground,-10,70,null);
+			g.drawImage(sideBackground,15*40+decX,70,null);
+			
+			g.drawImage(statusBarVersus,0,0,null);
+			g.drawImage(statusBarVersus,400,0,null);
+			
+			for(int i =0; i<15;i++){
+				for(int j=0;j<15;j++) {
+					g.drawImage(bg,i*40+decX,j*40+decY,null);				
+				}
+			}
+			for(Decor decor : level.getDecor()) {
+				g.drawImage(loadIAD.stringToIAD(decor.getName()).getImage(), decor.getXPos()+decX, decor.getYPos()+decY,null);
+			}
+			
+			for(Bomb bomb : level.getBomb()) {
+				g.drawImage(loadIAD.stringToIAD(bomb.getName()).getImage(), bomb.getXPos()+decX, bomb.getYPos()+decY,null);
+			}
+			
+			for(Bonus bonus : level.getBonus()){
+				g.drawImage(loadIAD.stringToIAD(bonus.getName()).getImage(), bonus.getXPos()+decX, bonus.getYPos()+decY,null);
+			}
+			
+			for(Link link : level.getLink()) {
+				g.drawImage(loadIAD.stringToIAD(link.getName()).getImageAnime(link), link.getXPos()+decX, link.getYPos()+decY,null);
+				
+				int j=level.getLink().indexOf(link)*400;
+				
+				for(int i=0; i<link.getLifePoint();i++) {
+					g.drawImage(loadIAD.stringToIAD("res/Heart").getImage(),80+i*20+j,50,null);				
+				}
+				
+				g.drawImage(charNumber[link.getNumberBomb()],195+j,62,null);			
+				g.drawImage(charNumber[link.getRangeBomb()],238+j,62,null);
+				
+				g.drawImage(charNumber[link.getNumberArrow()],290+j,62,null);
+				
+				if(link.getStaff()==0) {
+				g.drawImage(loadIAD.stringToIAD("res/FireStaff").getImage(),320+j,53,null);
+				}
+				
+				if(link.getStaff()==1) {
+					g.drawImage(loadIAD.stringToIAD("res/IceStaff").getImage(),320+j,53,null);
+					}
+			}
+			
+			for(Arrow arrow : level.getArrow()) {
+				g.drawImage(loadIAD.stringToIAD(arrow.getName()).getImageAnime(arrow), arrow.getXPos()+decX, arrow.getYPos()+decY,null);
+			}
+			
+			for(Monster monster : level.getMonster()) {
+				g.drawImage(loadIAD.stringToIAD(monster.getName()).getImageAnime(monster), monster.getXPos()+decX, monster.getYPos()+decY,null);
+			}
+			
+			for(BombDeflagration bombDef : level.getBombDeflagration()) {
+				for(int j = 0; j< bombDef.getUp().size(); j++){
+					if(j==bombDef.getUp().size()-1){
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(2).get(1), bombDef.getXPos()+decX, bombDef.getUp().get(j)+decY,null);
+					}
+					else{
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(2).get(0), bombDef.getXPos()+decX, bombDef.getUp().get(j)+decY,null);
+					}
+				}
+				for(int j = 0; j< bombDef.getDown().size(); j++){
+					if(j==bombDef.getUp().size()-1){
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(3).get(1), bombDef.getXPos()+decX, bombDef.getDown().get(j)+decY,null);
+					}
+					else{
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(3).get(0), bombDef.getXPos()+decX, bombDef.getDown().get(j)+decY,null);
+					}
+				}
+				for(int j = 0; j< bombDef.getLeft().size(); j++){
+					if(j==bombDef.getUp().size()-1){
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(0).get(1), bombDef.getLeft().get(j)+decX, bombDef.getYPos()+decY,null);
+					}
+					else{
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(0).get(0), bombDef.getLeft().get(j)+decX, bombDef.getYPos()+decY,null);
+					}
+				}
+				for(int j = 0; j< bombDef.getRight().size(); j++){
+					if(j==bombDef.getUp().size()-1){
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(1).get(1), bombDef.getRight().get(j)+decX, bombDef.getYPos()+decY,null);
+					}
+					else{
+						g.drawImage(loadIAD.stringToIAD(bombDef.getName()).getImageDirection(1).get(0), bombDef.getRight().get(j)+decX, bombDef.getYPos()+decY,null);
+					}
+				}
+			}
+			
+		}
 		}
 	}

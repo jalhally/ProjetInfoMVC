@@ -286,10 +286,12 @@ public class GameInteraction {
 		}
 	}
 	
-	public int arrowInteraction(Arrow arrow){
+	public int arrowInteraction(Arrow arrow){		
 		for(int i = 0; i < link.size(); i++){
-			if(((arrow.getDirection() == 0 || arrow.getDirection() == 1) && (arrow.getXPos() > arrow.getX() + 40)) 
-					|| ((arrow.getDirection() == 2 || arrow.getDirection() == 3) && (arrow.getYPos() > arrow.getY() + 40))){
+			if((arrow.getDirection() == 0 && (arrow.getXPos() < arrow.getX() - 40)) || 
+					(arrow.getDirection() == 1 && (arrow.getXPos() > arrow.getX() + 40)) ||
+				    (arrow.getDirection() == 2 && (arrow.getYPos() < arrow.getY() - 40)) || 
+					(arrow.getDirection() == 3 && (arrow.getYPos() > arrow.getY() + 40))) {
 				if(touchArrow(arrow.getXPos(), arrow.getYPos(),link.get(i).getXPos(),link.get(i).getYPos()) != -1){
 					link.get(i).getDamage(1);
 					return 1;
