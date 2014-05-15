@@ -139,6 +139,7 @@ public class GameController {
 				level.setStatus(status);
 				setEnterPressed(false);
 				k=2;
+				deleteCopy();
 
 			}
 		}
@@ -377,7 +378,7 @@ public class GameController {
 				status = 3;
 				level.setStatus(status);
 				sound.soundEnd(sound.getAudioStream());
-				sound.playSound("swag");
+				sound.playSound("gameOver");
 			}
 			else{
 				if(sound.isFinished(sound.getAudioStream()))
@@ -525,11 +526,7 @@ public class GameController {
 			}
 		}
 		else if(status == 3){
-			if(sound.isFinished(sound.getAudioStream()))
-			{
-				sound.playSound("swag");
-			}
-				
+			
 			if (leftPressedMenu && pressedOnce & k < 2 ){
 				for (int i = 0; i<gameOver.size();i++){
 					if(gameOver.get(i).getStatus() == k)
