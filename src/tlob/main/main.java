@@ -26,8 +26,8 @@ public class main {
 		
 		List<Menu> gameOver = new ArrayList<Menu>();
 		Menu gameOverScreen = new Menu(0,100,"res/gameOver", 0);
-		Menu yes = new Menu(13*20,12*40,"res/yesbombs",2);
-		Menu no = new Menu(22*20,12*40,"res/no", 1);
+		Menu yes = new Menu(13*20,31*20,"res/yesbombs",2);
+		Menu no = new Menu(22*20,31*20,"res/no", 1);
 		gameOver.add(gameOverScreen);
 		gameOver.add(yes);
 		gameOver.add(no);
