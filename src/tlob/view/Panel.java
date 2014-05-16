@@ -99,10 +99,6 @@ public class Panel extends JPanel{
 		
 		else if (level.getStatus() == 2){
 			
-			g.drawImage(sideBackground,-10,70,null);
-			g.drawImage(sideBackground,15*40+decX,70,null);
-			
-			g.drawImage(statusBar,0,0,null);
 			for(int i =0; i<15;i++){
 				for(int j=0;j<15;j++) {
 					g.drawImage(bg,i*40+decX,j*40+decY,null);				
@@ -200,6 +196,10 @@ public class Panel extends JPanel{
 					}
 				}
 			}
+			g.drawImage(sideBackground,-10,70,null);
+			g.drawImage(sideBackground,15*40+decX,70,null);
+			g.drawImage(statusBar,0,0,null);
+
 			}
 		
 		else if(level.getStatus() == 1) {

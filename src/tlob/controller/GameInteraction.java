@@ -14,6 +14,7 @@ public class GameInteraction {
 	private List<Bomb> bomb;
 	private List<Bonus> bonus;
 	private Map map;
+	private boolean changeLevel = false;
 	
 	public GameInteraction(Level level){
 		this.link = level.getLink();
@@ -22,6 +23,14 @@ public class GameInteraction {
 		this.bomb = level.getBomb();
 		this.bonus = level.getBonus();
 		this.map = level.getMap();
+	}
+	
+	public void setChangeLevel(boolean changeLevel){
+		this.changeLevel = changeLevel;
+	}
+	
+	public boolean getChangeLevel(){
+		return this.changeLevel;
 	}
 	
 	private int touchDecor(int x1, int y1, int x2, int y2){ 
@@ -152,11 +161,29 @@ public class GameInteraction {
 				char[][] tableau = new char[16][16];
 
 				map.saveMap(map.listToMap(decor, monster));
-				map.setLevel(Integer.toString(level + Integer.parseInt(map.getLevel())));
-				map.setRoomLine(Integer.toString(Integer.parseInt(map.getRoomLine()) - line));
-				map.setRoomColumn(Integer.toString(Integer.parseInt(map.getRoomColumn()) + column));
-				tableau = map.loadRoom();
 				
+		
+				if(column != 0){
+					link.setXPos(link.getXPos() - 32*15*column);
+					map.setRoomColumn(Integer.toString(Integer.parseInt(map.getRoomColumn()) + column));
+					tableau = map.loadRoom();
+				}
+				else if(line != 0){
+					link.setYPos(link.getYPos() + 32*15*line);
+					map.setRoomLine(Integer.toString(Integer.parseInt(map.getRoomLine()) - line));
+					tableau = map.loadRoom();
+				}
+				else if (level == 1){
+					//map.setLevel(Integer.toString(level + Integer.parseInt(map.getLevel())));
+					map.setRoomColumn("1");
+					map.setRoomLine("3");
+					tableau = map.loadRoom();
+					changeLevel = true;
+					link.setXPos(18*15+10);
+					link.setYPos(35*15);
+					link.setDirection(2);
+
+				}
 				bonus.removeAll(bonus);
 				
 				decor.removeAll(decor);
@@ -170,9 +197,6 @@ public class GameInteraction {
 				for(int j = 0; j < monster2.size(); j++){
 					monster.add(monster2.get(j));
 				}
-				
-				link.setXPos(40*8);
-				link.setYPos(40*8);
 				break;
 			}
 			

@@ -91,7 +91,7 @@ public class GameController {
 	public void update() {
 		Sound soundChange = new Sound();
 		Sound soundChoose = new Sound();
-
+		status = level.getStatus();
 		if (status == 0){
 			if(sound.isFinished(sound.getAudioStream()))
 			{
@@ -140,7 +140,7 @@ public class GameController {
 				}
 				level.setStatus(status);
 				setEnterPressed(false);
-				k=2;
+				k=1;
 				deleteCopy();
 
 			}
@@ -377,6 +377,16 @@ public class GameController {
 				level.setStatus(status);
 				sound.soundEnd(sound.getAudioStream());
 				sound.playSound("gameOver");
+				k = 2;
+			}
+			if(interaction.getChangeLevel() == true)
+			{
+				sound.soundEnd(sound.getAudioStream());
+				k = 1;
+				status = 4;
+				level.setStatus(status);
+				interaction.setChangeLevel(false);
+				sound.playSound("shop");
 			}
 			else{
 				if(sound.isFinished(sound.getAudioStream()))
@@ -711,7 +721,7 @@ public class GameController {
 						break;
 					
 				case(6):
-					sound.playSound("menuchoose");
+					soundChoose.playSound("menuchoose");
 					status = 2;
 					level.setStatus(status);
 					sound.soundEnd(sound.getAudioStream());
