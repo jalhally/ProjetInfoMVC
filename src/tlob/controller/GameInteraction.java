@@ -156,7 +156,9 @@ public class GameInteraction {
 				map.setRoomLine(Integer.toString(Integer.parseInt(map.getRoomLine()) - line));
 				map.setRoomColumn(Integer.toString(Integer.parseInt(map.getRoomColumn()) + column));
 				tableau = map.loadRoom();
-
+				
+				bonus.removeAll(bonus);
+				
 				decor.removeAll(decor);
 				List<Decor> decor2 = map.mapToListDecor(tableau);
 				for(int j = 0; j < decor2.size();j++){
@@ -189,12 +191,12 @@ public class GameInteraction {
 		for(int i = 0; i < monster.size(); i++){
 			int a = touchMonster(link.getXPos(),link.getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos());
 			if(a == 0){
-				if(link.getR() != 0 && link.getInvincible() == 1){
+				if(link.getL() != 0 && link.getInvincible() == 1){
 					for(int j = 0; j < 3; j++){
 						link.setXPos(link.getXPos() - 5);
 						for(int k = 0; k < decor.size(); k++){
-							if(touchDecor(link.getXPos(),link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != 0){
-								link.setR(0);
+							if(touchDecor(link.getXPos(),link.getYPos(),decor.get(k).getXPos(),decor.get(k).getYPos()) == -1){
+								link.setL(0);
 							}
 						}
 					}
@@ -202,12 +204,12 @@ public class GameInteraction {
 				link.getDamage(1);
 			}
 			if(a == 1){
-				if(link.getL() != 0 && link.getInvincible() == 1){
+				if(link.getR() != 0 && link.getInvincible() == 1){
 					for(int j = 0; j < 3; j++){
 						link.setXPos(link.getXPos() + 5);
 						for(int k = 0; k < decor.size(); k++){
-							if(touchDecor(link.getXPos(),link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != 1){
-								link.setL(0); 
+							if(touchDecor(link.getXPos(),link.getYPos(),decor.get(k).getXPos(),decor.get(k).getYPos()) == -1){
+								link.setR(0); 
 							}
 						}
 					}
@@ -215,12 +217,12 @@ public class GameInteraction {
 				link.getDamage(1);
 			}
 			if(a == 2){
-				if(link.getD() != 0 && link.getInvincible() == 1){
+				if(link.getU() != 0 && link.getInvincible() == 1){
 					for(int j = 0; j < 3; j++){
 						link.setYPos(link.getYPos() - 5);
 						for(int k = 0; k < decor.size(); k++){
-							if(touchDecor(link.getXPos(),link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != 2){
-								link.setD(0);
+							if(touchDecor(link.getXPos(),link.getYPos(),decor.get(k).getXPos(),decor.get(k).getYPos()) == -1){
+								link.setU(0);
 							}
 						}
 					}
@@ -228,11 +230,11 @@ public class GameInteraction {
 				link.getDamage(1);
 			}
 			if(a == 3){
-				if(link.getU() != 0 && link.getInvincible() == 1){
+				if(link.getD() != 0 && link.getInvincible() == 1){
 					for(int j = 0; j < 3; j++){
 						link.setYPos(link.getYPos() + 5);
 						for(int k = 0; k < decor.size(); k++){
-							if(touchDecor(link.getXPos(),link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != 3){
+							if(touchDecor(link.getXPos(),link.getYPos(),decor.get(k).getXPos(),decor.get(k).getYPos()) == -1){
 								link.setU(0);
 							}
 						}
@@ -552,22 +554,18 @@ public class GameInteraction {
 				if(touchDecor(monster.getXPos()-monster.getSpeed(),monster.getYPos(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
 						&& monster.getDirection() == 0){
 					monster.setDirection(1);
-					System.out.println("collision");
 				}
 				if(touchDecor(monster.getXPos()+monster.getSpeed(),monster.getYPos(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
 						&& monster.getDirection() == 1){
 					monster.setDirection(0);
-					System.out.println("collision");
 				}
 				if(touchDecor(monster.getXPos(),monster.getYPos()-monster.getSpeed(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
 						&& monster.getDirection() == 2){
 					monster.setDirection(3);
-					System.out.println("collision");
 				}
 				if(touchDecor(monster.getXPos(),monster.getYPos()-monster.getSpeed(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
 						&& monster.getDirection() == 3){
 					monster.setDirection(2);
-					System.out.println("collision");
 				}
 			}
 		}
