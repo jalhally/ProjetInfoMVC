@@ -79,6 +79,10 @@ public class Fenetre extends JFrame implements KeyListener{
     		controller.setUseStaff(true);
     	}
 	    
+    	else if(keyCode == KeyEvent.VK_ESCAPE) {
+    		controller.setEscape(true);
+    	}
+	    
     	else if(keyCode == KeyEvent.VK_I) {
     		controller.setUpPressed2(true);
     	}
@@ -135,6 +139,10 @@ public class Fenetre extends JFrame implements KeyListener{
 	    
     	else if(keyCode == KeyEvent.VK_Q){
     		controller.setLeftPressed(false);
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_ESCAPE) {
+    		controller.setEscape(false);
     	}
 	    
     	else if(keyCode == KeyEvent.VK_P)

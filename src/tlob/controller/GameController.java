@@ -47,6 +47,7 @@ public class GameController {
 	private Level level;
 	private boolean pressedOnce = true; // premiere foi qu on appuie
 	private Sound sound = new Sound();
+	private boolean escapePressed = true;
 	
 	public GameController(Level level){
 		this.level = level;
@@ -99,7 +100,6 @@ public class GameController {
 				sound.playSound("menu");
 			}
 			if (downPressedMenu && pressedOnce && k > 1 ){
-				System.out.println(k);
 				for (int i = 0; i<menu.size();i++){
 					if(menu.get(i).getStatus() == k)
 						menu.get(i).setName("res/1player");
@@ -111,7 +111,6 @@ public class GameController {
 				soundChange.playSound("menuchange");
 			}
 			else if (upPressedMenu && pressedOnce & k < 2){
-				System.out.println(k);
 				for (int i = 0; i<menu.size();i++){
 					if(menu.get(i).getStatus() == k)
 						menu.get(i).setName("res/2players");
@@ -191,7 +190,6 @@ public class GameController {
 			
 				if(fireArrow){
 					link.get(0).fireArrow(arrow);
-					System.out.print(link.get(0).getActualFrame());
 					if(link.get(0).getActualFrame() == 6){
 						fireArrow = false;
 						link.get(0).setActualFrame(1);
@@ -329,7 +327,6 @@ public class GameController {
 					interaction.bombInteraction(bomb.get(p));
 					bomb.get(p).tick();
 					if(bomb.get(p).getTime() == 15){ //changer dans deflagration si changement de temps
-						System.out.println(bomb.get(p).getPlayer() + " hihi");
 						bombDeflagration.add(new BombDeflagration(bomb.get(p).getXPos(),bomb.get(p).getYPos(),"res/Deflagration",bomb.get(p).getPlayer()));
 						bomb.remove(p);
 						Sound soundBomb = new Sound();
@@ -371,8 +368,18 @@ public class GameController {
 				level.setStatus(status);
 				pressedOnce = false;
 			}
-			else if (!pausePressed){
+			else if (!pausePressed && !escapePressed){
 				pressedOnce = true;
+			}
+			
+			else if(escapePressed && pressedOnce)
+			{
+				sound.soundEnd(sound.getAudioStream());
+				sound.playSound("menu");
+				status = 0;
+				k =2;
+				level.setStatus(status);
+				pressedOnce = false;
 			}
 
 		}
@@ -450,7 +457,6 @@ public class GameController {
 				
 					if(fireArrow){
 						link.get(0).fireArrow(arrow);
-						System.out.print(link.get(0).getActualFrame());
 						if(link.get(0).getActualFrame() == 6){
 							fireArrow = false;
 							link.get(0).setActualFrame(1);
@@ -757,7 +763,6 @@ public class GameController {
 	}
 	
 	private void deleteCopy() {
-		System.out.println("swaglord");
 		for (int i = 1; i <= 1; i ++){
 			for(int j = 1; j <= 3; j++){
 				for (int k = 1; k <= 3;k ++){
@@ -859,5 +864,9 @@ public class GameController {
 
 	public void setPausePressed(boolean bool) {
 		this.pausePressed = bool;
+	}
+
+	public void setEscape(boolean bool) {
+		this.escapePressed = bool;
 	}
 }
