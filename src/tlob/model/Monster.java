@@ -10,6 +10,7 @@ public class Monster extends Character {
 		super (lifePoint, xPos, yPos, speed, direction, name);
 		this.initialXPos = xPos;
 		this.initialYPos = yPos;
+		setPlayer(-1);
 	}
 	
 	public int getInitialXPos(){

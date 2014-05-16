@@ -13,6 +13,7 @@ public class GameInteraction {
 	private List<Monster> monster;
 	private List<Bomb> bomb;
 	private List<Bonus> bonus;
+	private List<Arrow> arrow;
 	private Map map;
 	private boolean changeLevel = false;
 	
@@ -22,6 +23,7 @@ public class GameInteraction {
 		this.monster = level.getMonster();
 		this.bomb = level.getBomb();
 		this.bonus = level.getBonus();
+		this.arrow = level.getArrow();
 		this.map = level.getMap();
 	}
 	
@@ -315,20 +317,19 @@ public class GameInteraction {
 	
 	public int arrowInteraction(Arrow arrow){		
 		for(int i = 0; i < link.size(); i++){
-			if((arrow.getDirection() == 0 && (arrow.getXPos() < arrow.getX() - 40)) || 
-					(arrow.getDirection() == 1 && (arrow.getXPos() > arrow.getX() + 40)) ||
-				    (arrow.getDirection() == 2 && (arrow.getYPos() < arrow.getY() - 40)) || 
-					(arrow.getDirection() == 3 && (arrow.getYPos() > arrow.getY() + 40))) {
+			if(arrow.getPlayer() != link.get(i).getPlayer()) {
 				if(touchArrow(arrow.getXPos(), arrow.getYPos(),link.get(i).getXPos(),link.get(i).getYPos()) != -1){
 					link.get(i).getDamage(1);
 					return 1;
 				}
 			}
 		}
-		for(int i = 0; i < monster.size(); i++){
-			if(touchArrow(arrow.getXPos(),arrow.getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
-				monster.get(i).getDamage(1);
-				return 1;
+		if(arrow.getPlayer() != -1){
+			for(int i = 0; i < monster.size(); i++){
+				if(touchArrow(arrow.getXPos(),arrow.getYPos(),monster.get(i).getXPos(),monster.get(i).getYPos()) != -1){
+					monster.get(i).getDamage(1);
+					return 1;
+				}
 			}
 		}
 		for(int i = 0; i < decor.size(); i++){
@@ -594,6 +595,14 @@ public class GameInteraction {
 			}
 		}
 		if(monster.getXPos()%40 == 0 && monster.getYPos()%40 == 0){
+			
+			if(monster.getClass() == Ranged.class){
+				if(fireDirection(monster) != -1){
+					monster.setDirection(fireDirection(monster));
+					((Ranged) monster).fireArrow(arrow);
+				}
+			}
+			
 			for(int i = 0; i < decor.size(); i++){
 				if(decor.get(i).getClass() != Floor.class){
 					if(touchDecor(monster.getXPos()+5,monster.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) == 0){
@@ -742,5 +751,64 @@ public class GameInteraction {
 			}
 		}
 		monster.move();
+	}
+	
+	public int fireDirection(Monster monster){
+		int direction = -1;
+		for(int i = 0; i < link.size(); i++){
+			if(Math.abs(link.get(i).getXPos() - monster.getXPos()) < 40){
+				if(link.get(i).getYPos() > monster.getXPos()){
+					direction = 3;
+				}
+				if(link.get(i).getYPos() < monster.getXPos()){
+					direction = 2;
+				}
+			}
+			if(Math.abs(link.get(i).getYPos() - monster.getYPos()) < 40){
+				if(link.get(i).getXPos() > monster.getXPos()){
+					direction = 1;
+				}
+				if(link.get(i).getXPos() < monster.getXPos()){
+					direction = 0;
+				}
+			}
+		}
+		if(direction == 0){
+			for(int k = 0; k < monster.getXPos()/40; k++){
+				for(int i = 0; i < decor.size(); i++){
+					if(decor.get(i).getXPos() == k*40 && decor.get(i).getYPos() == monster.getYPos()){
+						direction = -1;
+					}
+				}
+			}
+		}
+		else if(direction == 1){
+			for(int k = monster.getXPos()/40+1; k < 16; k++){
+				for(int i = 0; i < decor.size(); i++){
+					if(decor.get(i).getXPos() == k*40 && decor.get(i).getYPos() == monster.getYPos()){
+						direction = -1;
+					}
+				}
+			}
+		}
+		else if(direction == 2){
+			for(int k = 0; k < monster.getYPos()/40; k++){
+				for(int i = 0; i < decor.size(); i++){
+					if(decor.get(i).getXPos() == monster.getXPos() && decor.get(i).getYPos() == k*40){
+						direction = -1;
+					}
+				}
+			}
+		}
+		else{
+			for(int k = monster.getYPos()/40+1; k < 16; k++){
+				for(int i = 0; i < decor.size(); i++){
+					if(decor.get(i).getXPos() == monster.getXPos() && decor.get(i).getYPos() == k*40){
+						direction = -1;
+					}
+				}
+			}
+		}
+		return direction;
 	}
 }

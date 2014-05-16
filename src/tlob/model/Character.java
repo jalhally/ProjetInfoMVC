@@ -19,6 +19,7 @@ public class Character implements Tick{
 	private int D = 1;
 	private int L = 1;
 	private int R = 1;
+	private int player = 0;
 	
 	public Character(int lifePoint, int xPos, int yPos, int speed, int direction, String name){
 		this.lifePoint =  lifePoint;
@@ -40,38 +41,45 @@ public class Character implements Tick{
 		}
 	}
 	*/
-
-public int getU(){
-	return this.U;
-}
-
-public void setU(int U){
-	this.U = U;
-}
-
-public int getD(){
-	return this.D;
-}
-
-public void setD(int D){
-	this.D = D;
-}
-
-public int getL(){
-	return this.L;
-}
-
-public void setL(int L){
-	this.L = L;
-}
-
-public int getR(){
-	return this.R;
-}
-
-public void setR(int R){
-	this.R = R;
-}
+	public int getPlayer(){
+		return this.player;
+	}
+	
+	public void setPlayer(int player){
+		this.player = player;
+	}
+	
+	public int getU(){
+		return this.U;
+	}
+	
+	public void setU(int U){
+		this.U = U;
+	}
+	
+	public int getD(){
+		return this.D;
+	}
+	
+	public void setD(int D){
+		this.D = D;
+	}
+	
+	public int getL(){
+		return this.L;
+	}
+	
+	public void setL(int L){
+		this.L = L;
+	}
+	
+	public int getR(){
+		return this.R;
+	}
+	
+	public void setR(int R){
+		this.R = R;
+	}
 	
 	public int getActualFrame(){
 		return this.actualFrame;

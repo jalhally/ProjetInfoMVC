@@ -310,7 +310,7 @@ decor.add(new Wall(40*i,40*j,null));*/
 					//case 'l':
 						//decor.add(new Link(3,(...)));
 					case 'q':
-						monster.add(new Ranged(1,40*i,40*j,1,3,null)); //Ranged
+						monster.add(new Ranged(1,40*i,40*j,1,3,"res/RangedRun")); //Ranged
 						break;
 					case 's':
 						monster.add(new Bomber(1,40*i,40*j,1,3,null)); //Bomber

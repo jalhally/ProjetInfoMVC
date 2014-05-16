@@ -12,19 +12,16 @@ public class Link extends Character {
 	private boolean key = false;
 	private int staff=-1; //0=fire //1=ice
 	private int numberCoin = 999;
-	private int player;
 	private int maxLife = 3;
 
 
 	public Link (int lifePoint, int xPos, int yPos, int speed,int direction, String image, int player)
 	{
 		super(lifePoint, xPos, yPos, speed, direction, image);
-		this.player = player;
+		setPlayer(player);
 	}
 	
-	public int getPlayer(){
-		return this.player;
-	}
+
 	
 	public int getMaxLife(){
 		return this.maxLife;
@@ -154,7 +151,7 @@ public class Link extends Character {
 			}
 		}
 		if (k == 1 && getInvincible() == 1){
-			liste.add( new Bomb(x+5, y+5, "res/Bomb", player)) ;
+			liste.add( new Bomb(x+5, y+5, "res/Bomb", getPlayer())) ;
 		}
 		return liste;
 	}
@@ -172,7 +169,7 @@ public class Link extends Character {
 			tick(6,5);
 			
 			if(getActualFrame() == 6){
-				liste.add(new Arrow(xPos, yPos, "res/Arrow", direction));
+				liste.add(new Arrow(xPos, yPos, "res/Arrow", direction, getPlayer()));
 				frameArrow = 0;
 				numberArrow--;
 			}

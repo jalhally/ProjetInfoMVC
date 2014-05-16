@@ -7,12 +7,18 @@ public class Arrow extends Item implements Tick{
 	private int mytick;
 	private int x;
 	private int y;
+	private int player;
 	
-	public Arrow(int xPos, int yPos,String name, int direction){
+	public Arrow(int xPos, int yPos,String name, int direction, int player){
 		super(xPos,yPos,name);
 		this.x = xPos;
 		this.y = yPos;
 		this.direction = direction;
+		this.player = player;
+	}
+	
+	public int getPlayer(){
+		return this.player;
 	}
 	
 	public int getX(){
