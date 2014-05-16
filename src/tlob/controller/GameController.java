@@ -29,6 +29,7 @@ public class GameController {
 	boolean downPressedMenu = false;
 	boolean leftPressedMenu = false;
 	boolean rightPressedMenu = false;
+	boolean pausePressed = false;
 	
 	java.util.Random r=new java.util.Random( ) ;
 	
@@ -364,9 +365,28 @@ public class GameController {
 			*/
 		}
 	
-		
+		else if(status == 5){
+			if (pausePressed && pressedOnce){
+				status = 2;
+				level.setStatus(status);
+				pressedOnce = false;
+			}
+			else if (!pausePressed){
+				pressedOnce = true;
+			}
+
+		}
 		
 		else if(status == 2){
+			if (pausePressed && pressedOnce){
+				status = 5;
+				level.setStatus(status);
+				pressedOnce = false;
+			}
+			
+			else if (!pausePressed){
+				pressedOnce = true;
+			}
 			
 			if(link.size()==2) {
 				link.remove(1);
@@ -835,5 +855,9 @@ public class GameController {
 	
 	public void setRightPressedMenu(boolean bool){
 		this.rightPressedMenu = bool;
+	}
+
+	public void setPausePressed(boolean bool) {
+		this.pausePressed = bool;
 	}
 }

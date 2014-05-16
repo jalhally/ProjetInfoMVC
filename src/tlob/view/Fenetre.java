@@ -52,6 +52,9 @@ public class Fenetre extends JFrame implements KeyListener{
     		controller.setLeftPressed(true);
     	}
 	    
+    	else if(keyCode == KeyEvent.VK_P)
+    		controller.setPausePressed(true);
+	    
     	else if(keyCode == KeyEvent.VK_S) {
     		controller.setDownPressed(true);
     	}
@@ -133,6 +136,9 @@ public class Fenetre extends JFrame implements KeyListener{
     	else if(keyCode == KeyEvent.VK_Q){
     		controller.setLeftPressed(false);
     	}
+	    
+    	else if(keyCode == KeyEvent.VK_P)
+    		controller.setPausePressed(false);
 	    
     	else if(keyCode == KeyEvent.VK_S) {
     		controller.setDownPressed(false);

@@ -21,6 +21,7 @@ public class Panel extends JPanel{
 	Image statusBar = Toolkit.getDefaultToolkit().getImage("res/StatusBar.png");
 	Image statusBarVersus = Toolkit.getDefaultToolkit().getImage("res/StatusBarVersus.png");
 	Image sideBackground = Toolkit.getDefaultToolkit().getImage("res/SideBackground.png");
+	Image pause = Toolkit.getDefaultToolkit().getImage("res/pause.png");
 	Image Char0 = Toolkit.getDefaultToolkit().getImage("res/Char0.png");
 	Image Char1 = Toolkit.getDefaultToolkit().getImage("res/Char1.png");
 	Image Char2 = Toolkit.getDefaultToolkit().getImage("res/Char2.png");
@@ -97,7 +98,7 @@ public class Panel extends JPanel{
 			}
 		}
 		
-		else if (level.getStatus() == 2){
+		else if (level.getStatus() == 2 || level.getStatus() == 5){
 			
 			
 			for(int i =0; i<15;i++){
@@ -201,6 +202,9 @@ public class Panel extends JPanel{
 					}
 				}
 			}
+			if(level.getStatus() == 5)
+				g.drawImage(pause,200,15*20,null);
+
 			}
 		
 		else if(level.getStatus() == 1) {
