@@ -95,7 +95,7 @@ public void setR(int R){
 		this.invincible = 0;
 	}
 	
-	public void tickInvicible(){
+	public void tickInvincible(){
 		tickInvicible++;
 		if(tickInvicible == 40){
 			this.invincible = 1;

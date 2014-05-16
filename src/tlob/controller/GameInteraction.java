@@ -185,7 +185,7 @@ public class GameInteraction {
 
 				}
 				bonus.removeAll(bonus);
-				
+				bomb.removeAll(bomb);
 				decor.removeAll(decor);
 				List<Decor> decor2 = map.mapToListDecor(tableau);
 				for(int j = 0; j < decor2.size();j++){

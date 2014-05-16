@@ -163,7 +163,7 @@ public class GameController {
 				link.get(i).setSpeed(1);
 				
 				if(link.get(i).getInvincible() == 0){
-					link.get(i).tickInvicible();
+					link.get(i).tickInvincible();
 				}
 			
 				interaction.linkInteraction(link.get(i));
@@ -296,7 +296,7 @@ public class GameController {
 			if(monster.size() > 0){
 				for(int i = 0; i < monster.size(); i++){
 					if(monster.get(i).getInvincible() == 0){
-					monster.get(i).tickInvicible();
+					monster.get(i).tickInvincible();
 					}
 					if(monster.get(i).getLifePoint() == 0){
 						monster.remove(i);
@@ -403,7 +403,7 @@ public class GameController {
 				for(int i = 0; i < link.size(); i++){
 							
 					if(link.get(i).getInvincible() == 0){
-						link.get(i).tickInvicible();
+						link.get(i).tickInvincible();
 					}
 				
 					interaction.linkInteraction(link.get(i));
@@ -467,12 +467,12 @@ public class GameController {
 				if(monster.size() > 0){
 					for(int i = 0; i < monster.size(); i++){
 						if(monster.get(i).getInvincible() == 0){
-						monster.get(i).tickInvicible();
+						monster.get(i).tickInvincible();
 						}
+						interaction.moveRandom(monster.get(i));
 						if(monster.get(i).getLifePoint() == 0){
 							monster.remove(i);
 						}
-						interaction.moveRandom(monster.get(i));
 					}
 				}	
 	
