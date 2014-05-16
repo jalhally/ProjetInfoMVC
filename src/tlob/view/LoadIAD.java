@@ -39,6 +39,7 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/MeleeRun",4));
 		dataIAD.add(new ImageAnimeDirection("res/BackgroundForest"));
 		dataIAD.add(new ImageAnimeDirection("res/LittleTree"));
+		dataIAD.add(new ImageAnimeDirection("res/LittleTreeObstacle"));
 		dataIAD.add(new ImageAnimeDirection("res/Jar"));
 		dataIAD.add(new ImageAnimeDirection("res/Rocks"));
 		dataIAD.add(new ImageAnimeDirection("res/Rock"));

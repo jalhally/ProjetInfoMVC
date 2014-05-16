@@ -27,7 +27,7 @@ public class Map {
 	Image rock = Toolkit.getDefaultToolkit().getImage("res/Rock");
 	Image root = Toolkit.getDefaultToolkit().getImage("res/Root");
 	*/
-	String obstacles[]={"res/Root","res/Rock","res/Rocks","res/LittleTree"};
+	String obstacles[]={"res/Root","res/Rock","res/Rocks","res/LittleTreeObstacle"};
 	
 	
 	public Map(int length, int width, String level, String roomLine, String roomColumn)
@@ -338,7 +338,8 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '0';
 		
 		else if(decor.get(i).getClass() == Wall.class && (decor.get(i).getName() == "res/Root" 
-					|| decor.get(i).getName() == "res/Rock" || decor.get(i).getName() == "res/Rocks"))
+					|| decor.get(i).getName() == "res/Rock" || decor.get(i).getName() == "res/Rocks"
+					|| decor.get(i).getName() ==("res/LittleTreeObstacle")))
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'r';		
 		
 		else if(decor.get(i).getClass() == Wall.class)
