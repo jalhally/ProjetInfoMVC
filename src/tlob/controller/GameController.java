@@ -131,7 +131,7 @@ public class GameController {
 				status = k;
 				deleteCopy();
 				if(status == 2 || status == 1){
-					Map map = new Map(16,16,"1","3","1");
+					Map map = new Map(16,16,"1","2","2");
 					level.createLevel(map);
 					createGameController(level);
 					sound.soundEnd(sound.getAudioStream());

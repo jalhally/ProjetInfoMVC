@@ -11,7 +11,7 @@ public class Link extends Character {
 	private boolean gauntlet = false;
 	private boolean key = false;
 	private int staff=-1; //0=fire //1=ice
-	private int numberCoin = 0;
+	private int numberCoin = 999;
 	private int player;
 	private int maxLife = 3;
 
