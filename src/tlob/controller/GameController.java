@@ -129,6 +129,7 @@ public class GameController {
 			
 			else if (enterPressed && pressedOnce){ // lance le solo
 				status = k;
+				deleteCopy();
 				if(status == 2 || status == 1){
 					Map map = new Map(16,16,"1","3","1");
 					level.createLevel(map);
@@ -141,7 +142,6 @@ public class GameController {
 				level.setStatus(status);
 				setEnterPressed(false);
 				k=1;
-				deleteCopy();
 
 			}
 		}

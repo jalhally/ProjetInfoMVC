@@ -1,10 +1,31 @@
 package tlob.model;
 
 public class Monster extends Character {
+	
+	private int initialXPos;
+	private int initialYPos;
 
 	public Monster (int lifePoint, int xPos, int yPos, int speed,int direction,String name)
 	{
 		super (lifePoint, xPos, yPos, speed, direction, name);
+		this.initialXPos = xPos;
+		this.initialYPos = yPos;
+	}
+	
+	public int getInitialXPos(){
+		return this.initialXPos;
+	}
+	
+	public void setInitialXPos(int initialXPos){
+		this.initialXPos = initialXPos;
+	}
+	
+	public int getInitialYPos(){
+		return this.initialYPos;
+	}
+	
+	public void setInitialYPos(int initialYPos){
+		this.initialYPos = initialYPos;
 	}
 	
 	public void move()

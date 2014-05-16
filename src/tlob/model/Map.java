@@ -399,6 +399,10 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 		map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'p';
 		*/
 	}
+	for(int j = 0;j < monster.size();j++){
+		if(monster.get(j).getClass() == Melee.class)
+			map[monster.get(j).getInitialYPos()/40][monster.get(j).getInitialXPos()/40] = 'd';		
+	}
 	return map;
 }
 

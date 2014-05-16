@@ -20,7 +20,7 @@ public class Fenetre extends JFrame implements KeyListener{
 	
 	public Fenetre(Level level, final GameController controller, LoadIAD loadIAD)  {
 	    setVisible(true) ;
-	    setSize(800, 15*42+8+120);
+	    setSize(800, 15*42+117);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		addKeyListener(this);
 		this.controller = controller;
