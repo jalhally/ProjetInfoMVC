@@ -11,13 +11,13 @@ public class Ranged extends Monster {
 	}
 	
 	
-	public List<Arrow> fireArrow(List<Arrow> liste, String name){
+	public List<Arrow> fireArrow(List<Arrow> liste){
 		
 		//view
 		//tick(getIAD(),5);
 		
 		//if(getActualFrame() == 6){
-			liste.add(new Arrow(xPos, yPos, name, direction));
+			liste.add(new Arrow(xPos, yPos, "res/Arrow", direction));
 		//}
 		return liste;
 		 

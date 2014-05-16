@@ -32,6 +32,8 @@ public class ImageAnimeDirection {
 				liste.add(Toolkit.getDefaultToolkit().getImage(nomBase + dir + Integer.toString(i) + ".png"));
 			}
 		}
+		liste.add(Toolkit.getDefaultToolkit().getImage("res/void.png"));
+		liste.add(Toolkit.getDefaultToolkit().getImage("res/ice.png"));
 	}
 	
 	public String getName(){
@@ -47,6 +49,17 @@ public class ImageAnimeDirection {
 	}
 	
 	public Image getImageAnime(Character character){
+		
+		if(character.getInvincible() == 0){
+			if(character.getTickInvincible()%2 == 0){
+				return liste.get(4*frames);
+			}
+		}
+		
+		if(character.getFrozen() == 0){
+			return liste.get(4*frames+1);
+		}
+		
 		if(character.getDirection() == GAUCHE){
 			return liste.get(character.getActualFrame() -1);
 		}

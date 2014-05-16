@@ -102,6 +102,10 @@ public void setR(int R){
 			this.tickInvicible = 1;
 		}
 	}
+	
+	public int getTickInvincible(){
+		return this.tickInvicible;
+	}
 
 	public void tickFrozen() {
 		tickFrozen++;

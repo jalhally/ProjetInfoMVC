@@ -47,7 +47,7 @@ public class GameController {
 	private Level level;
 	private boolean pressedOnce = true; // premiere foi qu on appuie
 	private Sound sound = new Sound();
-	private boolean escapePressed = true;
+	private boolean escapePressed = false;
 	
 	public GameController(Level level){
 		this.level = level;
@@ -402,6 +402,8 @@ public class GameController {
 			if (gameOver(link.get(0))){
 				status = 3;
 				level.setStatus(status);
+				setEnterPressed(false);
+				setFireArrow(false);
 				sound.soundEnd(sound.getAudioStream());
 				sound.playSound("gameOver");
 				k = 2;
