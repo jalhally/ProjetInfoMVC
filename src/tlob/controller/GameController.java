@@ -39,8 +39,9 @@ public class GameController {
 	private List<BombDeflagration> bombDeflagration;
 	private List<Menu> menu;
 	private List<Menu> gameOver;
+	private List<Menu> store;
 	private GameInteraction interaction;
-	private int status = 0; // 0 = menu, 1 = multi, 2 = solo, 3 game Over
+	private int status = 0; // 0 = menu, 1 = multi, 2 = solo, 3 game Over, 4 store
 	private int k = 2; // va modifier le status dans le menu
 	private Level level;
 	private boolean pressedOnce = true; // premiere foi qu on appuie
@@ -50,6 +51,7 @@ public class GameController {
 		this.level = level;
 		this.menu = level.getMenu();
 		this.gameOver = level.getGameOver();
+		this.store = level.getStore();
 		this.sound.playSound("menu");
 	}
 	
@@ -568,9 +570,159 @@ public class GameController {
 				
 				setEnterPressed(false);
 			}
-				
-
+		}	
 			
+			
+			
+		else if (status == 4){ // /!\ il faut reinitialise le k avant de lancer le shop
+			if(sound.isFinished(sound.getAudioStream()))
+			{
+				sound.playSound("shop");
+			}
+		
+			if (rightPressedMenu && pressedOnce & k < 6 ){
+				switch(k){
+				case(1):
+					store.get(2).setName("res/store2choose");
+					store.get(1).setName("res/store1");
+					break;					
+				
+				case(2):
+					store.get(3).setName("res/store3choose");
+					store.get(2).setName("res/store2");
+					break;
+					
+				case(3):
+					store.get(4).setName("res/store4choose");
+					store.get(3).setName("res/store3");
+					break;
+		
+				case(4):
+					store.get(5).setName("res/store5choose");
+					store.get(4).setName("res/store4");
+					break;
+				
+				case(5):
+					store.get(6).setName("res/store6choose");
+					store.get(5).setName("res/store5");
+					break;
+					
+				}
+				k+=1;
+				pressedOnce = false;
+				soundChange.playSound("menuchange");
+			}
+			
+			else if (leftPressedMenu && pressedOnce && k > 1){
+				switch(k){
+				case(6):
+					store.get(5).setName("res/store5choose");
+					store.get(6).setName("res/store6");
+					break;					
+					
+				case(2):
+					store.get(1).setName("res/store1choose");
+					store.get(2).setName("res/store2");
+					break;
+					
+				case(3):
+					store.get(2).setName("res/store2choose");
+					store.get(3).setName("res/store3");
+					break;
+		
+				case(4):
+					store.get(3).setName("res/store3choose");
+					store.get(4).setName("res/store4");
+					break;
+					
+				case(5):
+					store.get(4).setName("res/store4choose");
+					store.get(5).setName("res/store5");
+					break;
+					
+				}
+				k-=1;
+				pressedOnce = false;
+				soundChange.playSound("menuchange");
+
+
+				}
+			else if (!leftPressedMenu && !rightPressedMenu && !enterPressed){
+				pressedOnce = true;
+			}
+				
+			else if (enterPressed && pressedOnce){ 
+				switch (k){
+				case(1): // fleche
+					if(link.get(0).getNumberCoin() - 10 >= 0){
+						link.get(0).setNumberCoin(link.get(0).getNumberCoin() - 10);
+						link.get(0).setNumberArrow(link.get(0).getNumberArrow() + 1);
+						soundChange.playSound("shopbuy");
+						soundChange.playSound("rupee");
+					}	
+					else
+						soundChange.playSound("shopcantbuy");
+					break;
+				
+				case(2): //bombrange
+					if(link.get(0).getNumberCoin() - 10 >= 0){
+						link.get(0).setNumberCoin(link.get(0).getNumberCoin() - 30);
+						link.get(0).setRangeBomb(link.get(0).getRangeBomb() + 1);
+						soundChange.playSound("shopbuy");
+						soundChange.playSound("rupee");
+						}	
+					else
+						soundChange.playSound("shopcantbuy");
+					break;
+					
+				case(3): // bomb
+					if(link.get(0).getNumberCoin() - 10 >= 0){
+						link.get(0).setNumberCoin(link.get(0).getNumberCoin() - 30);
+						link.get(0).setNumberBomb(link.get(0).getNumberBomb()+1);
+						soundChange.playSound("shopbuy");
+						soundChange.playSound("rupee");
+
+					}	
+					else
+						soundChange.playSound("shopcantbuy");
+						break;
+				
+				case(4)://speed
+					if(link.get(0).getNumberCoin() - 10 >= 0){
+						link.get(0).setNumberCoin(link.get(0).getNumberCoin() - 50);
+						link.get(0).setSpeed(link.get(0).getSpeed()+1);
+						soundChange.playSound("shopbuy");
+						soundChange.playSound("rupee");
+						}	
+					else
+						soundChange.playSound("shopcantbuy");
+						break;
+				
+				case(5)://heart
+					if(link.get(0).getNumberCoin() - 10 >= 0){
+						link.get(0).setNumberCoin(link.get(0).getNumberCoin() - 100);
+						link.get(0).setMaxLife(link.get(0).getMaxLife() + 1);
+						link.get(0).setLifePoint(link.get(0).getMaxLife());							
+						soundChange.playSound("shopbuy");
+						soundChange.playSound("rupee");
+						}	
+					else
+						soundChange.playSound("shopcantbuy");
+						break;
+					
+				case(6):
+					sound.playSound("menuchoose");
+					status = 2;
+					level.setStatus(status);
+					sound.soundEnd(sound.getAudioStream());
+					sound.playSound("forest2");
+					break;
+				}
+					
+					
+					
+				setEnterPressed(false);
+			}
 		}
 	}
 	

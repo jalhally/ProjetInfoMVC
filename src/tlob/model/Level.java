@@ -15,11 +15,13 @@ public class Level{
 	private List<Bonus> bonus;
 	private List<Menu> menu;
 	private List<Menu> gameOver;
+	private List<Menu> store;
 	private int status = 0;
 	
-	public Level(List<Menu> menu, List<Menu>gameOver){
+	public Level(List<Menu> menu, List<Menu>gameOver, List<Menu>store){
 		this.menu = menu;
 		this.gameOver = gameOver;
+		this.store = store;
 		
 	}
 	
@@ -45,6 +47,10 @@ public class Level{
 
 	public Map getMap(){
 		return this.map;
+	}
+	
+	public List<Menu> getStore(){
+		return this.store;
 	}
 	
 	public void setMap(Map map){

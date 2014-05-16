@@ -11,6 +11,17 @@ public class LoadIAD {
 		List<ImageAnimeDirection> dataIAD = new ArrayList<ImageAnimeDirection>();
 		this.dataIAD = dataIAD;
 		dataIAD.add(new ImageAnimeDirection("res/2"));
+		dataIAD.add(new ImageAnimeDirection("res/store"));
+		dataIAD.add(new ImageAnimeDirection("res/store1"));
+		dataIAD.add(new ImageAnimeDirection("res/store2"));		
+		dataIAD.add(new ImageAnimeDirection("res/store3"));	
+		dataIAD.add(new ImageAnimeDirection("res/store4"));
+		dataIAD.add(new ImageAnimeDirection("res/store5"));
+		dataIAD.add(new ImageAnimeDirection("res/store1choose"));
+		dataIAD.add(new ImageAnimeDirection("res/store2choose"));		
+		dataIAD.add(new ImageAnimeDirection("res/store3choose"));	
+		dataIAD.add(new ImageAnimeDirection("res/store4choose"));
+		dataIAD.add(new ImageAnimeDirection("res/store5choose"));
 		dataIAD.add(new ImageAnimeDirection("res/gameOver"));
 		dataIAD.add(new ImageAnimeDirection("res/yesbombs"));
 		dataIAD.add(new ImageAnimeDirection("res/yes"));

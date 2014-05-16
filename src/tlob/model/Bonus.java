@@ -13,7 +13,7 @@ public class Bonus extends Decor {
 public void activation(Link l){
 	switch (this.number){
 	case 0: //Heart
-		if(l.getLifePoint()<3) {
+		if(l.getLifePoint()<l.getMaxLife()) {
 		l.setLifePoint(l.getLifePoint()+1); 
 		}
 		break;

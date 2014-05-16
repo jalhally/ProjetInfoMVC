@@ -13,6 +13,8 @@ public class Link extends Character {
 	private int staff=-1; //0=fire //1=ice
 	private int numberCoin = 0;
 	private int player;
+	private int maxLife = 3;
+
 
 	public Link (int lifePoint, int xPos, int yPos, int speed,int direction, String image, int player)
 	{
@@ -22,6 +24,14 @@ public class Link extends Character {
 	
 	public int getPlayer(){
 		return this.player;
+	}
+	
+	public int getMaxLife(){
+		return this.maxLife;
+	}
+
+	public void setMaxLife(int maxLife){
+		this.maxLife = maxLife;
 	}
 	
 	public int getStaff() {

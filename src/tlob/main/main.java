@@ -23,6 +23,7 @@ public class main {
 		menu.add(homescreen);
 		menu.add(solo);
 		menu.add(option);
+		
 		List<Menu> gameOver = new ArrayList<Menu>();
 		Menu gameOverScreen = new Menu(0,100,"res/gameOver", 0);
 		Menu yes = new Menu(13*20,12*40,"res/yesbombs",2);
@@ -31,7 +32,23 @@ public class main {
 		gameOver.add(yes);
 		gameOver.add(no);
 		
-		Level level = new Level(menu,gameOver);
+		List <Menu> store = new ArrayList<Menu>();
+		Menu storeScreen = new Menu(0,240,"res/store", 0);
+		Menu arrow = new Menu (8*20,12*20+120,"res/store1choose", 1);
+		Menu bombRange = new Menu (20*20,12*20+120,"res/store2",2);
+		Menu bombPlus = new Menu (8*20,20*20+120,"res/store3",3);
+		Menu speed = new Menu (20*20,20*20+120,"res/store4",4);
+		Menu life = new Menu (8*20,28*20+120,"res/store5",5);
+		Menu exit = new Menu (20*20,28*20+120,"res/2",6);		
+		store.add(storeScreen);
+		store.add(arrow);
+		store.add(bombRange);
+		store.add(bombPlus);
+		store.add(speed);
+		store.add(life);
+		store.add(exit);
+		
+		Level level = new Level(menu,gameOver,store);
 		LoadIAD load = new LoadIAD();
 		GameController controller = new GameController(level);
 		new Fenetre(level,controller,load);

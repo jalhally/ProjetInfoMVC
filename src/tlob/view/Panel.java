@@ -53,6 +53,50 @@ public class Panel extends JPanel{
 
 			}
 		}
+		
+		else if (level.getStatus() == 4){
+			g.drawImage(statusBar,0,0,null);
+			for(Link link : level.getLink()){
+				int centaineRubis=(link.getNumberCoin()-link.getNumberCoin()%100)/100;
+				int dizaineRubis=((link.getNumberCoin()-centaineRubis*100)-(link.getNumberCoin()-centaineRubis*100)%10)/10;
+				int dizaineArrow = (link.getNumberArrow()-link.getNumberArrow()%10)/10;
+				
+				for(int i=0; i<link.getLifePoint();i++) {
+					g.drawImage(loadIAD.stringToIAD("res/Heart").getImage(),153+i*20,50,null);				
+				}
+				
+				g.drawImage(charNumber[link.getNumberBomb()],502,62,null);			
+				g.drawImage(charNumber[link.getRangeBomb()],412,62,null);
+				
+				if(centaineRubis!=0) {
+					g.drawImage(charNumber[centaineRubis],590,62,null);
+				}
+				
+				if(dizaineRubis!=0) {
+					g.drawImage(charNumber[dizaineRubis],595,62,null);
+				}
+				g.drawImage(charNumber[link.getNumberCoin()-centaineRubis*100-dizaineRubis*10],600,62,null);
+				
+				if(dizaineArrow!=0) {
+					g.drawImage(charNumber[dizaineArrow],307,62,null);
+				}
+				
+				g.drawImage(charNumber[link.getNumberArrow()-dizaineArrow*10],312,62,null);
+				
+				if(link.getStaff()==0) {
+				g.drawImage(loadIAD.stringToIAD("res/FireStaff").getImage(),650,53,null);
+				}
+				
+				if(link.getStaff()==1) {
+					g.drawImage(loadIAD.stringToIAD("res/IceStaff").getImage(),650,53,null);
+					}
+			}
+			for(Menu store : level.getStore()){
+				g.drawImage(loadIAD.stringToIAD(store.getName()).getImage(), store.getXPos(), store.getYPos()-decY,null);
+
+			}
+		}
+		
 		else if (level.getStatus() == 2){
 			
 			g.drawImage(sideBackground,-10,70,null);
