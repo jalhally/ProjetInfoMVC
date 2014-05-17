@@ -85,18 +85,22 @@ public class Fenetre extends JFrame implements KeyListener{
 	    
     	else if(keyCode == KeyEvent.VK_UP) {
     		controller.setUpPressed2(true);
+    		controller.setUpPressedMenu(true);
     	}
 	    
     	else if(keyCode == KeyEvent.VK_RIGHT) {
     		controller.setRightPressed2(true);
+    		controller.setRightPressedMenu(true);
     	}
 	    
     	else if(keyCode == KeyEvent.VK_LEFT) {
     		controller.setLeftPressed2(true);
+    		controller.setLeftPressedMenu(true);
     	}
 	    
     	else if(keyCode == KeyEvent.VK_DOWN) {
     		controller.setDownPressed2(true);
+    		controller.setDownPressedMenu(true);
     	}
 	    
     	else if(keyCode == KeyEvent.VK_P) {
@@ -111,20 +115,6 @@ public class Fenetre extends JFrame implements KeyListener{
     		controller.setUseStaff2(true);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_UP) {
-    		controller.setUpPressedMenu(true);
-    	}
-	    
-    	else if(keyCode == KeyEvent.VK_DOWN) {
-    		controller.setDownPressedMenu(true);
-    	}
-    	else if(keyCode == KeyEvent.VK_LEFT){
-    		controller.setLeftPressedMenu(true);
-    	}
-	    
-    	else if(keyCode == KeyEvent.VK_RIGHT){
-    		controller.setRightPressedMenu(true);
-    	}
 	    
 	}
 
@@ -157,38 +147,24 @@ public class Fenetre extends JFrame implements KeyListener{
 	    
 	    if (keyCode == KeyEvent.VK_RIGHT){
 	    	controller.setRightPressed2(false);
+    		controller.setRightPressedMenu(false);
 	    }
 	    
     	else if(keyCode == KeyEvent.VK_LEFT){
     		controller.setLeftPressed2(false);
+    		controller.setLeftPressedMenu(false);
     	}
 	    
     	else if(keyCode == KeyEvent.VK_DOWN) {
     		controller.setDownPressed2(false);
+    		controller.setDownPressedMenu(false);
     	}
 	    
     	else if(keyCode == KeyEvent.VK_UP) {
     		controller.setUpPressed2(false);
-    	}
-	    
-	    	
-    	else if(keyCode == KeyEvent.VK_UP) {
     		controller.setUpPressedMenu(false);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_DOWN) {
-    		controller.setDownPressedMenu(false);
-    	}
-	    
-    	else if(keyCode == KeyEvent.VK_LEFT){
-    		controller.setLeftPressedMenu(false);
-    	}
-	    
-       	else if(keyCode == KeyEvent.VK_RIGHT){
-    		controller.setRightPressedMenu(false);
-    	}
-
-
 		
 	}
 
