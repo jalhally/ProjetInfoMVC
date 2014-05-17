@@ -164,7 +164,17 @@ public class Link extends Character {
 				frameArrow = 1;
 			}
 			
-			setName("res/LinkArrow");
+			if(getPlayer() == 0) {
+				
+				setName("res/LinkArrow");
+			}
+			
+			else { 
+				
+				setName("res/RedLinkArrow");
+			
+			}
+			
 			
 			tick(6,5);
 			
