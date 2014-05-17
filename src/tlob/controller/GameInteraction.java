@@ -460,10 +460,12 @@ public class GameInteraction {
 						bombDef.getDown().add(liste[2][j+1]);
 						//down.add(liste[2][j+2]);
 						if(link.size() == 1) {
+							
 							((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						}
 						
 						else {
+							
 							((Jar) decor.get(i)).randomBonusVersus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						}
 						
@@ -474,6 +476,7 @@ public class GameInteraction {
 					}
 					bombDef.setU(0);
 					}
+				
 				if(touchArrow(bombDef.getXPos(),liste[3][j],decor.get(i).getXPos(),decor.get(i).getYPos()) != -1
 						&& decor.get(i).getClass() != Floor.class){
 					if(decor.get(i).getClass() == Jar.class && bombDef.getD() == 1 && bombDef.getPlayer() != -1){
@@ -481,10 +484,12 @@ public class GameInteraction {
 						bombDef.getUp().add(liste[3][j+1]);
 						//up.add(liste[3][j+2]);
 						if(link.size() == 1) {
+							
 							((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						}
 						
 						else {
+							
 							((Jar) decor.get(i)).randomBonusVersus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						}
 						decor.remove(i);
