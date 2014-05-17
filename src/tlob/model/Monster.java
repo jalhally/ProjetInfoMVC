@@ -5,6 +5,8 @@ public class Monster extends Character {
 	private int initialXPos;
 	private int initialYPos;
 	private boolean action = false;
+	private int cooldown = 40;
+	private int tick = 0;
 
 	public Monster (int lifePoint, int xPos, int yPos, int speed,int direction,String name)
 	{
@@ -50,7 +52,23 @@ public class Monster extends Character {
 			tick(4,5);
 		}
 	}
-
+	
+	public int getCooldown(){
+		return this.cooldown;
+	}
+	
+	public void setCooldown(int cd){
+		this.cooldown = cd;
+	}
+	
+	public void cdTick(int constante) {
+		tick++;
+		if(tick == constante) {
+			cooldown++;
+			tick = 0;
+		}
+	}
+	
 	public void setAction(boolean b) {
 		this.action = b;
 		

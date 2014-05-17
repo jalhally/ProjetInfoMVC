@@ -67,7 +67,7 @@ public class Fenetre extends JFrame implements KeyListener{
     		controller.setEnterPressed(true);
     	}
     	
-    	else if(keyCode == KeyEvent.VK_X){
+    	else if(keyCode == KeyEvent.VK_V){
     		controller.setFireArrow(true);
     	}
 	    
@@ -103,15 +103,15 @@ public class Fenetre extends JFrame implements KeyListener{
     		controller.setDownPressedMenu(true);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_P) {
+    	else if(keyCode == KeyEvent.VK_U) {
     		controller.setSetBomb2(true);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_O) {
+    	else if(keyCode == KeyEvent.VK_I) {
     		controller.setFireArrow2(true);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_I) {
+    	else if(keyCode == KeyEvent.VK_O) {
     		controller.setUseStaff2(true);
     	}
 	    

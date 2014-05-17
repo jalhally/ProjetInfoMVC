@@ -886,7 +886,8 @@ public class GameInteraction {
 			moveRandom(monster);
 		}
 		else if(monster.getClass() == Ranged.class){
-			if(fireDirection(monster) != -1){
+			monster.cdTick(3);
+			if(fireDirection(monster) != -1 && monster.getCooldown() > 40){
 				monster.setAction(true);
 				monster.setDirection(fireDirection(monster));
 				monster.setActualFrame(1);
@@ -898,6 +899,7 @@ public class GameInteraction {
 					((Ranged) monster).fireArrow(arrow);
 					monster.setAction(false);
 					monster.setTime(0);
+					monster.setCooldown(0);
 					monster.setName("res/RangedRun");
 				}
 			}
@@ -906,8 +908,8 @@ public class GameInteraction {
 			}
 		}
 		else if(monster.getClass() == Bomber.class){
-			monster.tick(3);
-			if(fireDirection(monster) != -1 && monster.getTime() > 40){
+			monster.cdTick(3);
+			if(fireDirection(monster) != -1 && monster.getCooldown() > 40){
 				monster.setAction(true);
 				monster.setDirection(fireDirection(monster));
 				monster.setName("res/BomberThrow");
@@ -919,7 +921,7 @@ public class GameInteraction {
 					bomb.get(bomb.size()-1).setDirection(monster.getDirection());
 					monster.setAction(false);
 					((Bomber) monster).setBombFrame(1);
-					monster.setTime(0);
+					monster.setCooldown(0);
 					monster.setName("res/BomberRun");
 				}
 			}
