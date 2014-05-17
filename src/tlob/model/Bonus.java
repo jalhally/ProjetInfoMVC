@@ -14,7 +14,7 @@ public void activation(Link l){
 	switch (this.number){
 	case 0: //Heart
 		if(l.getLifePoint()<l.getMaxLife()) {
-		l.setLifePoint(l.getLifePoint()+1); 
+			l.setLifePoint(l.getLifePoint()+1); 
 		}
 		break;
 	case 1: //BombPlus
@@ -31,7 +31,7 @@ public void activation(Link l){
 		break;
 	case 4: //Speed
 		if(l.getSpeed()<maxSpeed) {
-		l.setSpeed(l.getSpeed()+1);
+			l.setSpeed(l.getSpeed()+1);
 		}
 		break;
 	case 5: //Gauntlet
