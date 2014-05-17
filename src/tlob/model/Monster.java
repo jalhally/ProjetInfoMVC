@@ -4,6 +4,7 @@ public class Monster extends Character {
 	
 	private int initialXPos;
 	private int initialYPos;
+	private boolean action = false;
 
 	public Monster (int lifePoint, int xPos, int yPos, int speed,int direction,String name)
 	{
@@ -48,6 +49,15 @@ public class Monster extends Character {
 			setYPos(getYPos() + getFrozen()*getD()*speed);
 			tick(4,5);
 		}
+	}
+
+	public void setAction(boolean b) {
+		this.action = b;
+		
+	}
+
+	public boolean getAction() {
+		return this.action;
 	}
 	
 }

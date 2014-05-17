@@ -15,6 +15,7 @@ public class Character implements Tick{
 	private int tickFrozen = 1;
 	private int t = 0;
 	private int myTick =0;
+	private int tick = 0;
 	private int U = 1;
 	private int D = 1;
 	private int L = 1;
@@ -200,12 +201,16 @@ public class Character implements Tick{
 		return this.t;
 	}
 	
+	public void setTime(int t){
+		this.t = t;
+	}
+	
 	@Override
 	public void tick(int constante) {
-		myTick++;
-		if(myTick == constante) {
+		tick++;
+		if(tick == constante) {
 			t++;
-			myTick = 0;
+			tick = 0;
 		}
 	}
 

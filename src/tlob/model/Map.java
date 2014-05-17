@@ -313,7 +313,7 @@ decor.add(new Wall(40*i,40*j,null));*/
 						monster.add(new Ranged(1,40*i,40*j,1,3,"res/RangedRun")); //Ranged
 						break;
 					case 's':
-						monster.add(new Bomber(1,40*i,40*j,1,3,null)); //Bomber
+						monster.add(new Bomber(1,40*i,40*j,1,3,"res/RangedRun")); //Bomber
 						break;
 					case 'd':
 						monster.add(new Melee(2,40*i,40*j,1,3,"res/MeleeRun"));

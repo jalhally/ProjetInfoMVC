@@ -300,7 +300,7 @@ public class GameController {
 					if(monster.get(i).getLifePoint() == 0){
 						monster.remove(i);
 					}
-					interaction.moveRandom(monster.get(i));
+					interaction.monsterInteraction(monster.get(i));
 				}
 			}	
 
@@ -497,7 +497,7 @@ public class GameController {
 						if(monster.get(i).getInvincible() == 0){
 						monster.get(i).tickInvincible();
 						}
-						interaction.moveRandom(monster.get(i));
+						interaction.monsterInteraction(monster.get(i));
 						if(monster.get(i).getLifePoint() == 0){
 							monster.remove(i);
 						}
@@ -527,7 +527,7 @@ public class GameController {
 						interaction.bombInteraction(bomb.get(p));
 						bomb.get(p).tick();
 						if(bomb.get(p).getTime() == 15){ //changer dans deflagration si changement de temps
-							bombDeflagration.add(new BombDeflagration(bomb.get(p).getXPos(),bomb.get(p).getYPos(),"res/Deflagration",2));
+							bombDeflagration.add(new BombDeflagration(bomb.get(p).getXPos(),bomb.get(p).getYPos(),"res/Deflagration",bomb.get(p).getPlayer()));
 							bomb.remove(p);
 							Sound soundBomb = new Sound();
 							soundBomb.playSound("bomb");
@@ -537,15 +537,28 @@ public class GameController {
 				if(bombDeflagration.size()>0){
 					for(int p = 0; p < bombDeflagration.size(); p++){
 						bombDeflagration.get(p).tick(2);
-						if(bombDeflagration.get(p).getPortee() < link.get(0).getRangeBomb()*4+2){
-							interaction.deflagrationAppear(bombDeflagration.get(p), link.get(0).getRangeBomb());
-							interaction.defInteraction(bombDeflagration.get(p));
+						if(bombDeflagration.get(p).getPlayer() == -1){
+							if(bombDeflagration.get(p).getPortee() < 2*4+2){
+								interaction.deflagrationAppear(bombDeflagration.get(p), 2);
+								interaction.defInteraction(bombDeflagration.get(p));
+							}
+							else{
+								bombDeflagration.remove(p);
+							}
 						}
 						else{
-							bombDeflagration.remove(p);
+							if(bombDeflagration.get(p).getPortee() < link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb()*4+2){
+								interaction.deflagrationAppear(bombDeflagration.get(p), link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb());
+								interaction.defInteraction(bombDeflagration.get(p));
+							}
+							else{
+								bombDeflagration.remove(p);
+							}
 						}
 					}
 				}
+				
+				
 				
 				/*
 				if(feu.size()>0){

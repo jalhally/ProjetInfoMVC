@@ -15,10 +15,10 @@ public class Ranged extends Monster {
 		
 		//view
 		//tick(getIAD(),5);
-			setName("/resRangedArrow");
 		//if(getActualFrame() == 6){
-			liste.add(new Arrow(xPos, yPos, "res/ArrowMonster", direction, getPlayer()));
+			liste.add(new Arrow(xPos, yPos, "res/Arrow", direction, getPlayer()));
 		//}
+			setName("res/RangedRun");
 		return liste;
 		 
 	}

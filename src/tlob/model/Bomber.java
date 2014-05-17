@@ -11,7 +11,7 @@ public class Bomber extends Monster {
 	}
 	
 	//THROW c'est le setBomb de Link
-	public List<Bomb> setBomb(List<Bomb> liste, String name)
+	public List<Bomb> setBomb(List<Bomb> liste)
 	{
 		int x,y;
 		int k = 1;
@@ -33,7 +33,7 @@ public class Bomber extends Monster {
 			}
 		}
 		if (k == 1 && getInvincible() == 1){
-			liste.add( new Bomb(x+5, y+5, name, -1)) ;
+			liste.add( new Bomb(x+5, y+5, "res/Bomb", -1)) ;
 		}
 		return liste;
 	}
