@@ -10,6 +10,7 @@ public class Bomber extends Monster {
 	public Bomber (int lifePoint, int xPos, int yPos, int speed,int direction, String name)
 	{
 		super(lifePoint, xPos, yPos,speed, direction, name);
+		setTime(40);
 	}
 	
 	//THROW c'est le setBomb de Link

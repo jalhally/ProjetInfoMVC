@@ -130,14 +130,22 @@ public class GameController {
 			else if (enterPressed && pressedOnce){ // lance le solo
 				status = k;
 				deleteCopy();
-				if(status == 2 || status == 1){
-					Map map = new Map(16,16,"1","2","2");
+				if(status == 1){
+					Map map = new Map(16,16,"0","0","0");
 					level.createLevel(map);
 					createGameController(level);
 					sound.soundEnd(sound.getAudioStream());
 					sound.playSound("forest1");
 					soundChoose.playSound("menuchoose");
 
+				}
+				else{
+					Map map = new Map(16,16,"1","2","2");
+					level.createLevel(map);
+					createGameController(level);
+					sound.soundEnd(sound.getAudioStream());
+					sound.playSound("forest1");
+					soundChoose.playSound("menuchoose");
 				}
 				level.setStatus(status);
 				setEnterPressed(false);
@@ -290,19 +298,6 @@ public class GameController {
 				
 				interaction.linkInteraction(link.get(i));
 		}
-		
-		
-			if(monster.size() > 0){
-				for(int i = 0; i < monster.size(); i++){
-					if(monster.get(i).getInvincible() == 0){
-					monster.get(i).tickInvincible();
-					}
-					if(monster.get(i).getLifePoint() == 0){
-						monster.remove(i);
-					}
-					interaction.monsterInteraction(monster.get(i));
-				}
-			}	
 
 			if(arrow.size()>0){
 				for(int p = 0; p < arrow.size(); p++){

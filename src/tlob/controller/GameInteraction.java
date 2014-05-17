@@ -431,7 +431,15 @@ public class GameInteraction {
 						bombDef.getLeft().add(liste[0][j]);
 						bombDef.getLeft().add(liste[0][j+1]);
 						//left.add(liste[0][j+2]);
-						((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
+						if(link.size() == 1) {
+							
+							((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
+						}
+						
+						else {
+							
+							((Jar) decor.get(i)).randomBonusVersus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
+						}
 						decor.remove(i);
 						decor.get(i-1).setName("res/ForestBrokenJar");
 						Sound soundJar = new Sound();
@@ -445,7 +453,15 @@ public class GameInteraction {
 						bombDef.getRight().add(liste[1][j]);
 						bombDef.getRight().add(liste[1][j+1]);
 						//right.add(liste[1][j+2]);
-						((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
+						if(link.size() == 1) {
+							
+							((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
+						}
+						
+						else {
+							
+							((Jar) decor.get(i)).randomBonusVersus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
+						}
 						decor.remove(i);
 						decor.get(i-1).setName("res/ForestBrokenJar");
 						Sound soundJar = new Sound();
@@ -890,18 +906,20 @@ public class GameInteraction {
 			}
 		}
 		else if(monster.getClass() == Bomber.class){
-			if(fireDirection(monster) != -1){
+			monster.tick(3);
+			if(fireDirection(monster) != -1 && monster.getTime() > 40){
 				monster.setAction(true);
 				monster.setDirection(fireDirection(monster));
 				monster.setName("res/BomberThrow");
 				}
 			if(monster.getAction() == true){
-				((Bomber) monster).bombTick(4,20);
+				((Bomber) monster).bombTick(4,8);
 				if(((Bomber) monster).getBombFrame() == 4){
 					((Bomber) monster).setBomb(bomb);
 					bomb.get(bomb.size()-1).setDirection(monster.getDirection());
 					monster.setAction(false);
 					((Bomber) monster).setBombFrame(1);
+					monster.setTime(0);
 					monster.setName("res/BomberRun");
 				}
 			}
