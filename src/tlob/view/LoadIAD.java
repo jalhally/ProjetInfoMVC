@@ -41,6 +41,8 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/MeleeRun",4));
 		dataIAD.add(new ImageAnimeDirection("res/RangedRun",5));
 		dataIAD.add(new ImageAnimeDirection("res/RangedArrow",1));
+		dataIAD.add(new ImageAnimeDirection("res/BomberRun",5));
+		dataIAD.add(new ImageAnimeDirection("res/BomberThrow",5));
 		dataIAD.add(new ImageAnimeDirection("res/BackgroundForest"));
 		dataIAD.add(new ImageAnimeDirection("res/LittleTree"));
 		dataIAD.add(new ImageAnimeDirection("res/LittleTreeObstacle"));
@@ -49,6 +51,7 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/Rock"));
 		dataIAD.add(new ImageAnimeDirection("res/Root"));
 		dataIAD.add(new ImageAnimeDirection("res/Bomb"));
+		dataIAD.add(new ImageAnimeDirection("res/BombMonster"));
 		dataIAD.add(new ImageAnimeDirection("res/ForestBrokenJar"));
 		dataIAD.add(new ImageAnimeDirection("res/Heart"));
 		dataIAD.add(new ImageAnimeDirection("res/BombPlus"));
