@@ -412,8 +412,6 @@ public class GameController {
 			for (int p = 0; p < level.getDecor().size(); p ++){
 				if (level.getDecor().get(p).getClass() == SpawnerMonster.class)
 					((SpawnerMonster)(level.getDecor().get(p))).spawnMonster(level.getMonster());	
-					System.out.println("swaglord");
-					// blabla my tick
 			}
 			
 			if(interaction.getChangeLevel() == true)

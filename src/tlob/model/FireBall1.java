@@ -116,5 +116,5 @@ public class FireBall1 extends Item{
 			setXPos(listpos.get(pos)[0]);
 			setYPos(listpos.get(pos)[1]);
 		}
-	}	
+	}
 }
