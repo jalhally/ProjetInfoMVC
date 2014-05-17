@@ -241,8 +241,8 @@ public class Panel extends JPanel{
 					g.drawImage(loadIAD.stringToIAD("res/Heart").getImage(),80+i*20+j,50,null);				
 				}
 				
-				g.drawImage(charNumber[link.getNumberBomb()],195+j,62,null);			
-				g.drawImage(charNumber[link.getRangeBomb()],238+j,62,null);
+				g.drawImage(charNumber[link.getNumberBomb()],238+j,62,null);			
+				g.drawImage(charNumber[link.getRangeBomb()],195+j,62,null);
 				
 				g.drawImage(charNumber[link.getNumberArrow()],290+j,62,null);
 				

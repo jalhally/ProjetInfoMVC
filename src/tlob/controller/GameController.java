@@ -168,7 +168,9 @@ public class GameController {
 			}
 			for(int i = 0; i < link.size(); i++){
 				
-				link.get(i).setSpeed(1);
+				System.out.println(link.get(0).getSpeed());
+				
+				//link.get(i).setSpeed(1);
 				
 				if(link.get(i).getInvincible() == 0){
 					link.get(i).tickInvincible();
