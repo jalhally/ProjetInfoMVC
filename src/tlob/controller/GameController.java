@@ -228,22 +228,22 @@ public class GameController {
 				}
 			
 				if(rightPressed2){
-					link.get(1).setName("res/LinkRun");
+					link.get(1).setName("res/RedLinkRun");
 					link.get(1).moveRight();
 				
 				}
 				if(leftPressed2){
-					link.get(1).setName("res/LinkRun");
+					link.get(1).setName("res/RedLinkRun");
 					link.get(1).moveLeft();
 				}
 			
 				if(downPressed2){
-					link.get(1).setName("res/LinkRun");
+					link.get(1).setName("res/RedLinkRun");
 					link.get(1).moveDown();
 				}
 			
 				if(upPressed2){
-					link.get(1).setName("res/LinkRun");
+					link.get(1).setName("res/RedLinkRun");
 					link.get(1).moveUp();
 				}
 			
