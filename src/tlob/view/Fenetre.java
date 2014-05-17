@@ -67,15 +67,15 @@ public class Fenetre extends JFrame implements KeyListener{
     		controller.setEnterPressed(true);
     	}
     	
-    	else if(keyCode == KeyEvent.VK_E){
+    	else if(keyCode == KeyEvent.VK_X){
     		controller.setFireArrow(true);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_R){
+    	else if(keyCode == KeyEvent.VK_SPACE){
     		controller.setSetBomb(true);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_A) {
+    	else if(keyCode == KeyEvent.VK_C) {
     		controller.setUseStaff(true);
     	}
 	    
@@ -83,19 +83,19 @@ public class Fenetre extends JFrame implements KeyListener{
     		controller.setEscape(true);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_I) {
+    	else if(keyCode == KeyEvent.VK_UP) {
     		controller.setUpPressed2(true);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_L) {
+    	else if(keyCode == KeyEvent.VK_RIGHT) {
     		controller.setRightPressed2(true);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_J) {
+    	else if(keyCode == KeyEvent.VK_LEFT) {
     		controller.setLeftPressed2(true);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_K) {
+    	else if(keyCode == KeyEvent.VK_DOWN) {
     		controller.setDownPressed2(true);
     	}
 	    
@@ -104,11 +104,10 @@ public class Fenetre extends JFrame implements KeyListener{
     	}
 	    
     	else if(keyCode == KeyEvent.VK_O) {
-    		controller.setFireArrow2
-    		(true);
+    		controller.setFireArrow2(true);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_U) {
+    	else if(keyCode == KeyEvent.VK_I) {
     		controller.setUseStaff2(true);
     	}
 	    
@@ -156,19 +155,19 @@ public class Fenetre extends JFrame implements KeyListener{
     		controller.setUpPressed(false);
     	}
 	    
-	    if (keyCode == KeyEvent.VK_L){
+	    if (keyCode == KeyEvent.VK_RIGHT){
 	    	controller.setRightPressed2(false);
 	    }
 	    
-    	else if(keyCode == KeyEvent.VK_J){
+    	else if(keyCode == KeyEvent.VK_LEFT){
     		controller.setLeftPressed2(false);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_K) {
+    	else if(keyCode == KeyEvent.VK_DOWN) {
     		controller.setDownPressed2(false);
     	}
 	    
-    	else if(keyCode == KeyEvent.VK_I) {
+    	else if(keyCode == KeyEvent.VK_UP) {
     		controller.setUpPressed2(false);
     	}
 	    
