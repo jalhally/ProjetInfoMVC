@@ -35,7 +35,7 @@ public class Bonus extends Decor {
 			break;
 		case 4: //Speed
 			if(l.getSpeed()<maxSpeed) {
-				l.setSpeed(l.getSpeed()+1);
+				l.setSpeed(l.getSpeed()+2);
 			}
 			break;
 		case 5: //Gauntlet
