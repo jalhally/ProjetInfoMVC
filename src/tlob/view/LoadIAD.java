@@ -34,6 +34,8 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/2playersbombs"));
 		dataIAD.add(new ImageAnimeDirection("res/LinkRun",6));
 		dataIAD.add(new ImageAnimeDirection("res/LinkArrow",6));
+		dataIAD.add(new ImageAnimeDirection("res/RedLinkRun",6));
+		dataIAD.add(new ImageAnimeDirection("res/RedLinkArrow",6));
 		dataIAD.add(new ImageAnimeDirection("res/Arrow",3));
 		dataIAD.add(new ImageAnimeDirection("res/Deflagration",2));
 		dataIAD.add(new ImageAnimeDirection("res/MeleeRun",4));

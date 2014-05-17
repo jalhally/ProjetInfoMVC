@@ -60,6 +60,23 @@ public class ImageAnimeDirection {
 			return liste.get(4*frames+1);
 		}
 		
+		if(character.getClass() == Bomber.class){
+			if(((Bomber) character).getAction() == true){
+				if(character.getDirection() == GAUCHE){
+					return liste.get(((Bomber) character).getBombFrame() -1);
+				}
+				else if(character.getDirection() == DROITE){
+					return liste.get(((Bomber) character).getBombFrame() + frames-1);
+				}
+				else if(character.getDirection() == HAUT){
+					return liste.get(((Bomber) character).getBombFrame() + 2*frames-1);
+				}
+				else{
+					return liste.get(((Bomber) character).getBombFrame() + 3*frames-1);
+				}
+			}
+		}
+		
 		if(character.getDirection() == GAUCHE){
 			return liste.get(character.getActualFrame() -1);
 		}

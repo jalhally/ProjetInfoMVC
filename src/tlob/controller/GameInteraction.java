@@ -875,17 +875,16 @@ public class GameInteraction {
 			if(fireDirection(monster) != -1){
 				monster.setAction(true);
 				monster.setDirection(fireDirection(monster));
-				monster.setActualFrame(1);
-				monster.setName("res/RangedArrow");
+				monster.setName("res/BomberThrow");
 				}
 			if(monster.getAction() == true){
-				monster.tick(5);
-				if(monster.getTime() == 5){
+				((Bomber) monster).bombTick(4,20);
+				if(((Bomber) monster).getBombFrame() == 4){
 					((Bomber) monster).setBomb(bomb);
 					bomb.get(bomb.size()-1).setDirection(monster.getDirection());
 					monster.setAction(false);
 					monster.setTime(0);
-					monster.setName("res/RangedRun");
+					monster.setName("res/BomberRun");
 				}
 			}
 			else{

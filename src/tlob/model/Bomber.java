@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Bomber extends Monster {
 	
+	private int tick = 0;
+	private int bombFrame = 1;
 	
 	public Bomber (int lifePoint, int xPos, int yPos, int speed,int direction, String name)
 	{
@@ -33,10 +35,27 @@ public class Bomber extends Monster {
 			}
 		}
 		if (k == 1 && getInvincible() == 1){
-			liste.add( new Bomb(x+5, y+5, "res/Bomb", -1)) ;
+			liste.add( new Bomb(x+5, y+5, "res/BombMonster", -1)) ;
 		}
 		return liste;
 	}
 	
-
+	public void bombTick(int frames, int constante) {
+		tick++;
+		if(tick == constante) {
+			bombFrame++;
+			tick = 0;
+			if(bombFrame == frames +1)
+				this.bombFrame = 1;
+		}
+	}
+	
+	public int getBombFrame(){
+		return this.bombFrame;
+	}
+	
+	public void setBombFrame(int n){
+		this.bombFrame = n;
+	}
+	
 }
