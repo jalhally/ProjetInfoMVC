@@ -459,7 +459,14 @@ public class GameInteraction {
 						bombDef.getDown().add(liste[2][j]);
 						bombDef.getDown().add(liste[2][j+1]);
 						//down.add(liste[2][j+2]);
-						((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
+						if(link.size() == 1) {
+							((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
+						}
+						
+						else {
+							((Jar) decor.get(i)).randomBonusVersus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
+						}
+						
 						decor.remove(i);
 						decor.get(i-1).setName("res/ForestBrokenJar");
 						Sound soundJar = new Sound();
@@ -473,7 +480,13 @@ public class GameInteraction {
 						bombDef.getUp().add(liste[3][j]);
 						bombDef.getUp().add(liste[3][j+1]);
 						//up.add(liste[3][j+2]);
-						((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
+						if(link.size() == 1) {
+							((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
+						}
+						
+						else {
+							((Jar) decor.get(i)).randomBonusVersus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
+						}
 						decor.remove(i);
 						decor.get(i-1).setName("res/ForestBrokenJar");
 						Sound soundJar = new Sound();

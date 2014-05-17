@@ -42,4 +42,27 @@ public class Jar extends Decor {
 		}
 	}
 	
+	public void randomBonusVersus(List<Bonus> bonus, int x, int y) {
+		int bonusType=-1;
+		java.util.Random r=new java.util.Random( ) ; 
+		int random = r.nextInt(100);
+		int random2=r.nextInt(3);
+		if(random%5==0) {
+			bonusType=0;
+		}
+		if(random%10==0) {
+			if(random2==0) {bonusType=7;}
+			else if(random2==1) {bonusType=8;}
+			else{bonusType=3;}
+		}
+		if(random%20 == 0) {
+			if(random2 == 0) {bonusType=1;}
+			else if(random2 == 1) {bonusType=2;}
+			else {bonusType=4;}
+		}
+		if(bonusType>=0) {
+		bonus.add(new Bonus(x,y,imageBonus[bonusType],bonusType));
+		}
+	}
+	
 } 
