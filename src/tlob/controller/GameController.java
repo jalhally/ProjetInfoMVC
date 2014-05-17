@@ -166,6 +166,9 @@ public class GameController {
 					sound.playSound("forest2");
 				}
 			}
+			
+
+			
 			for(int i = 0; i < link.size(); i++){
 				
 				link.get(i).setSpeed(1);
@@ -403,6 +406,14 @@ public class GameController {
 				sound.playSound("gameOver");
 				k = 2;
 			}
+			
+			for (int p = 0; p < level.getDecor().size(); p ++){
+				if (level.getDecor().get(p).getClass() == SpawnerMonster.class)
+					((SpawnerMonster)(level.getDecor().get(p))).spawnMonster(level.getMonster());	
+					System.out.println("swaglord");
+					// blabla my tick
+			}
+			
 			if(interaction.getChangeLevel() == true)
 			{
 				sound.soundEnd(sound.getAudioStream());
