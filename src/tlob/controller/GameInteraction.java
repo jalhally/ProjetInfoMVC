@@ -57,7 +57,7 @@ public class GameInteraction {
 		}
 	}
 	
-	public int touchDecorB(int x1, int y1, int x2, int y2){ 
+	private int touchDecorB(int x1, int y1, int x2, int y2){ 
 		if(Math.abs(x1-x2)<35 && Math.abs(y1-y2)<25){
 			if(x1-x2 < 0){
 				return 0; //GAUCHE
@@ -587,7 +587,7 @@ public class GameInteraction {
 		}
 	}
 	
-	public void moveRandom(Monster monster){
+	private void moveRandom(Monster monster){
 		monster.setR(1);
 		monster.setL(1);
 		monster.setD(1);
@@ -764,7 +764,7 @@ public class GameInteraction {
 		monster.move();
 	}
 	
-	public int fireDirection(Monster monster){
+		private int fireDirection(Monster monster){
 		int direction = -1;
 		int x = 0;
 		int y = 0;
@@ -883,7 +883,7 @@ public class GameInteraction {
 					((Bomber) monster).setBomb(bomb);
 					bomb.get(bomb.size()-1).setDirection(monster.getDirection());
 					monster.setAction(false);
-					monster.setTime(0);
+					((Bomber) monster).setBombFrame(1);
 					monster.setName("res/BomberRun");
 				}
 			}
