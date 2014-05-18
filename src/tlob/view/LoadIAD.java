@@ -67,6 +67,15 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/Forest/Obstacle4"));
 		dataIAD.add(new ImageAnimeDirection("res/Desert/Obstacle4"));
 		dataIAD.add(new ImageAnimeDirection("res/Dunegon/Obstacle4"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/WallU"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/WallD"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/WallR"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/WallL"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/WallUL"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/WallUR"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/WallDL"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/WallDR"));
+
 		dataIAD.add(new ImageAnimeDirection("res/Jar"));
 		dataIAD.add(new ImageAnimeDirection("res/Bomb"));
 		dataIAD.add(new ImageAnimeDirection("res/Monster/BombMonster"));
