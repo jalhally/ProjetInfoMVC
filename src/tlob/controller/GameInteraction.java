@@ -954,6 +954,12 @@ public class GameInteraction {
 			if(monster.getCooldown() == ((Boss) monster).getAttackCd()){
 				((Boss) monster).fireBall(fireBall, link.get(0));
 			}
+			if(monster.getCooldown() == (((Boss) monster).getAttackCd() + 2*((Boss) monster).getAttackCd()/10)){
+				((Boss) monster).fireBall(fireBall, link.get(0));
+			}
+			if(monster.getCooldown() == (((Boss) monster).getAttackCd() + 4*((Boss) monster).getAttackCd()/10)){
+				((Boss) monster).fireBall(fireBall, link.get(0));
+			}
 			if(monster.getCooldown() == ((Boss) monster).getAttackCd()*2){
 				((Boss) monster).thunder(thunder, link.get(0));
 				thunder.get(thunder.size()-1).appear(thunder.get(thunder.size()-1).getXPos(), thunder.get(thunder.size()-1).getYPos());
