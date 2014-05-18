@@ -10,6 +10,19 @@ public class LoadIAD {
 	public LoadIAD(){ //ne pas oublier de load
 		List<ImageAnimeDirection> dataIAD = new ArrayList<ImageAnimeDirection>();
 		this.dataIAD = dataIAD;
+		dataIAD.add(new ImageAnimeDirection("res/Forest/DoorU"));
+		dataIAD.add(new ImageAnimeDirection("res/Forest/DoorR"));
+		dataIAD.add(new ImageAnimeDirection("res/Forest/DoorL"));
+		dataIAD.add(new ImageAnimeDirection("res/Forest/DoorD"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/DoorU"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/DoorR"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/DoorL"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/DoorD"));
+		dataIAD.add(new ImageAnimeDirection("res/Dungeon/DoorU"));
+		dataIAD.add(new ImageAnimeDirection("res/Dungeon/DoorR"));
+		dataIAD.add(new ImageAnimeDirection("res/Dungeon/DoorL"));
+		dataIAD.add(new ImageAnimeDirection("res/Dungeon/DoorD"));
+
 		dataIAD.add(new ImageAnimeDirection("res/2"));
 		dataIAD.add(new ImageAnimeDirection("res/Monster/fire"));
 		dataIAD.add(new ImageAnimeDirection("res/store"));
