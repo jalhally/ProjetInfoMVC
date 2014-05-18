@@ -147,11 +147,11 @@ public class GameController {
 
 				}
 				else{
-					Map map = new Map(16,16,"3","3","3");
+					Map map = new Map(16,16,"1","3","1");
 					level.createLevel(map);
 					createGameController(level);
 					sound.soundEnd(sound.getAudioStream());
-					sound.playSound("boss");
+					sound.playSound("desert1");
 					soundChoose.playSound("menuchoose");
 				}
 				level.setStatus(status);
@@ -488,13 +488,8 @@ public class GameController {
 							}
 						}
 						else if (map.getEnvironment() == "/Dungeon"){
-							int random = r.nextInt(2);
-							if (random == 0){
-								sound.playSound("forest1");
-							}
-							else if(random == 1){
-								sound.playSound("forest2");
-							}
+								sound.playSound("dungeon");
+
 						}
 					}
 				}
