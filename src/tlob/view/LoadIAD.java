@@ -33,29 +33,41 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/1playerbombs"));
 		dataIAD.add(new ImageAnimeDirection("res/2players"));
 		dataIAD.add(new ImageAnimeDirection("res/2playersbombs"));
-		dataIAD.add(new ImageAnimeDirection("res/LinkRun",6));
-		dataIAD.add(new ImageAnimeDirection("res/LinkArrow",6));
-		dataIAD.add(new ImageAnimeDirection("res/RedLinkRun",6));
-		dataIAD.add(new ImageAnimeDirection("res/RedLinkArrow",6));
+		dataIAD.add(new ImageAnimeDirection("res/Link/LinkRun",6));
+		dataIAD.add(new ImageAnimeDirection("res/Link/LinkArrow",6));
+		dataIAD.add(new ImageAnimeDirection("res/RedLink/RedLinkRun",6));
+		dataIAD.add(new ImageAnimeDirection("res/RedLink/RedLinkArrow",6));
 		dataIAD.add(new ImageAnimeDirection("res/Arrow",3));
 		dataIAD.add(new ImageAnimeDirection("res/Deflagration",2));
-		dataIAD.add(new ImageAnimeDirection("res/MeleeRun",4));
-		dataIAD.add(new ImageAnimeDirection("res/RangedRun",5));
-		dataIAD.add(new ImageAnimeDirection("res/RangedArrow",1));
-		dataIAD.add(new ImageAnimeDirection("res/BomberRun",5));
-		dataIAD.add(new ImageAnimeDirection("res/BomberThrow",5));
-		dataIAD.add(new ImageAnimeDirection("res/Thunder",2,true));
-		dataIAD.add(new ImageAnimeDirection("res/boss",6,true));
-		dataIAD.add(new ImageAnimeDirection("res/BackgroundForest"));
-		dataIAD.add(new ImageAnimeDirection("res/LittleTree"));
-		dataIAD.add(new ImageAnimeDirection("res/LittleTreeObstacle"));
+		dataIAD.add(new ImageAnimeDirection("res/Monster/MeleeRun",4));
+		dataIAD.add(new ImageAnimeDirection("res/Monster/RangedRun",5));
+		dataIAD.add(new ImageAnimeDirection("res/Monster/RangedArrow",1));
+		dataIAD.add(new ImageAnimeDirection("res/Monster/BomberRun",5));
+		dataIAD.add(new ImageAnimeDirection("res/Monster/BomberThrow",5));
+		dataIAD.add(new ImageAnimeDirection("res/Monster/Thunder",2,true));
+		dataIAD.add(new ImageAnimeDirection("res/Monster/boss",6,true));
+		dataIAD.add(new ImageAnimeDirection("res/Forest/Background"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/Background"));
+		dataIAD.add(new ImageAnimeDirection("res/Dungeon/Background"));
+		dataIAD.add(new ImageAnimeDirection("res/Forest/Wall"));
+		dataIAD.add(new ImageAnimeDirection("res/Forest/Obstacle1"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/Obstacle1"));
+		dataIAD.add(new ImageAnimeDirection("res/Dungeon/Obstacle1"));
+		dataIAD.add(new ImageAnimeDirection("res/Forest/Obstacle2"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/Obstacle2"));
+		dataIAD.add(new ImageAnimeDirection("res/Dungeon/Obstacle2"));
+		dataIAD.add(new ImageAnimeDirection("res/Forest/Obstacle3"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/Obstacle3"));
+		dataIAD.add(new ImageAnimeDirection("res/Dungeon/Obstacle3"));
+		dataIAD.add(new ImageAnimeDirection("res/Forest/Obstacle4"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/Obstacle4"));
+		dataIAD.add(new ImageAnimeDirection("res/Dunegon/Obstacle4"));
 		dataIAD.add(new ImageAnimeDirection("res/Jar"));
-		dataIAD.add(new ImageAnimeDirection("res/Rocks"));
-		dataIAD.add(new ImageAnimeDirection("res/Rock"));
-		dataIAD.add(new ImageAnimeDirection("res/Root"));
 		dataIAD.add(new ImageAnimeDirection("res/Bomb"));
-		dataIAD.add(new ImageAnimeDirection("res/BombMonster"));
-		dataIAD.add(new ImageAnimeDirection("res/ForestBrokenJar"));
+		dataIAD.add(new ImageAnimeDirection("res/Monster/BombMonster"));
+		dataIAD.add(new ImageAnimeDirection("res/Forest/BrokenJar"));
+		dataIAD.add(new ImageAnimeDirection("res/Desert/BrokenJar"));
+		dataIAD.add(new ImageAnimeDirection("res/Dungeon/BrokenJar"));
 		dataIAD.add(new ImageAnimeDirection("res/Heart"));
 		dataIAD.add(new ImageAnimeDirection("res/BombPlus"));
 		dataIAD.add(new ImageAnimeDirection("res/BombRange"));
@@ -72,6 +84,7 @@ public class LoadIAD {
 	
 	public ImageAnimeDirection stringToIAD(String name){
 		for(int i = 0; i < dataIAD.size(); i++){
+			System.out.println(dataIAD.get(i).getName());
 			if(dataIAD.get(i).getName() == name){
 				return dataIAD.get(i);
 			}

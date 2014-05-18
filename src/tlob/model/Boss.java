@@ -50,7 +50,7 @@ public class Boss extends Monster{
 	
 	public List<Thunder> thunder(List<Thunder> thunder, Link link) // pas sur
 	{
-		thunder.add(new Thunder(link.getXPos(), link.getYPos(), "res/Thunder"));
+		thunder.add(new Thunder(link.getXPos(), link.getYPos(), "res/Monster/Thunder"));
 		return thunder;
 	}
 	

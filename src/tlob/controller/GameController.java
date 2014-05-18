@@ -144,7 +144,7 @@ public class GameController {
 
 				}
 				else{
-					Map map = new Map(16,16,"1","2","2");
+					Map map = new Map(16,16,"1","3","1");
 					level.createLevel(map);
 					createGameController(level);
 					sound.soundEnd(sound.getAudioStream());
@@ -213,22 +213,22 @@ public class GameController {
 				interaction.linkInteraction(link.get(i));
 
 				if(rightPressed){
-					link.get(0).setName("res/LinkRun");
+					link.get(0).setName("res/Link/LinkRun");
 					link.get(0).moveRight();
 				
 				}
 				if(leftPressed){
-					link.get(0).setName("res/LinkRun");
+					link.get(0).setName("res/Link/LinkRun");
 					link.get(0).moveLeft();
 				}
 			
 				if(downPressed){
-					link.get(0).setName("res/LinkRun");
+					link.get(0).setName("res/Link/LinkRun");
 					link.get(0).moveDown();
 				}
 			
 				if(upPressed){
-					link.get(0).setName("res/LinkRun");
+					link.get(0).setName("res/Link/LinkRun");
 					link.get(0).moveUp();
 				}
 			
@@ -272,22 +272,22 @@ public class GameController {
 				}
 			
 				if(rightPressed2){
-					link.get(1).setName("res/RedLinkRun");
+					link.get(1).setName("res/RedLink/RedLinkRun");
 					link.get(1).moveRight();
 				
 				}
 				if(leftPressed2){
-					link.get(1).setName("res/RedLinkRun");
+					link.get(1).setName("res/RedLink/RedLinkRun");
 					link.get(1).moveLeft();
 				}
 			
 				if(downPressed2){
-					link.get(1).setName("res/RedLinkRun");
+					link.get(1).setName("res/RedLink/RedLinkRun");
 					link.get(1).moveDown();
 				}
 			
 				if(upPressed2){
-					link.get(1).setName("res/RedLinkRun");
+					link.get(1).setName("res/RedLink/RedLinkRun");
 					link.get(1).moveUp();
 				}
 			
@@ -358,7 +358,8 @@ public class GameController {
 					interaction.bombInteraction(bomb.get(p));
 					bomb.get(p).tick();
 					if(bomb.get(p).getTime() == 15){ //changer dans deflagration si changement de temps
-						bombDeflagration.add(new BombDeflagration(bomb.get(p).getXPos(),bomb.get(p).getYPos(),"res/Deflagration",bomb.get(p).getPlayer()));
+						bombDeflagration.add(new BombDeflagration(bomb.get(p).getXPos(),bomb.get(p).getYPos(),
+								"res/Deflagration",bomb.get(p).getPlayer()));
 						bomb.remove(p);
 						Sound soundBomb = new Sound();
 						soundBomb.playSound("bomb");
@@ -370,7 +371,8 @@ public class GameController {
 					bombDeflagration.get(p).tick(2);
 					if(bombDeflagration.get(p).getPortee() < link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb()*4+2){
 						System.out.println(link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb() + " portee");
-						interaction.deflagrationAppear(bombDeflagration.get(p), link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb());
+						interaction.deflagrationAppear(bombDeflagration.get(p),
+								link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb());
 						interaction.defInteraction(bombDeflagration.get(p));
 					}
 					else{
@@ -471,22 +473,22 @@ public class GameController {
 					interaction.linkInteraction(link.get(i));
 	
 					if(rightPressed){
-						link.get(0).setName("res/LinkRun");
+						link.get(0).setName("res/Link/LinkRun");
 						link.get(0).moveRight();
 					
 					}
 					if(leftPressed){
-						link.get(0).setName("res/LinkRun");
+						link.get(0).setName("res/Link/LinkRun");
 						link.get(0).moveLeft();
 					}
 				
 					if(downPressed){
-						link.get(0).setName("res/LinkRun");
+						link.get(0).setName("res/Link/LinkRun");
 						link.get(0).moveDown();
 					}
 				
 					if(upPressed){
-						link.get(0).setName("res/LinkRun");
+						link.get(0).setName("res/Link/LinkRun");
 						link.get(0).moveUp();
 					}
 				
@@ -560,7 +562,8 @@ public class GameController {
 						interaction.bombInteraction(bomb.get(p));
 						bomb.get(p).tick();
 						if(bomb.get(p).getTime() == 15){ //changer dans deflagration si changement de temps
-							bombDeflagration.add(new BombDeflagration(bomb.get(p).getXPos(),bomb.get(p).getYPos(),"res/Deflagration",bomb.get(p).getPlayer()));
+							bombDeflagration.add(new BombDeflagration(bomb.get(p).getXPos(),
+									bomb.get(p).getYPos(),"res/Deflagration",bomb.get(p).getPlayer()));
 							bomb.remove(p);
 							Sound soundBomb = new Sound();
 							soundBomb.playSound("bomb");
@@ -580,8 +583,10 @@ public class GameController {
 							}
 						}
 						else{
-							if(bombDeflagration.get(p).getPortee() < link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb()*4+2){
-								interaction.deflagrationAppear(bombDeflagration.get(p), link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb());
+							if(bombDeflagration.get(p).getPortee() < link.get(bombDeflagration.get(p).getPlayer())
+									.getRangeBomb()*4+2){
+								interaction.deflagrationAppear(bombDeflagration.get(p), 
+										link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb());
 								interaction.defInteraction(bombDeflagration.get(p));
 							}
 							else{

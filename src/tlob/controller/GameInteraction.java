@@ -156,7 +156,8 @@ public class GameInteraction {
 		link.setU(1);
 		
 		for(int i = 0; i < decor.size(); i++){
-			if(touchDecor(link.getXPos(), link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != -1 && decor.get(i).getClass() == Door.class){
+			if(touchDecor(link.getXPos(), link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) 
+					!= -1 && decor.get(i).getClass() == Door.class){
 				int line = ((Door) decor.get(i)).getLine();
 				int column = ((Door) decor.get(i)).getColumn();
 				int level = ((Door) decor.get(i)).getLevel();
@@ -446,7 +447,7 @@ public class GameInteraction {
 							((Jar) decor.get(i)).randomBonusVersus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						}
 						decor.remove(i);
-						decor.get(i-1).setName("res/ForestBrokenJar");
+						decor.get(i-1).setName("res" + map.getEnvironment() + "/BrokenJar");
 						Sound soundJar = new Sound();
 						soundJar.playSound("jarbroken");
 					}
@@ -468,7 +469,7 @@ public class GameInteraction {
 							((Jar) decor.get(i)).randomBonusVersus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						}
 						decor.remove(i);
-						decor.get(i-1).setName("res/ForestBrokenJar");
+						decor.get(i-1).setName("res" + map.getEnvironment() + "/BrokenJar");
 						Sound soundJar = new Sound();
 						soundJar.playSound("jarbroken");
 					}
@@ -491,7 +492,7 @@ public class GameInteraction {
 						}
 						
 						decor.remove(i);
-						decor.get(i-1).setName("res/ForestBrokenJar");
+						decor.get(i-1).setName("res" + map.getEnvironment() + "/BrokenJar");
 						Sound soundJar = new Sound();
 						soundJar.playSound("jarbroken");						
 					}
@@ -514,7 +515,7 @@ public class GameInteraction {
 							((Jar) decor.get(i)).randomBonusVersus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						}
 						decor.remove(i);
-						decor.get(i-1).setName("res/ForestBrokenJar");
+						decor.get(i-1).setName("res" + map.getEnvironment() + "/BrokenJar");
 						Sound soundJar = new Sound();
 						soundJar.playSound("jarbroken");
 					}
@@ -896,7 +897,7 @@ public class GameInteraction {
 				monster.setAction(true);
 				monster.setDirection(fireDirection(monster));
 				monster.setActualFrame(1);
-				monster.setName("res/RangedArrow");
+				monster.setName("res/Monster/RangedArrow");
 				}
 			if(monster.getAction() == true){
 				monster.tick(5);
@@ -905,7 +906,7 @@ public class GameInteraction {
 					monster.setAction(false);
 					monster.setTime(0);
 					monster.setCooldown(0);
-					monster.setName("res/RangedRun");
+					monster.setName("res/Monster/RangedRun");
 				}
 			}
 			else{
@@ -917,7 +918,7 @@ public class GameInteraction {
 			if(fireDirection(monster) != -1 && monster.getCooldown() > 40){
 				monster.setAction(true);
 				monster.setDirection(fireDirection(monster));
-				monster.setName("res/BomberThrow");
+				monster.setName("res/Monster/BomberThrow");
 				}
 			if(monster.getAction() == true){
 				((Bomber) monster).bombTick(4,8);
@@ -927,7 +928,7 @@ public class GameInteraction {
 					monster.setAction(false);
 					((Bomber) monster).setBombFrame(1);
 					monster.setCooldown(0);
-					monster.setName("res/BomberRun");
+					monster.setName("res/Monster/BomberRun");
 				}
 			}
 			else{
