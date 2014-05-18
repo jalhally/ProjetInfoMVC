@@ -991,14 +991,14 @@ public class GameInteraction {
 				monster.setInv(1);
 				monster.setActualFrame(1);
 				monster.setSpeed(2);
-				monster.setName("res/underground");
+				monster.setName("res/Monster/underground");
 			}
 			if(((Underground) monster).getUnderground() == false && Math.abs(monster.getXPos() - link.get(0).getXPos()) > 150 && Math.abs(monster.getYPos() - link.get(0).getYPos()) > 150){
 				((Underground) monster).setUnderground(true);
 				monster.setInvicible();
 				monster.setActualFrame(1);
 				monster.setSpeed(4);
-				monster.setName("res/hidden");
+				monster.setName("res/Monster/hidden");
 			}
 			else{
 				moveRandom(monster);

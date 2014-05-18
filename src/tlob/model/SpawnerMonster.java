@@ -26,18 +26,18 @@ public class SpawnerMonster extends Decor {
 			int random = r.nextInt(4);	
 			switch(random){
 			case 0:
-				monster.add(new Melee(2,this.xPos,this.yPos,1,3,"res/MeleeRun"));
+				monster.add(new Melee(2,this.xPos,this.yPos,1,3,"res/Monster/MeleeRun"));
 				monster.get(monster.size()-1).setSpawner(true);
 				break;
 			case 1:
-				monster.add(new Ranged(1,this.xPos,this.yPos,1,3,"res/RangedRun"));
+				monster.add(new Ranged(1,this.xPos,this.yPos,1,3,"res/Monster/RangedRun"));
 				monster.get(monster.size()-1).setSpawner(true);
 				break;
 			//case 2:
 				//monster.add(new Underground(2,this.xPos,this.yPos,1,3,"res/melee"));
 				//break;
 			case 3:
-				monster.add(new Bomber(2,this.xPos,this.yPos,1,3,"res/BomberRun"));
+				monster.add(new Bomber(2,this.xPos,this.yPos,1,3,"res/Monster/BomberRun"));
 				monster.get(monster.size()-1).setSpawner(true);
 				break;
 			}

@@ -195,7 +195,7 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 				
 			case '3':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new SpawnerMonster(40*i,40*j,"res/fireSpawner"));//SpawnerFireBall
+				decor.add(new SpawnerFireBall(40*i,40*j,"res/fireSpawner"));//SpawnerFireBall
 				break;
 				
 			case '4':
@@ -206,12 +206,11 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 			case '6':
 				decor.add(new Hole(40*i,40*j,null)); //Hole
 				break;
-			/*
+			
 			case '7':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new MovingTrap(40*i,40*j,null)); //MovingTrap
 				break;
-			*/
+			
 			case '8':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
 				decor.add(new Door(40*i,40*j,"res/2",false,1,0,0)); //DoorUp
@@ -330,10 +329,10 @@ decor.add(new Wall(40*i,40*j,null));*/
 						monster.add(new Melee(2,40*i,40*j,1,3,"res/Monster/MeleeRun"));
 						break;
 					case 'f':
-						monster.add(new Underground(1,40*i,40*j,4,3,"res/hidden")); //Underground
+						monster.add(new Underground(1,40*i,40*j,4,3,"res/Monster/hidden")); //Underground
 						break;
 					case '7':
-						monster.add(new MovingTrap(1,40*i,40*j,2,3,"res/Trap")); //Underground
+						monster.add(new MovingTrap(1,40*i,40*j,2,3,"res/Monster/Trap")); //Underground
 						break;
 						}
 					}

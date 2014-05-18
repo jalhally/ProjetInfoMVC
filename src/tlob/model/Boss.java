@@ -31,20 +31,20 @@ public class Boss extends Monster{
 	
 	public List<FireBall> fireBall(List<FireBall> fireBall, Link link) // pas sur
 	{
-		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/fire", link.getXPos()+10, link.getYPos()+10,15*40,15*40));
+		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/Monster/fire", link.getXPos()+10, link.getYPos()+10,15*40,15*40));
 		return fireBall;
 	}
 	
 	public List<FireBall> fireBall2(List<FireBall> fireBall) // pas sur
 	{
-		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/fire", getXPos()+16, getYPos()+10,15*40,15*40));
-		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/fire", getXPos()+4, getYPos()+10,15*40,15*40));
-		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/fire", getXPos()+10, getYPos()+16,15*40,15*40));
-		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/fire", getXPos()+10, getYPos()+4,15*40,15*40));
-		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/fire", getXPos()+16, getYPos()+16,15*40,15*40));
-		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/fire", getXPos()+16, getYPos()+4,15*40,15*40));
-		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/fire", getXPos()+4, getYPos()+16,15*40,15*40));
-		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/fire", getXPos()+4, getYPos()+4,15*40,15*40));
+		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/Monster/fire", getXPos()+16, getYPos()+10,15*40,15*40));
+		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/Monster/fire", getXPos()+4, getYPos()+10,15*40,15*40));
+		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/Monster/fire", getXPos()+10, getYPos()+16,15*40,15*40));
+		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/Monster/fire", getXPos()+10, getYPos()+4,15*40,15*40));
+		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/Monster/fire", getXPos()+16, getYPos()+16,15*40,15*40));
+		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/Monster/fire", getXPos()+16, getYPos()+4,15*40,15*40));
+		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/Monster/fire", getXPos()+4, getYPos()+16,15*40,15*40));
+		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/Monster/fire", getXPos()+4, getYPos()+4,15*40,15*40));
 		return fireBall;
 	}
 	

@@ -44,6 +44,7 @@ public class ImageAnimeDirection {
 			liste.add(Toolkit.getDefaultToolkit().getImage(nomBase + Integer.toString(i) + ".png"));
 		}
 		liste.add(Toolkit.getDefaultToolkit().getImage("res/void.png"));
+		liste.add(Toolkit.getDefaultToolkit().getImage("res/ice.png"));
 	}
 	
 	public String getName(){
