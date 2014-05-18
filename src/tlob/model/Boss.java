@@ -5,7 +5,7 @@ import java.util.List;
 public class Boss extends Monster{	
 	
 	private int bossTick = 0;
-	private int attackCd = 100;
+	private int attackCd = 80;
 	private boolean rage = false;
 
 	public Boss (int lifePoint, int xPos, int yPos, int speed,int direction,String name)

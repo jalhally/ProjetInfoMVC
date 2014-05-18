@@ -21,7 +21,6 @@ public class SpawnerMonster extends Decor {
 		else{
 			setCooldown(0);
 		}
-		System.out.println(numberMonster + " " + getCooldown());
 		if(getCooldown() == 40 && numberMonster < 5){
 			java.util.Random r=new java.util.Random( ) ; 
 			int random = r.nextInt(4);	

@@ -938,7 +938,7 @@ public class GameInteraction {
 		else if(monster.getClass() == Boss.class){
 			if(monster.getLifePoint() < 3 && ((Boss) monster).getRage() == false){
 				System.out.println("je rage");
-				((Boss) monster).setAttackCd(50);
+				((Boss) monster).setAttackCd(40);
 				((Boss) monster).setBossTick(0);
 				monster.setCooldown(0);
 				((Boss) monster).setRage(true);
@@ -985,11 +985,11 @@ public class GameInteraction {
 	}
 	
 	public void thunderInteraction(Thunder thunder){
-		thunder.tickThunder(50);
+		thunder.tickThunder(40);
 		if(thunder.getActualFrame() == 2){
 			for(int i = 0; i < link.size(); i++){
 				for(int j = 0; j < 5; j++){
-					if(touchDecor(link.get(i).getXPos(), link.get(i).getYPos(), thunder.getListPos().get(j)[0], thunder.getListPos().get(j)[1]) != -1){
+					if(touchDecorB(link.get(i).getXPos(), link.get(i).getYPos(), thunder.getListPos().get(j)[0], thunder.getListPos().get(j)[1]) != -1){
 						link.get(i).getDamage(1);
 					}
 				}
