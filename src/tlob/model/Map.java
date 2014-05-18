@@ -189,10 +189,8 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 					decor.add(new Wall(40*i,40*j,"res" + environment + "/Wall"));
 				}
 				else{
-					if (i ==0 && j == 0){	// haut gauche
+					if (i ==0 && j == 0)	// haut gauche
 						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallUL"));	
-						System.out.println(decor.size());
-					}
 					
 					else if (i == 14 && j == 0) // bas gauche
 						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallUR"));	
@@ -205,10 +203,6 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 					
 					else if (i == 0 && j !=0 ) // haut
 						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallL"));	
-					
-
-					
-
 					
 					else if ( i == 14 && j != 0) //bas
 						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallR"));
