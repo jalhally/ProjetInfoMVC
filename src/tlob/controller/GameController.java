@@ -488,8 +488,13 @@ public class GameController {
 							}
 						}
 						else if (map.getEnvironment() == "/Dungeon"){
+							int random = r.nextInt(2);
+							if (random == 0){
 								sound.playSound("dungeon");
-
+							}
+							else if(random == 1){
+								sound.playSound("dungeon1");
+							}
 						}
 					}
 				}
