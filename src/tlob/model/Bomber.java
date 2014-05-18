@@ -35,7 +35,7 @@ public class Bomber extends Monster {
 				k = 0;
 			}
 		}
-		if (k == 1 && getInvincible() == 1){
+		if (k == 1){
 			liste.add( new Bomb(x+5, y+5, "res/Monster/BombMonster", -1)) ;
 		}
 		return liste;
