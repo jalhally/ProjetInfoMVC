@@ -768,7 +768,7 @@ public class GameController {
 			else if (enterPressed && pressedOnce){ 
 				switch (k){
 				case(1): // fleche
-					if(link.get(0).getNumberCoin() - 10 >= 0){
+					if(link.get(0).getNumberCoin() - 10 >= 0 && link.get(0).getNumberArrow()<99){
 						link.get(0).setNumberCoin(link.get(0).getNumberCoin() - 10);
 						link.get(0).setNumberArrow(link.get(0).getNumberArrow() + 1);
 						soundChange.playSound("shopbuy");
@@ -779,7 +779,7 @@ public class GameController {
 					break;
 				
 				case(2): //bombrange
-					if(link.get(0).getNumberCoin() - 10 >= 0){
+					if(link.get(0).getNumberCoin() - 10 >= 0 && link.get(0).getRangeBomb()<9){
 						link.get(0).setNumberCoin(link.get(0).getNumberCoin() - 30);
 						link.get(0).setRangeBomb(link.get(0).getRangeBomb() + 1);
 						soundChange.playSound("shopbuy");
@@ -790,7 +790,7 @@ public class GameController {
 					break;
 					
 				case(3): // bomb
-					if(link.get(0).getNumberCoin() - 10 >= 0){
+					if(link.get(0).getNumberCoin() - 10 >= 0 && link.get(0).getNumberBomb()<9){
 						link.get(0).setNumberCoin(link.get(0).getNumberCoin() - 30);
 						link.get(0).setNumberBomb(link.get(0).getNumberBomb()+1);
 						soundChange.playSound("shopbuy");
@@ -802,7 +802,7 @@ public class GameController {
 						break;
 				
 				case(4)://speed
-					if(link.get(0).getNumberCoin() - 10 >= 0){
+					if(link.get(0).getNumberCoin() - 10 >= 0 && link.get(0).getSpeed()<6){
 						link.get(0).setNumberCoin(link.get(0).getNumberCoin() - 50);
 						link.get(0).setSpeed(link.get(0).getSpeed()+1);
 						soundChange.playSound("shopbuy");
@@ -813,7 +813,7 @@ public class GameController {
 						break;
 				
 				case(5)://heart
-					if(link.get(0).getNumberCoin() - 10 >= 0){
+					if(link.get(0).getNumberCoin() - 10 >= 0 && link.get(0).getMaxLife()<5){
 						link.get(0).setNumberCoin(link.get(0).getNumberCoin() - 100);
 						link.get(0).setMaxLife(link.get(0).getMaxLife() + 1);
 						link.get(0).setLifePoint(link.get(0).getMaxLife());							
