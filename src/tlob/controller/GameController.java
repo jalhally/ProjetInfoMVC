@@ -551,7 +551,7 @@ public class GameController {
 				if(monster.size() > 0){
 					for(int i = 0; i < monster.size(); i++){
 						if(monster.get(i).getInvincible() == 0 && monster.get(i).getClass() != MovingTrap.class 
-								&& (monster.get(i).getClass() == Underground.class && ((Underground) monster.get(i)).getUnderground() == false)){
+								||(monster.get(i).getClass() == Underground.class && ((Underground) monster.get(i)).getUnderground() == false)){
 							monster.get(i).tickInvincible();
 						}
 						interaction.monsterInteraction(monster.get(i));

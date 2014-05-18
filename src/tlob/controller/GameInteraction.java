@@ -937,6 +937,7 @@ public class GameInteraction {
 				((Bomber) monster).bombTick(4,8);
 				if(((Bomber) monster).getBombFrame() == 4){
 					((Bomber) monster).setBomb(bomb);
+					System.out.println(bomb.size());
 					bomb.get(bomb.size()-1).setDirection(monster.getDirection());
 					monster.setAction(false);
 					((Bomber) monster).setBombFrame(1);
