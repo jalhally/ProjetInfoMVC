@@ -14,6 +14,8 @@ public class GameInteraction {
 	private List<Bomb> bomb;
 	private List<Bonus> bonus;
 	private List<Arrow> arrow;
+	private List<FireBall> fireBall;
+	private List<Thunder> thunder;
 	private Map map;
 	private boolean changeLevel = false;
 	
@@ -24,6 +26,8 @@ public class GameInteraction {
 		this.bomb = level.getBomb();
 		this.bonus = level.getBonus();
 		this.arrow = level.getArrow();
+		this.fireBall = level.getFireBall();
+		this.thunder = level.getThunder();
 		this.map = level.getMap();
 	}
 	
@@ -150,6 +154,7 @@ public class GameInteraction {
 		link.setL(1);
 		link.setD(1);
 		link.setU(1);
+		
 		for(int i = 0; i < decor.size(); i++){
 			if(touchDecor(link.getXPos(), link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != -1 && decor.get(i).getClass() == Door.class){
 				int line = ((Door) decor.get(i)).getLine();
@@ -930,5 +935,107 @@ public class GameInteraction {
 			}
 				
 		}
+		else if(monster.getClass() == Boss.class){
+			monster.cdTick(1);
+			if(monster.getCooldown() == 50){
+				((Boss) monster).fireBall(fireBall, link.get(0));
+			}
+			if(monster.getCooldown() == 100){
+				((Boss) monster).thunder(thunder, link.get(0));
+				thunder.get(thunder.size()-1).appear(thunder.get(thunder.size()-1).getXPos(), thunder.get(thunder.size()-1).getYPos());
+			}
+			if(monster.getCooldown() == 150){
+				((Boss) monster).fireBall2(fireBall);
+			}
+			if(monster.getCooldown() == 200){
+				teleportation(monster);
+				monster.setCooldown(0);
+			}
+
+		}
+	}
+	
+	public void fireBallInteraction(FireBall fireBall){
+		fireBall.move();
+		for(int i = 0; i < link.size(); i++){
+			if(Math.sqrt(Math.pow((link.get(i).getXPos()+ 10 - fireBall.getXPos()),2) + Math.pow((link.get(i).getYPos() +10  - fireBall.getYPos()),2))<20){
+				link.get(i).getDamage(1);
+			}
+		}
+	}
+	
+	public void thunderInteraction(Thunder thunder){
+		thunder.tickThunder(50);
+		if(thunder.getActualFrame() == 2){
+			for(int i = 0; i < link.size(); i++){
+				for(int j = 0; j < 5; j++){
+					if(touchDecor(link.get(i).getXPos(), link.get(i).getYPos(), thunder.getListPos().get(j)[0], thunder.getListPos().get(j)[1]) != -1){
+						link.get(i).getDamage(1);
+					}
+				}
+			}
+		}
+	}
+	
+	private void teleportation(Monster monster){
+		java.util.Random r=new java.util.Random();
+		int randomX = r.nextInt(12);
+		int randomY = r.nextInt(12);
+		while(caseOccupied((randomX+2)*40,(randomY+2)*40)){
+			randomX = r.nextInt(12);
+			randomY = r.nextInt(12);
+			System.out.println((randomX+2)*40 + " " + (randomY+2)*40);
+		}
+		monster.setXPos((randomX+2)*40);
+		monster.setYPos((randomY+2)*40);
+	}
+	
+	private boolean caseOccupied(int xPos, int yPos){
+		int x = 0;
+		int y = 0;
+		
+		for(int i = 0; i < link.size(); i++){
+			if(link.get(i).getXPos()%40 <= 20){
+				x = link.get(i).getXPos() - link.get(i).getXPos()%40;
+			}
+			else{
+				x = link.get(i).getXPos() + 40 - link.get(i).getXPos()%40;
+			}
+			if(link.get(i).getYPos()%40 <= 20){
+				y = link.get(i).getYPos() - link.get(i).getYPos()%40;
+			}
+			else{
+				y = link.get(i).getYPos() + 40 - link.get(i).getYPos()%40;
+			}
+			if(xPos == x && yPos == y){
+				return true;
+			}
+		}
+
+		if(monster.size() > 0){
+			for(int i = 0; i < monster.size(); i++){
+				if(monster.get(i).getXPos()%40 <= 20){
+					x = monster.get(i).getXPos() - monster.get(i).getXPos()%40;
+				}
+				else{
+					x = monster.get(i).getXPos() + 40 - monster.get(i).getXPos()%40;
+				}
+				if(monster.get(i).getYPos()%40 <= 20){
+					y = monster.get(i).getYPos() - monster.get(i).getYPos()%40;
+				}
+				else{
+					y = monster.get(i).getYPos() + 40 - monster.get(i).getYPos()%40;
+				}
+				if(xPos == x && yPos == y){
+					return true;
+				}
+			}
+		}
+		for(int i = 0; i < decor.size(); i++){
+			if(xPos == decor.get(i).getXPos() && yPos == decor.get(i).getYPos() && decor.get(i).getClass() != Floor.class){
+				return true;
+			}
+		}
+		return false;
 	}
 }

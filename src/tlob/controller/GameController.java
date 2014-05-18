@@ -37,6 +37,8 @@ public class GameController {
 	private List<Monster> monster;
 	private List<Bomb> bomb;
 	private List<Arrow> arrow;
+	private List<FireBall> fireBall;
+	private List<Thunder> thunder;
 	private List<BombDeflagration> bombDeflagration;
 	private List<Menu> menu;
 	private List<Menu> gameOver;
@@ -63,6 +65,8 @@ public class GameController {
 		this.bomb = level.getBomb();
 		this.arrow = level.getArrow();
 		this.bombDeflagration = level.getBombDeflagration();
+		this.fireBall = level.getFireBall();
+		this.thunder = level.getThunder();
 		this.interaction = new GameInteraction(level);
 	}
 		
@@ -348,18 +352,8 @@ public class GameController {
 				}
 			}
 			
-			/*
-			if(feu.size()>0){
-				for(int p = 0; p < feu.size(); p++){
-					feu.get(p).tick();
-					feu.get(p).move();
-					//System.out.println(feu.get(p).getXPos()+ " " + feu.get(p).getYPos());
-						if(feu.get(p).getList().size() < feu.get(p).getPos()-1){
-							feu.remove(p);
-						}
-				}
-			}
-			*/
+
+			
 		}
 	
 		else if(status == 5){
@@ -410,8 +404,13 @@ public class GameController {
 			}
 			
 			for (int p = 0; p < level.getDecor().size(); p ++){
-				if (level.getDecor().get(p).getClass() == SpawnerMonster.class)
+				if(level.getDecor().get(p).getClass() == SpawnerMonster.class){
 					((SpawnerMonster)(level.getDecor().get(p))).spawnMonster(level.getMonster());	
+				}
+				if(level.getDecor().get(p).getClass() == SpawnerFireBall.class){
+					((SpawnerFireBall)(level.getDecor().get(p))).fireBall(fireBall, link.get(0));
+				}
+				
 			}
 			
 			if(interaction.getChangeLevel() == true)
@@ -564,20 +563,23 @@ public class GameController {
 					}
 				}
 				
-				
-				
-				/*
-				if(feu.size()>0){
-					for(int p = 0; p < feu.size(); p++){
-						feu.get(p).tick();
-						feu.get(p).move();
-						//System.out.println(feu.get(p).getXPos()+ " " + feu.get(p).getYPos());
-							if(feu.get(p).getList().size() < feu.get(p).getPos()-1){
-								feu.remove(p);
+				if(fireBall.size()>0){
+					for(int p = 0; p < fireBall.size(); p++){
+						fireBall.get(p).tick();
+						interaction.fireBallInteraction(fireBall.get(p));
+							if(fireBall.get(p).getList().size() < fireBall.get(p).getPos()-1){
+								fireBall.remove(p);
 							}
 					}
 				}
-				*/
+				if(thunder.size()>0){
+					for(int p = 0; p < thunder.size(); p++){
+						interaction.thunderInteraction(thunder.get(p));
+						if(thunder.get(p).getTickThunder() == 100){
+							thunder.remove(p);
+						}
+					}
+				}
 			}
 		}
 		else if(status == 3){

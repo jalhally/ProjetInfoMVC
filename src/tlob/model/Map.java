@@ -184,7 +184,7 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 				
 			case '3':
 				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
-				decor.add(new SpawnerFireBalls(40*i,40*j,null)); //SpawnerFireBall
+				decor.add(new SpawnerFireBall(40*i,40*j,null)); //SpawnerFireBall
 				break;
 				
 			case '4':
@@ -348,7 +348,7 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 		else if(decor.get(i).getClass() == Jar.class)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '2';
 		
-		else if(decor.get(i).getClass() == SpawnerFireBalls.class)
+		else if(decor.get(i).getClass() == SpawnerFireBall.class)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '3';
 		
 		else if(decor.get(i).getClass() == SpawnerMonster.class)

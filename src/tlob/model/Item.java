@@ -1,11 +1,13 @@
 package tlob.model;
 
-public class Item{
+public class Item implements Tick{
 	private int xPos;
 	private int yPos;
 	private String name;
-	private int myTick;
 	private int actualFrame = 1;
+	private int t = 0;
+	private int myTick =0;
+	private int tick = 0;
 	public Item(int xPos,int yPos,String name){
 		this.xPos = xPos;
 		this.yPos = yPos;
@@ -78,6 +80,34 @@ public class Item{
 	public void setName(String name)
 	{
 		this.name=name;
+	}
+
+	public int getTime(){
+		return this.t;
+	}
+	
+	public void setTime(int t){
+		this.t = t;
+	}
+	
+	@Override
+	public void tick(int constante) {
+		tick++;
+		if(tick == constante) {
+			t++;
+			tick = 0;
+		}
+	}
+
+	@Override
+	public void tick(int frames, int constante) {
+		myTick++;
+		if(myTick == constante) {
+			actualFrame++;
+			myTick = 0;
+			if(actualFrame == frames +1)
+				this.actualFrame = 1;
+		}
 	}
 
 }

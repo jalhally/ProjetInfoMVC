@@ -5,6 +5,8 @@ public class Decor{
 	protected int xPos;
 	protected int yPos;
 	protected String name;
+	private int cooldown = 0;
+	private int tick = 0;
 	
 
 	public Decor(int xPos, int yPos, String name) {
@@ -39,4 +41,20 @@ public class Decor{
 		this.name=name;
 	}
 	
+	public void setCooldown(int i) {
+		this.cooldown = i;
+		
+	}
+
+	public int getCooldown() {
+		return this.cooldown;
+	}
+	
+	public void cdTick(int constante) {
+		tick++;
+		if(tick == constante) {
+			cooldown++;
+			tick = 0;
+		}
+	}
 }

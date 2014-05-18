@@ -13,6 +13,8 @@ public class Level{
 	private List<BombDeflagration> bombDeflagration;
 	private List<Arrow> arrow;
 	private List<Bonus> bonus;
+	private List<FireBall> fireBall;
+	private List<Thunder> thunder;
 	private List<Menu> menu;
 	private List<Menu> gameOver;
 	private List<Menu> store;
@@ -39,10 +41,14 @@ public class Level{
 		link.get(0).setNumberBomb(5);
 		link.get(0).setRangeBomb(4);
 		
+		monster.add(new Boss(5,7*40, 7*40,2,2,"res/RangedRun"));
+		
 		bomb = new ArrayList<Bomb>();
 		arrow = new ArrayList<Arrow>();
 		bonus = new ArrayList<Bonus>();
 		bombDeflagration = new ArrayList<BombDeflagration>();
+		fireBall = new ArrayList<FireBall>();
+		thunder = new ArrayList<Thunder>();
 	}
 
 	public Map getMap(){
@@ -90,7 +96,15 @@ public class Level{
 	public List<Bonus> getBonus(){
 		return this.bonus;
 	}
-
+	
+	public List<FireBall> getFireBall(){
+		return this.fireBall;
+	}
+	
+	public List<Thunder> getThunder(){
+		return this.thunder;
+	}
+	
 	public List<Menu> getMenu() {
 		return this.menu;
 	}
