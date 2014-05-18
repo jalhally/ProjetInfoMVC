@@ -184,7 +184,7 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 				
 			case '1':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Wall(40*i,40*j,"res" + environment +"/Wall"));
+				decor.add(new Wall(40*i,40*j,"res/Forest/Wall"));
 				break;
 				
 			case '2':
@@ -347,10 +347,11 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 		if(decor.get(i).getClass() == Floor.class)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '0';
 		
-		else if(decor.get(i).getClass() == Wall.class && (decor.get(i).getName() == "res" + environment +"/Obstacle1"
-					|| decor.get(i).getName() == "res" + environment +"/Obstacle2" 
-					|| decor.get(i).getName() == "res" + environment +"/Obstacle3"
-					|| decor.get(i).getName() == "res" + environment +"/Obstacle4"))
+		else if(decor.get(i).getClass() == Wall.class && 
+				(("res" + environment +"/Obstacle1").contentEquals(decor.get(i).getName()))
+				|| (("res" + environment +"/Obstacle2").contentEquals(decor.get(i).getName()))
+				|| (("res" + environment +"/Obstacle3").contentEquals(decor.get(i).getName()))
+				|| (("res" + environment +"/Obstacle4").contentEquals(decor.get(i).getName())))
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'r';		
 		
 		else if(decor.get(i).getClass() == Wall.class)
