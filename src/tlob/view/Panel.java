@@ -20,6 +20,7 @@ public class Panel extends JPanel{
 	Image heart = Toolkit.getDefaultToolkit().getImage("res/Heart.png");
 	Image statusBar = Toolkit.getDefaultToolkit().getImage("res/StatusBar.png");
 	Image statusBarVersus = Toolkit.getDefaultToolkit().getImage("res/StatusBarVersus.png");
+	Image statusBarVersus2 = Toolkit.getDefaultToolkit().getImage("res/StatusBarVersus2.png");
 	Image sideBackground = Toolkit.getDefaultToolkit().getImage("res/SideBackground.png");
 	Image redlinkwin = Toolkit.getDefaultToolkit().getImage("res/redlinkwin.png");
 	Image linkwin = Toolkit.getDefaultToolkit().getImage("res/linkwin.png");
@@ -244,7 +245,7 @@ public class Panel extends JPanel{
 			g.drawImage(sideBackground,15*40+decX,70,null);
 			
 			g.drawImage(statusBarVersus,0,0,null);
-			g.drawImage(statusBarVersus,400,0,null);
+			g.drawImage(statusBarVersus2,400,0,null);
 			
 			for(int i =0; i<15;i++){
 				for(int j=0;j<15;j++) {

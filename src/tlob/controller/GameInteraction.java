@@ -177,9 +177,15 @@ public class GameInteraction {
 					tableau = map.loadRoom();
 				}
 				else if (level == 1){
-					//map.setLevel(Integer.toString(level + Integer.parseInt(map.getLevel())));
 					map.setRoomColumn("1");
 					map.setRoomLine("3");
+					map.setLevel(Integer.toString(level + Integer.parseInt(map.getLevel())));
+					if (map.getLevel().contentEquals("2")){
+						map.setEnvironment("/Forest");
+					}
+					if (map.getLevel().contentEquals("3")){
+						map.setEnvironment("/Dungeon");
+					}
 					tableau = map.loadRoom();
 					changeLevel = true;
 					link.setXPos(18*15+10);

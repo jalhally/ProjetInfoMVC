@@ -50,6 +50,7 @@ public class GameController {
 	private boolean pressedOnce = true; // premiere foi qu on appuie
 	private Sound sound = new Sound();
 	private boolean escapePressed = false;
+	private Map map;
 	
 	public GameController(Level level){
 		this.level = level;
@@ -68,6 +69,7 @@ public class GameController {
 		this.fireBall = level.getFireBall();
 		this.thunder = level.getThunder();
 		this.interaction = new GameInteraction(level);
+		this.map = level.getMap();
 	}
 		
 	public void setLink (List<Link> link){
@@ -149,7 +151,7 @@ public class GameController {
 					level.createLevel(map);
 					createGameController(level);
 					sound.soundEnd(sound.getAudioStream());
-					sound.playSound("forest1");
+					sound.playSound("desert1");
 					soundChoose.playSound("menuchoose");
 				}
 				level.setStatus(status);
@@ -453,13 +455,34 @@ public class GameController {
 			else{
 				if(sound.isFinished(sound.getAudioStream()))
 				{
-					int random = r.nextInt(2);
-					if (random == 0){
-						sound.playSound("forest1");
+					if (map.getEnvironment() == "/Desert"){
+						int random = r.nextInt(2);
+						if (random == 0){
+							sound.playSound("desert");
+						}
+						else if(random == 1){
+							sound.playSound("desert1");
+						}
 					}
-					else if(random == 1){
-						sound.playSound("forest2");
+					else if (map.getEnvironment() == "/Forest"){
+						int random = r.nextInt(2);
+						if (random == 0){
+							sound.playSound("forest1");
+						}
+						else if(random == 1){
+							sound.playSound("forest2");
+						}
 					}
+					else if (map.getEnvironment() == "/Dungeon"){
+						int random = r.nextInt(2);
+						if (random == 0){
+							sound.playSound("forest1");
+						}
+						else if(random == 1){
+							sound.playSound("forest2");
+						}
+					}
+					
 				}
 				
 				for(int i = 0; i < link.size(); i++){
@@ -803,10 +826,17 @@ public class GameController {
 					
 				case(6):
 					soundChoose.playSound("menuchoose");
+					System.out.println(map.getLevel());
+					if (map.getLevel().contentEquals("2")){
+						sound.soundEnd(sound.getAudioStream());
+						sound.playSound("forest2");
+					}
+					else if(map.getLevel().contentEquals("3")){
+						sound.soundEnd(sound.getAudioStream());
+						sound.playSound("forest2");
+						}
 					status = 2;
 					level.setStatus(status);
-					sound.soundEnd(sound.getAudioStream());
-					sound.playSound("forest2");
 					break;
 				}
 					
@@ -818,7 +848,7 @@ public class GameController {
 	}
 	
 	private void deleteCopy() {
-		for (int i = 1; i <= 1; i ++){
+		for (int i = 1; i <= 3; i ++){
 			for(int j = 1; j <= 3; j++){
 				for (int k = 1; k <= 3;k ++){
 					File f = new File("res/" + i + "-" + j + "-" + k + "copy.txt");

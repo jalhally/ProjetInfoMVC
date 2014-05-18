@@ -28,7 +28,6 @@ public class Map {
 	Image rock = Toolkit.getDefaultToolkit().getImage("res/Rock");
 	Image root = Toolkit.getDefaultToolkit().getImage("res/Root");
 	*/
-	String obstacles[]={"res" + environment + "/Obstacle1", "res" + environment + "/Obstacle2","res" + environment + "/Obstacle3","res" + environment + "/Obstacle4"};
 	
 	
 	public Map(int length, int width, String level, String roomLine, String roomColumn)
@@ -172,7 +171,9 @@ public char[][] loadRoom(){
 
 	
 public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
-	ArrayList<Decor> decor = new ArrayList<Decor>(); 
+	ArrayList<Decor> decor = new ArrayList<Decor>();
+	String obstacles[]={"res" + environment + "/Obstacle1", "res" + environment 
+			+ "/Obstacle2","res" + environment + "/Obstacle3","res" + environment + "/Obstacle4"};
 		
 	for(int i = 0; i < map.length; i++){
 		for (int j = 0; j < map[i].length;j++)
