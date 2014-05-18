@@ -69,6 +69,7 @@ public class Panel extends JPanel{
 					}						
 				}					
 			}
+			g.drawImage(linkwin,0,0,null);
 		}
 		
 		else if (level.getStatus() == 4){
