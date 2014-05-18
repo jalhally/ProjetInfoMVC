@@ -412,6 +412,7 @@ public class GameController {
 		}
 		
 		else if(status == 2){
+			System.out.println(level.getMonster().size());
 			if (pausePressed && pressedOnce){
 				status = 5;
 				level.setStatus(status);
