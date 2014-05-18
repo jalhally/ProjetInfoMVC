@@ -156,7 +156,8 @@ public class GameInteraction {
 		link.setU(1);
 		
 		for(int i = 0; i < decor.size(); i++){
-			if(touchDecor(link.getXPos(), link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != -1 && decor.get(i).getClass() == Door.class){
+			if(touchDecor(link.getXPos(), link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) 
+					!= -1 && decor.get(i).getClass() == Door.class){
 				int line = ((Door) decor.get(i)).getLine();
 				int column = ((Door) decor.get(i)).getColumn();
 				int level = ((Door) decor.get(i)).getLevel();
@@ -176,9 +177,15 @@ public class GameInteraction {
 					tableau = map.loadRoom();
 				}
 				else if (level == 1){
-					//map.setLevel(Integer.toString(level + Integer.parseInt(map.getLevel())));
 					map.setRoomColumn("1");
 					map.setRoomLine("3");
+					map.setLevel(Integer.toString(level + Integer.parseInt(map.getLevel())));
+					if (map.getLevel().contentEquals("2")){
+						map.setEnvironment("/Forest");
+					}
+					if (map.getLevel().contentEquals("3")){
+						map.setEnvironment("/Dungeon");
+					}
 					tableau = map.loadRoom();
 					changeLevel = true;
 					link.setXPos(18*15+10);
@@ -446,7 +453,7 @@ public class GameInteraction {
 							((Jar) decor.get(i)).randomBonusVersus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						}
 						decor.remove(i);
-						decor.get(i-1).setName("res/ForestBrokenJar");
+						decor.get(i-1).setName("res" + map.getEnvironment() + "/BrokenJar");
 						Sound soundJar = new Sound();
 						soundJar.playSound("jarbroken");
 					}
@@ -468,7 +475,7 @@ public class GameInteraction {
 							((Jar) decor.get(i)).randomBonusVersus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						}
 						decor.remove(i);
-						decor.get(i-1).setName("res/ForestBrokenJar");
+						decor.get(i-1).setName("res" + map.getEnvironment() + "/BrokenJar");
 						Sound soundJar = new Sound();
 						soundJar.playSound("jarbroken");
 					}
@@ -491,7 +498,7 @@ public class GameInteraction {
 						}
 						
 						decor.remove(i);
-						decor.get(i-1).setName("res/ForestBrokenJar");
+						decor.get(i-1).setName("res" + map.getEnvironment() + "/BrokenJar");
 						Sound soundJar = new Sound();
 						soundJar.playSound("jarbroken");						
 					}
@@ -514,7 +521,7 @@ public class GameInteraction {
 							((Jar) decor.get(i)).randomBonusVersus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
 						}
 						decor.remove(i);
-						decor.get(i-1).setName("res/ForestBrokenJar");
+						decor.get(i-1).setName("res" + map.getEnvironment() + "/BrokenJar");
 						Sound soundJar = new Sound();
 						soundJar.playSound("jarbroken");
 					}
@@ -903,7 +910,7 @@ public class GameInteraction {
 				monster.setAction(true);
 				monster.setDirection(fireDirection(monster));
 				monster.setActualFrame(1);
-				monster.setName("res/RangedArrow");
+				monster.setName("res/Monster/RangedArrow");
 				}
 			if(monster.getAction() == true){
 				monster.tick(5);
@@ -912,7 +919,7 @@ public class GameInteraction {
 					monster.setAction(false);
 					monster.setTime(0);
 					monster.setCooldown(0);
-					monster.setName("res/RangedRun");
+					monster.setName("res/Monster/RangedRun");
 				}
 			}
 			else{
@@ -924,7 +931,7 @@ public class GameInteraction {
 			if(fireDirection(monster) != -1 && monster.getCooldown() > 40){
 				monster.setAction(true);
 				monster.setDirection(fireDirection(monster));
-				monster.setName("res/BomberThrow");
+				monster.setName("res/Monster/BomberThrow");
 				}
 			if(monster.getAction() == true){
 				((Bomber) monster).bombTick(4,8);
@@ -934,7 +941,7 @@ public class GameInteraction {
 					monster.setAction(false);
 					((Bomber) monster).setBombFrame(1);
 					monster.setCooldown(0);
-					monster.setName("res/BomberRun");
+					monster.setName("res/Monster/BomberRun");
 				}
 			}
 			else{
@@ -944,7 +951,6 @@ public class GameInteraction {
 		}
 		else if(monster.getClass() == Boss.class){
 			if(monster.getLifePoint() < 3 && ((Boss) monster).getRage() == false){
-				System.out.println("je rage");
 				((Boss) monster).setAttackCd(((Boss) monster).getAttackCd()/2);
 				((Boss) monster).setBossTick(0);
 				monster.setCooldown(0);
@@ -956,7 +962,6 @@ public class GameInteraction {
 			else{
 				((Boss) monster).tickBoss(10);
 			}
-			System.out.println("tick boss: " + ((Boss) monster).getBossTick() +" tick cd: " + monster.getCooldown() + " actual frame: " + monster.getActualFrame());
 			monster.cdTick(1);
 			if(monster.getCooldown() == ((Boss) monster).getAttackCd()){
 				((Boss) monster).fireBall(fireBall, link.get(0));
@@ -1030,7 +1035,6 @@ public class GameInteraction {
 		while(caseOccupied((randomX+2)*40,(randomY+2)*40)){
 			randomX = r.nextInt(12);
 			randomY = r.nextInt(12);
-			System.out.println((randomX+2)*40 + " " + (randomY+2)*40);
 		}
 		monster.setXPos((randomX+2)*40);
 		monster.setYPos((randomY+2)*40);

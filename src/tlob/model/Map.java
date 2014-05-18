@@ -15,6 +15,7 @@ public class Map {
 	private String level;
 	private String roomLine;
 	private String roomColumn;
+	private String environment ="/Desert";
 	
 	//view
 	/*
@@ -27,7 +28,6 @@ public class Map {
 	Image rock = Toolkit.getDefaultToolkit().getImage("res/Rock");
 	Image root = Toolkit.getDefaultToolkit().getImage("res/Root");
 	*/
-	String obstacles[]={"res/Root","res/Rock","res/Rocks","res/LittleTreeObstacle"};
 	
 	
 	public Map(int length, int width, String level, String roomLine, String roomColumn)
@@ -42,6 +42,15 @@ public class Map {
 	public int getLength()
 	{
 		return length;
+	}
+	
+	public String getEnvironment(){
+		return environment;
+	}
+	
+	public void setEnvironment(String environment){
+		this.environment = environment;
+			
 	}
 	
 	public void setLength(int length)
@@ -162,68 +171,70 @@ public char[][] loadRoom(){
 
 	
 public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
-	ArrayList<Decor> decor = new ArrayList<Decor>(); 
-	
+	ArrayList<Decor> decor = new ArrayList<Decor>();
+	String obstacles[]={"res" + environment + "/Obstacle1", "res" + environment 
+			+ "/Obstacle2","res" + environment + "/Obstacle3","res" + environment + "/Obstacle4"};
+		
 	for(int i = 0; i < map.length; i++){
 		for (int j = 0; j < map[i].length;j++)
 			
 			switch(map[i][j]){
-			case '0':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
+			case '0':				
+				decor.add(new Floor(40*i,40*j,("res" + environment + "/Background")));
 				break;
 				
 			case '1':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
-				decor.add(new Wall(40*i,40*j,"res/LittleTree"));
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
+				decor.add(new Wall(40*i,40*j,"res/Forest/Wall"));
 				break;
 				
 			case '2':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
 				decor.add(new Jar(40*i,40*j,"res/Jar"));
 				break;
 				
 			case '3':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
-				decor.add(new SpawnerFireBall(40*i,40*j,"res/fireSpawner")); //SpawnerFireBall
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
+				decor.add(new SpawnerMonster(40*i,40*j,"res/fireSpawner"));//SpawnerFireBall
 				break;
 				
 			case '4':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
 				decor.add(new SpawnerMonster(40*i,40*j,"res/monsterSpawner")); //SpawnerMonster
 				break;
 				
 			case '6':
 				decor.add(new Hole(40*i,40*j,null)); //Hole
 				break;
-				
+			/*
 			case '7':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
-				//decor.add(new MovingTrap(40*i,40*j,null));
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
+				decor.add(new MovingTrap(40*i,40*j,null)); //MovingTrap
 				break;
-				
+			*/
 			case '8':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
-				decor.add(new Door(40*i,40*j,null,false,1,0,0)); //DoorUp
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
+				decor.add(new Door(40*i,40*j,"res/2",false,1,0,0)); //DoorUp
 				break;
 				
 			case '-':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
-				decor.add(new Door(40*i,40*j,null,false,0,1,0)); //DoorRight
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
+				decor.add(new Door(40*i,40*j,"res/2",false,0,1,0)); //DoorRight
 				break;
 		
 			case '_':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
-				decor.add(new Door(40*i,40*j,null,false,-1,0,0)); //DoorDown
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
+				decor.add(new Door(40*i,40*j,"res/2",false,-1,0,0)); //DoorDown
 				break;
 			
 			case ':':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
-				decor.add(new Door(40*i,40*j,null,false,0,-1,0)); //DoorLeft
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
+				decor.add(new Door(40*i,40*j,"res/2",false,0,-1,0)); //DoorLeft
 				break;
 			
 			case '9':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
-				decor.add(new Door(40*i,40*j,null,false,0,0,1)); //Exit
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
+				decor.add(new Door(40*i,40*j,"res/2",false,0,0,1)); //Exit
 				break;
 
 /*case 'a':
@@ -233,7 +244,7 @@ decor.add(new Wall(40*i,40*j,null));
 case 'c':
 decor.add(new Wall(40*i,40*j,null));*/
 			case 'r':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
 				java.util.Random r=new java.util.Random( ) ; 
 				int random = r.nextInt(4);
 				String obstacle = obstacles[random];
@@ -282,19 +293,19 @@ decor.add(new Wall(40*i,40*j,null));*/
 //case 't':
 //decor.add(new Wall(40*i,40*j,null));
 			case 'q':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
 				break;
 				
 			case 's': 
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
 				break;
 				
 			case 'd':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
 				break;
 				
 			case 'f':
-				decor.add(new Floor(40*i,40*j,"res/BackgroundForest"));
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
 				break;
 				}
 		}
@@ -310,13 +321,13 @@ decor.add(new Wall(40*i,40*j,null));*/
 					//case 'l':
 						//decor.add(new Link(3,(...)));
 					case 'q':
-						monster.add(new Ranged(1,40*i,40*j,1,3,"res/RangedRun")); //Ranged
+						monster.add(new Ranged(1,40*i,40*j,1,3,"res/Monster/RangedRun")); //Ranged
 						break;
 					case 's':
-						monster.add(new Bomber(2,40*i,40*j,1,3,"res/BomberRun")); //Bomber
+						monster.add(new Bomber(2,40*i,40*j,1,3,"res/Monster/BomberRun")); //Bomber
 						break;
 					case 'd':
-						monster.add(new Melee(2,40*i,40*j,1,3,"res/MeleeRun"));
+						monster.add(new Melee(2,40*i,40*j,1,3,"res/Monster/MeleeRun"));
 						break;
 					case 'f':
 						monster.add(new Underground(1,40*i,40*j,4,3,"res/hidden")); //Underground
@@ -339,9 +350,11 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 		if(decor.get(i).getClass() == Floor.class)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '0';
 		
-		else if(decor.get(i).getClass() == Wall.class && (decor.get(i).getName() == "res/Root" 
-					|| decor.get(i).getName() == "res/Rock" || decor.get(i).getName() == "res/Rocks"
-					|| decor.get(i).getName() ==("res/LittleTreeObstacle")))
+		else if(decor.get(i).getClass() == Wall.class && 
+				(("res" + environment +"/Obstacle1").contentEquals(decor.get(i).getName()))
+				|| (("res" + environment +"/Obstacle2").contentEquals(decor.get(i).getName()))
+				|| (("res" + environment +"/Obstacle3").contentEquals(decor.get(i).getName()))
+				|| (("res" + environment +"/Obstacle4").contentEquals(decor.get(i).getName())))
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'r';		
 		
 		else if(decor.get(i).getClass() == Wall.class)
@@ -365,9 +378,8 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 		else if(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getLine() == 1)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '8';
 		
-		else if(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getLevel() == 1){
+		else if(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getLevel() == 1)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '9';
-			System.out.println(((Door)decor.get(i)).getLevel());}
 		
 		else if(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getColumn() == 1)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '-';

@@ -122,11 +122,9 @@ public class Character implements Tick{
 
 	public void tickFrozen() {
 		tickFrozen++;
-		System.out.println("hihihi je suis gelé");
 		if(tickFrozen==50) {
 			this.frozen=1;
 			this.tickFrozen=1;
-			System.out.println("hihihi je suis plus gelé");
 		}
 	}
 	
