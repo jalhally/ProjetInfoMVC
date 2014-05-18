@@ -99,6 +99,7 @@ public class GameController {
 		Sound soundChoose = new Sound();
 		status = level.getStatus();
 		if (status == 0){
+			
 			if(sound.isFinished(sound.getAudioStream()))
 			{
 				sound.playSound("menu");
@@ -526,8 +527,9 @@ public class GameController {
 			
 				if(monster.size() > 0){
 					for(int i = 0; i < monster.size(); i++){
-						if(monster.get(i).getInvincible() == 0){
-						monster.get(i).tickInvincible();
+						if(monster.get(i).getInvincible() == 0 && monster.get(i).getClass() != MovingTrap.class 
+								&& (monster.get(i).getClass() == Underground.class && ((Underground) monster.get(i)).getUnderground() == false)){
+							monster.get(i).tickInvincible();
 						}
 						interaction.monsterInteraction(monster.get(i));
 						if(monster.get(i).getLifePoint() == 0){

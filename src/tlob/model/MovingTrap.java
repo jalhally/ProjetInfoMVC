@@ -1,30 +1,11 @@
 package tlob.model;
 
-public class MovingTrap extends Trap {
+public class MovingTrap extends Monster {
 	
-	public MovingTrap(int xPos, int yPos, String name) {
-		super(xPos,yPos,name);
-	}
-	
-	public void moveUp ()
+	public MovingTrap(int lifePoint, int xPos, int yPos, int speed,int direction,String name)
 	{
-		setYPos(yPos + 1);
+		super(lifePoint, xPos, yPos,speed, direction, name);
+		setInvicible();
 	}
-
-	public void moveDown ()
-	{
-		setYPos(yPos - 1);
-	}
-
-	public void moveRight ()
-	{
-		setXPos(xPos + 1);
-	}
-
-	public void moveLeft ()
-	{
-		setXPos(xPos - 1);
-	}
-
 
 }

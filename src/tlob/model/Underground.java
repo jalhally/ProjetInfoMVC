@@ -3,59 +3,23 @@ package tlob.model;
 
 public class Underground extends Monster{
 	
-	private boolean underGround;
+	private boolean underground = true;
 	
-	public Underground (int lifePoint, int xPos, int yPos, int speed,int direction,String name, boolean underGround)
+	public Underground (int lifePoint, int xPos, int yPos, int speed,int direction,String name)
 	{
 		super(lifePoint, xPos, yPos,speed, direction, name);
-		this.underGround = underGround;
+		setInvicible();
 	}
 	
 	
-	public boolean getUnderGround()
+	public boolean getUnderground()
 	{
-		return underGround;
+		return underground;
 	}
 	
-	public void setUnderGround(boolean underGround)
+	public void setUnderground(boolean underGround)
 	{
-		this.underGround = underGround;
+		this.underground = underGround;
 	}
-	
-	public void disappear(Link Link)
-	{
-		setUnderGround(true);
-	}
-	
-	public void appear()
-	{
-		setUnderGround(false);
-	}
-	
-	/*
-	
-	public void IA(Link Link)
-	
-	{
-		if( this.xPos < Link.getXPos())
-		{
-			moveRight();
-		}
-		
-		else if (this.xPos > Link.getXPos())
-		{
-			moveLeft();
-		}
-		
-		else if (this.yPos < Link.getYPos())
-		{
-			moveUp();
-		}
-		
-		else if (this.yPos > Link.getYPos())
-		{
-			moveDown();
-		}
-	}
-*/
+
 }

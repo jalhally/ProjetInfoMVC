@@ -105,6 +105,14 @@ public class ImageAnimeDirection {
 		return liste.get(0);
 	}
 	
+	public Image getImageNoDirection(Monster monster){
+		return liste.get(monster.getActualFrame() -1);
+	}
+	
+	public Image getImageAnime(Decor decor){
+		return liste.get(decor.getActualFrame() -1);
+	}
+	
 	public Image getImage(Thunder thunder){
 		if(thunder.getActualFrame() == 2){
 			if(thunder.getTickThunder()%4 == 0){

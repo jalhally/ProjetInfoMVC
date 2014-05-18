@@ -631,23 +631,27 @@ public class GameInteraction {
 		monster.setL(1);
 		monster.setD(1);
 		monster.setU(1);
-		for(int i = 0; i < this.monster.size(); i++){
-			if(this.monster.get(i) != monster){
-				if(touchDecor(monster.getXPos()-monster.getSpeed(),monster.getYPos(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
-						&& monster.getDirection() == 0){
-					monster.setDirection(1);
-				}
-				if(touchDecor(monster.getXPos()+monster.getSpeed(),monster.getYPos(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
-						&& monster.getDirection() == 1){
-					monster.setDirection(0);
-				}
-				if(touchDecor(monster.getXPos(),monster.getYPos()-monster.getSpeed(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
-						&& monster.getDirection() == 2){
-					monster.setDirection(3);
-				}
-				if(touchDecor(monster.getXPos(),monster.getYPos()-monster.getSpeed(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
-						&& monster.getDirection() == 3){
-					monster.setDirection(2);
+		if((monster.getClass() == Underground.class && ((Underground) monster).getUnderground() == false)|| monster.getClass() != MovingTrap.class){
+			for(int i = 0; i < this.monster.size(); i++){
+				if(this.monster.get(i) != monster 
+						&& (this.monster.get(i).getClass() == Underground.class && ((Underground) this.monster.get(i)).getUnderground() == true)
+						|| this.monster.get(i).getClass() == MovingTrap.class){
+					if(touchDecor(monster.getXPos()-monster.getSpeed(),monster.getYPos(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
+							&& monster.getDirection() == 0){
+						monster.setDirection(1);
+					}
+					if(touchDecor(monster.getXPos()+monster.getSpeed(),monster.getYPos(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
+							&& monster.getDirection() == 1){
+						monster.setDirection(0);
+					}
+					if(touchDecor(monster.getXPos(),monster.getYPos()-monster.getSpeed(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
+							&& monster.getDirection() == 2){
+						monster.setDirection(3);
+					}
+					if(touchDecor(monster.getXPos(),monster.getYPos()-monster.getSpeed(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
+							&& monster.getDirection() == 3){
+						monster.setDirection(2);
+					}
 				}
 			}
 		}
@@ -890,6 +894,9 @@ public class GameInteraction {
 		if(monster.getClass() == Melee.class){
 			moveRandom(monster);
 		}
+		else if(monster.getClass() == MovingTrap.class){
+			moveRandom(monster);
+		}
 		else if(monster.getClass() == Ranged.class){
 			monster.cdTick(3);
 			if(fireDirection(monster) != -1 && monster.getCooldown() > 40){
@@ -938,7 +945,7 @@ public class GameInteraction {
 		else if(monster.getClass() == Boss.class){
 			if(monster.getLifePoint() < 3 && ((Boss) monster).getRage() == false){
 				System.out.println("je rage");
-				((Boss) monster).setAttackCd(40);
+				((Boss) monster).setAttackCd(((Boss) monster).getAttackCd()/2);
 				((Boss) monster).setBossTick(0);
 				monster.setCooldown(0);
 				((Boss) monster).setRage(true);
@@ -972,6 +979,25 @@ public class GameInteraction {
 				monster.setCooldown(0);
 			}
 
+		}
+		else if(monster.getClass() == Underground.class){
+			if(fireDirection(monster) != -1 && Math.abs(monster.getXPos() - link.get(0).getXPos()) < 80 && Math.abs(monster.getYPos() - link.get(0).getYPos()) < 80 && ((Underground) monster).getUnderground() == true){
+				((Underground) monster).setUnderground(false);
+				monster.setInv(1);
+				monster.setActualFrame(1);
+				monster.setSpeed(2);
+				monster.setName("res/underground");
+			}
+			if(((Underground) monster).getUnderground() == false && Math.abs(monster.getXPos() - link.get(0).getXPos()) > 150 && Math.abs(monster.getYPos() - link.get(0).getYPos()) > 150){
+				((Underground) monster).setUnderground(true);
+				monster.setInvicible();
+				monster.setActualFrame(1);
+				monster.setSpeed(4);
+				monster.setName("res/hidden");
+			}
+			else{
+				moveRandom(monster);
+			}
 		}
 	}
 	

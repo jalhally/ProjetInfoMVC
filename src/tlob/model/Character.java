@@ -104,6 +104,10 @@ public class Character implements Tick{
 		this.invincible = 0;
 	}
 	
+	public void setInv(int n){
+		this.invincible = n;
+	}
+	
 	public void tickInvincible(){
 		tickInvicible++;
 		if(tickInvicible == 40){

@@ -189,6 +189,17 @@ public class Panel extends JPanel{
 				if(monster.getClass() == Boss.class){
 					g.drawImage(loadIAD.stringToIAD(monster.getName()).getImage((Boss)monster), monster.getXPos()+decX, monster.getYPos()+decY,null);
 				}
+				else if(monster.getClass() == Underground.class){
+					if(((Underground) monster).getUnderground()){
+						g.drawImage(loadIAD.stringToIAD(monster.getName()).getImage(), monster.getXPos()+decX, monster.getYPos()+decY,null);
+					}
+					else{
+						g.drawImage(loadIAD.stringToIAD(monster.getName()).getImageNoDirection(monster), monster.getXPos()+decX, monster.getYPos()+decY,null);
+					}
+				}
+				else if(monster.getClass() == MovingTrap.class){
+					g.drawImage(loadIAD.stringToIAD(monster.getName()).getImageNoDirection(monster), monster.getXPos()+decX, monster.getYPos()+decY,null);
+				}
 				else{
 					g.drawImage(loadIAD.stringToIAD(monster.getName()).getImageAnime(monster), monster.getXPos()+decX, monster.getYPos()+decY,null);
 				}

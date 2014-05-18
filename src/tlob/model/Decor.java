@@ -1,12 +1,14 @@
 package tlob.model;
 
-public class Decor{
+public class Decor implements Tick{
 	
 	protected int xPos;
 	protected int yPos;
 	protected String name;
 	private int cooldown = 0;
 	private int tick = 0;
+	private int myTick = 0;
+	private int actualFrame = 1;
 	
 
 	public Decor(int xPos, int yPos, String name) {
@@ -56,5 +58,32 @@ public class Decor{
 			cooldown++;
 			tick = 0;
 		}
+	}
+
+
+
+	@Override
+	public void tick(int constante) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void tick(int frames, int constante) {
+		myTick++;
+		if(myTick == constante) {
+			actualFrame++;
+			myTick = 0;
+			if(actualFrame == frames +1)
+				this.actualFrame = 1;
+		}
+	}
+
+	public int getActualFrame() {
+		return actualFrame;
+	}
+
+	public void setActualFrame(int actualFrame) {
+		this.actualFrame = actualFrame;
 	}
 }

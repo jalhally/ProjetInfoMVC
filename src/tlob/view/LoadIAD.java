@@ -33,6 +33,11 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/1playerbombs"));
 		dataIAD.add(new ImageAnimeDirection("res/2players"));
 		dataIAD.add(new ImageAnimeDirection("res/2playersbombs"));
+		dataIAD.add(new ImageAnimeDirection("res/fireSpawner"));
+		dataIAD.add(new ImageAnimeDirection("res/monsterSpawner"));
+		dataIAD.add(new ImageAnimeDirection("res/hidden"));
+		dataIAD.add(new ImageAnimeDirection("res/underground",4,true));
+		dataIAD.add(new ImageAnimeDirection("res/Trap",4,true));
 		dataIAD.add(new ImageAnimeDirection("res/LinkRun",6));
 		dataIAD.add(new ImageAnimeDirection("res/LinkArrow",6));
 		dataIAD.add(new ImageAnimeDirection("res/RedLinkRun",6));
