@@ -936,18 +936,32 @@ public class GameInteraction {
 				
 		}
 		else if(monster.getClass() == Boss.class){
+			if(monster.getLifePoint() < 3 && ((Boss) monster).getRage() == false){
+				System.out.println("je rage");
+				((Boss) monster).setAttackCd(50);
+				((Boss) monster).setBossTick(0);
+				monster.setCooldown(0);
+				((Boss) monster).setRage(true);
+			}
+			if(((Boss) monster).getRage() == true){
+				((Boss) monster).tickBoss(5);
+			}
+			else{
+				((Boss) monster).tickBoss(10);
+			}
+			System.out.println("tick boss: " + ((Boss) monster).getBossTick() +" tick cd: " + monster.getCooldown() + " actual frame: " + monster.getActualFrame());
 			monster.cdTick(1);
-			if(monster.getCooldown() == 50){
+			if(monster.getCooldown() == ((Boss) monster).getAttackCd()){
 				((Boss) monster).fireBall(fireBall, link.get(0));
 			}
-			if(monster.getCooldown() == 100){
+			if(monster.getCooldown() == ((Boss) monster).getAttackCd()*2){
 				((Boss) monster).thunder(thunder, link.get(0));
 				thunder.get(thunder.size()-1).appear(thunder.get(thunder.size()-1).getXPos(), thunder.get(thunder.size()-1).getYPos());
 			}
-			if(monster.getCooldown() == 150){
+			if(monster.getCooldown() == ((Boss) monster).getAttackCd()*3){
 				((Boss) monster).fireBall2(fireBall);
 			}
-			if(monster.getCooldown() == 200){
+			if(monster.getCooldown() == ((Boss) monster).getAttackCd()*4){
 				teleportation(monster);
 				monster.setCooldown(0);
 			}

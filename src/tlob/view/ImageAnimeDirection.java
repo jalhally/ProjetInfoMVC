@@ -117,6 +117,20 @@ public class ImageAnimeDirection {
 		return liste.get(0);
 	}
 	
+	public Image getImage(Boss boss){
+		if(boss.getInvincible() == 0){
+			if(boss.getTickInvincible()%2 == 0){
+				return liste.get(frames);
+			}
+		}
+		if(boss.getActualFrame() == 6){
+			if(boss.getBossTick()%2 == 1){
+				return liste.get(frames);
+			}
+		}
+		return liste.get(boss.getActualFrame()-1);
+	}
+	
 	public Image getImageAnime(Arrow arrow){
 		if(arrow.getDirection() == GAUCHE){
 			return liste.get(arrow.getActualFrame() -1);

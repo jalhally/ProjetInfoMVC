@@ -186,7 +186,12 @@ public class Panel extends JPanel{
 			}
 			
 			for(Monster monster : level.getMonster()) {
-				g.drawImage(loadIAD.stringToIAD(monster.getName()).getImageAnime(monster), monster.getXPos()+decX, monster.getYPos()+decY,null);
+				if(monster.getClass() == Boss.class){
+					g.drawImage(loadIAD.stringToIAD(monster.getName()).getImage((Boss)monster), monster.getXPos()+decX, monster.getYPos()+decY,null);
+				}
+				else{
+					g.drawImage(loadIAD.stringToIAD(monster.getName()).getImageAnime(monster), monster.getXPos()+decX, monster.getYPos()+decY,null);
+				}
 			}
 			
 			for(BombDeflagration bombDef : level.getBombDeflagration()) {

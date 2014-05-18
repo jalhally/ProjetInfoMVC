@@ -51,7 +51,9 @@ public class Bonus extends Decor {
 			l.setStaff(1);
 			break;
 		case 9: //Rupee
-			l.setNumberCoin(l.getNumberCoin()+1);
+			if(l.getNumberCoin()<999) {
+				l.setNumberCoin(l.getNumberCoin()+1);
+			}
 			break;
 			
 		}

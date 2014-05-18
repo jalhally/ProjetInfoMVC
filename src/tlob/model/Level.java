@@ -41,7 +41,7 @@ public class Level{
 		link.get(0).setNumberBomb(5);
 		link.get(0).setRangeBomb(4);
 		
-		monster.add(new Boss(5,7*40, 7*40,2,2,"res/RangedRun"));
+		monster.add(new Boss(5,7*40, 7*40,2,2,"res/boss"));
 		
 		bomb = new ArrayList<Bomb>();
 		arrow = new ArrayList<Arrow>();
