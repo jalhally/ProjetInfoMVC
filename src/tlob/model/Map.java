@@ -186,33 +186,40 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 			case '1':
 				if (environment == "/Forest"){
 					decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-					decor.add(new Wall(40*i,40*j,"res/Forest/Wall"));
+					decor.add(new Wall(40*i,40*j,"res" + environment + "/Wall"));
 				}
 				else{
 					if (i ==0 && j == 0){	// haut gauche
 						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallUL"));	
 						System.out.println(decor.size());
 					}
-					else if (i == 0 && j !=0 ) // haut
-						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallU"));	
 					
-					else if (i == 0 && j != 15) // haut droite
+					else if (i == 14 && j == 0) // bas gauche
 						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallUR"));	
 					
-					else if (i == 15 && j == 0) // bas gauche
+					else if (j == 14 && i == 14) // bas droite
+						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallDR"));	
+					
+					else if (i == 0 && j == 14) // haut droite
 						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallDL"));	
 					
-					else if ( i == 15 && j != 0) //bas
-						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallD"));
-					
-					else if (j == 0 && i !=0) // gauche
+					else if (i == 0 && j !=0 ) // haut
 						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallL"));	
 					
-					else if(j == 15 && i!= 0) // droite
-						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallR"));	
+
 					
-					else if (j == 15 && i == 15) // bas droite
-						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallDR"));					
+
+					
+					else if ( i == 14 && j != 0) //bas
+						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallR"));
+					
+					else if (j == 0 && i !=0) // gauche
+						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallU"));	
+					
+					else if(j == 14 && i!= 0) // droite
+						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallD"));	
+					
+				
 				}	
 				break;
 				
