@@ -368,7 +368,7 @@ decor.add(new Wall(40*i,40*j,null));*/
 						monster.add(new MovingTrap(1,40*i,40*j,2,3,"res/Monster/Trap")); //Underground
 						break;
 					case '.':
-						monster.add(new Boss(5,i*40, j*40,2,2,"res/Monster/boss"));
+						monster.add(new Boss(1,i*40, j*40,2,2,"res/Monster/boss"));
 						break;
 						}
 
