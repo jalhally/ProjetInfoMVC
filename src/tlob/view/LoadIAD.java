@@ -10,6 +10,8 @@ public class LoadIAD {
 	public LoadIAD(){ //ne pas oublier de load
 		List<ImageAnimeDirection> dataIAD = new ArrayList<ImageAnimeDirection>();
 		this.dataIAD = dataIAD;
+		dataIAD.add(new ImageAnimeDirection("res/2"));
+
 		dataIAD.add(new ImageAnimeDirection("res/Forest/DoorU"));
 		dataIAD.add(new ImageAnimeDirection("res/Forest/DoorR"));
 		dataIAD.add(new ImageAnimeDirection("res/Forest/DoorL"));
@@ -22,8 +24,6 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/Dungeon/DoorR"));
 		dataIAD.add(new ImageAnimeDirection("res/Dungeon/DoorL"));
 		dataIAD.add(new ImageAnimeDirection("res/Dungeon/DoorD"));
-
-		dataIAD.add(new ImageAnimeDirection("res/2"));
 		dataIAD.add(new ImageAnimeDirection("res/Monster/fire"));
 		dataIAD.add(new ImageAnimeDirection("res/store"));
 		dataIAD.add(new ImageAnimeDirection("res/store1"));
@@ -79,7 +79,7 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/Dungeon/Obstacle3"));
 		dataIAD.add(new ImageAnimeDirection("res/Forest/Obstacle4"));
 		dataIAD.add(new ImageAnimeDirection("res/Desert/Obstacle4"));
-		dataIAD.add(new ImageAnimeDirection("res/Dunegon/Obstacle4"));
+		dataIAD.add(new ImageAnimeDirection("res/Dungeon/Obstacle4"));
 		dataIAD.add(new ImageAnimeDirection("res/Desert/WallU"));
 		dataIAD.add(new ImageAnimeDirection("res/Desert/WallD"));
 		dataIAD.add(new ImageAnimeDirection("res/Desert/WallR"));

@@ -189,12 +189,12 @@ public class GameInteraction {
 				
 		
 				if(column != 0){
-					link.setXPos(link.getXPos() - 32*15*column);
+					link.setXPos(link.getXPos() - ((32*15)+15)*column );
 					map.setRoomColumn(Integer.toString(Integer.parseInt(map.getRoomColumn()) + column));
 					tableau = map.loadRoom();
 				}
 				else if(line != 0){
-					link.setYPos(link.getYPos() + 32*15*line);
+					link.setYPos(link.getYPos() + ((32*15)+15)*line);
 					map.setRoomLine(Integer.toString(Integer.parseInt(map.getRoomLine()) - line));
 					tableau = map.loadRoom();
 				}

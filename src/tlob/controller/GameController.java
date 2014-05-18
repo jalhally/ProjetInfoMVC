@@ -147,7 +147,7 @@ public class GameController {
 
 				}
 				else{
-					Map map = new Map(16,16,"1","3","1");
+					Map map = new Map(16,16,"3","3","1");
 					level.createLevel(map);
 					createGameController(level);
 					sound.soundEnd(sound.getAudioStream());
