@@ -15,7 +15,7 @@ public class Map {
 	private String level;
 	private String roomLine;
 	private String roomColumn;
-	private String environment ="/Desert";
+	private String environment ="/Dungeon";
 	
 	//view
 	/*
