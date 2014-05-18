@@ -15,7 +15,7 @@ public class Map {
 	private String level;
 	private String roomLine;
 	private String roomColumn;
-	private String environment ="/Dungeon";
+	private String environment ="/Desert";
 	
 	//view
 	/*
@@ -292,35 +292,59 @@ decor.add(new Wall(40*i,40*j,null));*/
 				break;
 				
 			case 'h':
-				decor.add(new Wall(40*i,40*j,null)); //ButteHaut
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallU")); //ButteHaut
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallU"));
 				break;
 				
 			case 'j':
-				decor.add(new Wall(40*i,40*j,null)); //ButteGauche
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallL")); //ButteGauche
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallL"));
 				break;
 				
 			case 'k':
-				decor.add(new Wall(40*i,40*j,null)); //ButteDroite
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallR")); //ButteDroite
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallR"));
 				break;
 					
 			case 'z':
-				decor.add(new Wall(40*i,40*j,null)); //ButteBas
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallD")); //ButteBas
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallD"));
 				break;
 				
 			case 'u':
-				decor.add(new Wall(40*i,40*j,null)); //CoinHG
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallUL")); //CoinHG
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallUL"));
 				break;
 				
 			case 'i':
-				decor.add(new Wall(40*i,40*j,null)); //CoinHD
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallUR")); //CoinHD
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallUR"));
 				break;
 				
 			case 'o':
-				decor.add(new Wall(40*i,40*j,null)); //Coin"res/BackgroundForest"
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallDL"));//Coin"res/BackgroundForest"
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallDL"));
 				break;
 				
 			case 'p':
-				decor.add(new Wall(40*i,40*j,null)); //CoinBD
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallDR")); //CoinBD
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallDR"));
 				break;
 //case 't':
 //decor.add(new Wall(40*i,40*j,null));
