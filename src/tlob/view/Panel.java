@@ -21,6 +21,8 @@ public class Panel extends JPanel{
 	Image statusBar = Toolkit.getDefaultToolkit().getImage("res/StatusBar.png");
 	Image statusBarVersus = Toolkit.getDefaultToolkit().getImage("res/StatusBarVersus.png");
 	Image sideBackground = Toolkit.getDefaultToolkit().getImage("res/SideBackground.png");
+	Image redlinkwin = Toolkit.getDefaultToolkit().getImage("res/redlinkwin.png");
+	Image linkwin = Toolkit.getDefaultToolkit().getImage("res/linkwin.png");
 	Image pause = Toolkit.getDefaultToolkit().getImage("res/pause.png");
 	Image Char0 = Toolkit.getDefaultToolkit().getImage("res/Char0.png");
 	Image Char1 = Toolkit.getDefaultToolkit().getImage("res/Char1.png");
@@ -52,6 +54,19 @@ public class Panel extends JPanel{
 			for(Menu gameOver : level.getGameOver()){
 				g.drawImage(loadIAD.stringToIAD(gameOver.getName()).getImage(), gameOver.getXPos(), gameOver.getYPos()-decY,null);
 
+			}
+		}
+		
+		else if (level.getStatus()==6){
+			for(int i = 0; i < level.getLink().size(); i ++){
+				if (level.getLink().get(i).getLifePoint()<= 0){
+					if(i == 1){
+						g.drawImage(redlinkwin,0,0,null);
+					}
+					else{
+						g.drawImage(linkwin,0,0,null);
+					}						
+				}					
 			}
 		}
 		

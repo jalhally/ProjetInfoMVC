@@ -42,7 +42,7 @@ public class GameController {
 	private List<Menu> gameOver;
 	private List<Menu> store;
 	private GameInteraction interaction;
-	private int status = 0; // 0 = menu, 1 = multi, 2 = solo, 3 game Over, 4 store
+	private int status = 0; // 0 = menu, 1 = multi, 2 = solo, 3 game Over, 4 store, 5 gameover, 6 multi win
 	private int k = 2; // va modifier le status dans le menu
 	private Level level;
 	private boolean pressedOnce = true; // premiere foi qu on appuie
@@ -153,6 +153,25 @@ public class GameController {
 
 			}
 		}
+		
+		else if (status == 6){
+			if (!enterPressed){
+				pressedOnce = true;
+				
+			}
+			else if (enterPressed && pressedOnce){
+				status = 0;
+				k = 2;
+				level.setStatus(status);
+				enterPressed = false;
+				menu.get(2).setName("res/2players");
+				menu.get(1).setName("res/1playerbombs");
+				sound.soundEnd(sound.getAudioStream());
+				sound.playSound("menu");
+			}
+			
+		}
+		
 		else if (status == 1){
 
 			// mode multi
@@ -172,6 +191,14 @@ public class GameController {
 			for(int i = 0; i < link.size(); i++){
 				
 				System.out.println(link.get(0).getSpeed());
+				
+				if(link.get(i).getLifePoint() <= 0){
+					status=6;
+					level.setStatus(status);
+					sound.soundEnd(sound.getAudioStream());
+					sound.playSound("multigameover");
+					break;
+				}
 				
 				//link.get(i).setSpeed(1);
 				
@@ -409,12 +436,11 @@ public class GameController {
 				k = 2;
 			}
 			
-			for (int p = 0; p < level.getDecor().size(); p ++){
-				if (level.getDecor().get(p).getClass() == SpawnerMonster.class)
-					((SpawnerMonster)(level.getDecor().get(p))).spawnMonster(level.getMonster());	
-					System.out.println("swaglord");
+			//for (int p = 0; p < level.getDecor().size(); p ++){
+				//if (level.getDecor().get(p).getClass() == SpawnerMonster.class)
+					//((SpawnerMonster)(level.getDecor().get(p))).spawnMonster(level.getMonster());	
 					// blabla my tick
-			}
+			//}
 			
 			if(interaction.getChangeLevel() == true)
 			{
@@ -619,6 +645,7 @@ public class GameController {
 				deleteCopy();
 				if (k == 2){
 					status = 0;
+					sound.soundEnd(sound.getAudioStream());
 					sound.soundEnd(sound.getAudioStream());
 					sound.playSound("menu");
 					level.setStatus(status);
