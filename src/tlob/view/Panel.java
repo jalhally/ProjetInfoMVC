@@ -123,7 +123,13 @@ public class Panel extends JPanel{
 				}
 			}
 			for(Decor decor : level.getDecor()) {
-				g.drawImage(loadIAD.stringToIAD(decor.getName()).getImage(), decor.getXPos()+decX, decor.getYPos()+decY,null);
+				if(decor.getClass() == Treasure.class){
+					g.drawImage(loadIAD.stringToIAD(decor.getName()).getImageAnime(decor), decor.getXPos()+decX, decor.getYPos()+decY,null);
+				}
+				else{
+					g.drawImage(loadIAD.stringToIAD(decor.getName()).getImage(), decor.getXPos()+decX, decor.getYPos()+decY,null);
+
+				}
 			}
 			g.drawImage(sideBackground,-10,70,null);
 			g.drawImage(sideBackground,15*40+decX,70,null);
@@ -145,7 +151,12 @@ public class Panel extends JPanel{
 			}
 			
 			for(Link link : level.getLink()) {
-				g.drawImage(loadIAD.stringToIAD(link.getName()).getImageAnime(link), link.getXPos()+decX, link.getYPos()+decY,null);
+				if(link.getName().contentEquals("res/Link/LinkOpen")){
+					g.drawImage(loadIAD.stringToIAD(link.getName()).getImageNoDirection(link), link.getXPos()+decX, link.getYPos()+decY,null);
+				}
+				else{
+					g.drawImage(loadIAD.stringToIAD(link.getName()).getImageAnime(link), link.getXPos()+decX, link.getYPos()+decY,null);
+				}
 				
 				int centaineRubis=(link.getNumberCoin()-link.getNumberCoin()%100)/100;
 				int dizaineRubis=((link.getNumberCoin()-centaineRubis*100)-(link.getNumberCoin()-centaineRubis*100)%10)/10;

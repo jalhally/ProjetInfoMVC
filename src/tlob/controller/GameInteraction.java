@@ -61,28 +61,6 @@ public class GameInteraction {
 		}
 	}
 	
-	private int touchDoor(int x1, int y1, int x2, int y2){ 
-		if(Math.abs(x1-x2)<38 && Math.abs(y1-y2)<29){
-			if(x1-x2 < 0){
-				return 0; //GAUCHE
-			}
-			else{
-				return 1; //DROITE
-			}
-		}
-		else if(Math.abs(x1-x2)<29 && 38>Math.abs(y1-y2)){
-			if(y1-y2 < 0){
-				return 2; //HAUT
-			}
-			else{
-				return 3; //BAS
-			}
-		}
-		else{
-			return -1;
-		}
-	}
-	
 	private int touchDecorB(int x1, int y1, int x2, int y2){ 
 		if(Math.abs(x1-x2)<35 && Math.abs(y1-y2)<25){
 			if(x1-x2 < 0){
@@ -231,7 +209,41 @@ public class GameInteraction {
 				break;
 			}
 			
-			if(decor.get(i).getClass() != Floor.class && decor.get(i).getClass() != Door.class ){
+			if(touchDecor(link.getXPos(), link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) != -1 && link.getDirection() == 2
+					&& decor.get(i).getClass() == Treasure.class && ((Treasure)decor.get(i)).isBonusTaken() == false){
+				decor.get(i).setActualFrame(2);
+				if(link.getName().contentEquals("res/Link/LinkOpen") == false){
+					link.setActualFrame(1);
+				}
+				link.setName("res/Link/LinkOpen");
+				if(link.getActualFrame() != 3){
+					link.tick(3,5);
+					link.setR(0);
+					link.setL(0);
+					link.setD(0);
+					link.setU(0);
+					link.setName("res/Link/LinkOpen");
+				}
+				else{
+					((Treasure)decor.get(i)).setBonusTaken(true);
+					bonus.add(new Bonus(link.getXPos(), link.getYPos() -30, ((Treasure) decor.get(i)).typeToString(),((Treasure) decor.get(i)).getBonusType()));
+					link.setR(1);
+					link.setL(1);
+					link.setD(1);
+					link.setU(1);
+				}
+				/*
+				else if(open){
+					link.tick(5);
+					System.out.println("le bonus existe " + link.getTime());
+					if(link.getTime() == 10){
+						link.setName("res/Link/LinkRun");
+					}
+				}
+				*/
+			}
+			
+			if(decor.get(i).getClass() != Floor.class && decor.get(i).getClass() != Door.class){
 				int a = touchDecor(link.getXPos(),link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos());
 				if(a == 0)
 					link.setR(0);
@@ -241,6 +253,12 @@ public class GameInteraction {
 					link.setD(0);
 				if(a == 3)
 					link.setU(0);
+				if(decor.get(i).getClass() == Treasure.class && ((Treasure) decor.get(i)).isBonusTaken() == true && a != -1){
+					link.setR(1);
+					link.setL(1);
+					link.setD(1);
+					link.setU(1);
+				}
 			}
 		}
 		for(int i = 0; i < monster.size(); i++){

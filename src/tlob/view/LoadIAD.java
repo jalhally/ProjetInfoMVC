@@ -50,6 +50,8 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/monsterSpawner"));
 		dataIAD.add(new ImageAnimeDirection("res/Monster/hidden"));
 		dataIAD.add(new ImageAnimeDirection("res/Monster/underground",4,true));
+		dataIAD.add(new ImageAnimeDirection("res/TreasureChest",2,true));
+		dataIAD.add(new ImageAnimeDirection("res/Link/LinkOpen",3,true));
 		dataIAD.add(new ImageAnimeDirection("res/Monster/Trap",4,true));
 		dataIAD.add(new ImageAnimeDirection("res/Link/LinkRun",6));
 		dataIAD.add(new ImageAnimeDirection("res/Link/LinkArrow",6));

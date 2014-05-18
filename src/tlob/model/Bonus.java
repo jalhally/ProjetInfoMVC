@@ -4,7 +4,6 @@ public class Bonus extends Decor {
 	private int number;
 	private int maxSpeed = 6;
 	
-	
 	public Bonus(int xPos, int yPos,String name,int number){
 		super(xPos,yPos,name);
 		this.number = number;

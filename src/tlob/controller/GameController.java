@@ -326,9 +326,8 @@ public class GameController {
 								useStaff2=false; 
 								link.get(1).setStaff(-1); 
 							}
-					
+					}
 				}
-			}
 				
 				else {
 					useStaff2 = false;
@@ -545,6 +544,9 @@ public class GameController {
 						}
 					}
 				}
+					else {
+						useStaff = false;
+					}
 			}
 			
 			

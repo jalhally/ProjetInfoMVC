@@ -106,8 +106,8 @@ public class ImageAnimeDirection {
 		return liste.get(0);
 	}
 	
-	public Image getImageNoDirection(Monster monster){
-		return liste.get(monster.getActualFrame() -1);
+	public Image getImageNoDirection(Character character){
+		return liste.get(character.getActualFrame() -1);
 	}
 	
 	public Image getImageAnime(Decor decor){

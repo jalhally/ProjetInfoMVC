@@ -361,7 +361,7 @@ decor.add(new Wall(40*i,40*j,null));*/
 						monster.add(new Bomber(2,40*i,40*j,1,3,"res/Monster/BomberRun")); //Bomber
 						break;
 					case 'd':
-						monster.add(new Melee(1,40*i,40*j,1,3,"res/Monster/MeleeRun"));
+						monster.add(new Melee(2,40*i,40*j,1,3,"res/Monster/MeleeRun"));
 						break;
 					case 'f':
 						monster.add(new Underground(1,40*i,40*j,4,3,"res/Monster/hidden")); //Underground
