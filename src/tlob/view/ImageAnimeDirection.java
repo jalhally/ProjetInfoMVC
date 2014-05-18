@@ -36,6 +36,16 @@ public class ImageAnimeDirection {
 		liste.add(Toolkit.getDefaultToolkit().getImage("res/ice.png"));
 	}
 	
+	public ImageAnimeDirection(String nomBase, int frames, boolean b) {
+		this.frames = frames;
+		this.nomBase = nomBase;
+		liste = new ArrayList<Image>();
+		for(int i = 1; i<= frames; i++){
+			liste.add(Toolkit.getDefaultToolkit().getImage(nomBase + Integer.toString(i) + ".png"));
+		}
+		liste.add(Toolkit.getDefaultToolkit().getImage("res/void.png"));
+	}
+	
 	public String getName(){
 		return this.nomBase;
 	}
@@ -91,7 +101,19 @@ public class ImageAnimeDirection {
 		}
 	}
 	
-	public Image getImage(FireBall1 f){
+	public Image getImage(FireBall f){
+		return liste.get(0);
+	}
+	
+	public Image getImage(Thunder thunder){
+		if(thunder.getActualFrame() == 2){
+			if(thunder.getTickThunder()%4 == 0){
+				return liste.get(2);
+			}
+			else{
+				return liste.get(1);
+			}
+		}
 		return liste.get(0);
 	}
 	

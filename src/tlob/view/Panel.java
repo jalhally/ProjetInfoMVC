@@ -137,6 +137,12 @@ public class Panel extends JPanel{
 				g.drawImage(loadIAD.stringToIAD(bonus.getName()).getImage(), bonus.getXPos()+decX, bonus.getYPos()+decY,null);
 			}
 			
+			for(Thunder thunder : level.getThunder()){
+				for(int i = 0; i < thunder.getListPos().size(); i++){
+					g.drawImage(loadIAD.stringToIAD(thunder.getName()).getImage(thunder), thunder.getListPos().get(i)[0]+decX, thunder.getListPos().get(i)[1]+decY,null);
+				}
+			}
+			
 			for(Link link : level.getLink()) {
 				g.drawImage(loadIAD.stringToIAD(link.getName()).getImageAnime(link), link.getXPos()+decX, link.getYPos()+decY,null);
 				
@@ -217,6 +223,11 @@ public class Panel extends JPanel{
 					}
 				}
 			}
+			
+			for(FireBall fireBall : level.getFireBall()) {
+				g.drawImage(loadIAD.stringToIAD(fireBall.getName()).getImage(), fireBall.getXPos()+decX, fireBall.getYPos()+decY,null);
+				}
+			
 			if(level.getStatus() == 5)
 				g.drawImage(pause,200,15*20,null);
 

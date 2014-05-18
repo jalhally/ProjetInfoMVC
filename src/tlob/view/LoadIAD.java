@@ -11,6 +11,7 @@ public class LoadIAD {
 		List<ImageAnimeDirection> dataIAD = new ArrayList<ImageAnimeDirection>();
 		this.dataIAD = dataIAD;
 		dataIAD.add(new ImageAnimeDirection("res/2"));
+		dataIAD.add(new ImageAnimeDirection("res/fire"));
 		dataIAD.add(new ImageAnimeDirection("res/store"));
 		dataIAD.add(new ImageAnimeDirection("res/store1"));
 		dataIAD.add(new ImageAnimeDirection("res/store2"));		
@@ -43,6 +44,7 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/RangedArrow",1));
 		dataIAD.add(new ImageAnimeDirection("res/BomberRun",5));
 		dataIAD.add(new ImageAnimeDirection("res/BomberThrow",5));
+		dataIAD.add(new ImageAnimeDirection("res/Thunder",2,true));
 		dataIAD.add(new ImageAnimeDirection("res/BackgroundForest"));
 		dataIAD.add(new ImageAnimeDirection("res/LittleTree"));
 		dataIAD.add(new ImageAnimeDirection("res/LittleTreeObstacle"));
