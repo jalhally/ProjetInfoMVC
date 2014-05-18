@@ -61,10 +61,10 @@ public class Panel extends JPanel{
 			for(int i = 0; i < level.getLink().size(); i ++){
 				if (level.getLink().get(i).getLifePoint()<= 0){
 					if(i == 1){
-						g.drawImage(redlinkwin,0,0,null);
+						g.drawImage(linkwin,0,0,null);
 					}
 					else{
-						g.drawImage(linkwin,0,0,null);
+						g.drawImage(redlinkwin,0,0,null);
 					}						
 				}					
 			}
