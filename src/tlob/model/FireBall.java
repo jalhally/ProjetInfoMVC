@@ -62,6 +62,7 @@ public class FireBall extends Item{
 		this.mytick++;
 		if(this.mytick == 2) {
 			this.pos++;
+			this.pos++;
 			mytick = 1;
 		}
 	}

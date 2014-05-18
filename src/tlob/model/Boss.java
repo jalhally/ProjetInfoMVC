@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Boss extends Monster{	
 	
+	private int bossTick = 0;
+	private int attackCd = 80;
 	private boolean rage = false;
 
 	public Boss (int lifePoint, int xPos, int yPos, int speed,int direction,String name)
@@ -52,29 +54,41 @@ public class Boss extends Monster{
 		return thunder;
 	}
 	
+	public int getBossTick(){
+		return this.bossTick;
+	}
 	
-	/*
+	public void setBossTick(int n){
+		this.bossTick = n;
+	}
+	
+	public void tickBoss(int c){
+		bossTick++;
+		if(getCooldown() > attackCd*4-20){
+			setActualFrame(6);
+			bossTick = 0;
+		}
+		else if(bossTick == c && getActualFrame() != 6){
+			setActualFrame(getActualFrame()+1);
+				if(getActualFrame() == 6){
+					setActualFrame(1);
+				}
+			bossTick = 0;
+		}
+		else if(bossTick == c && getActualFrame() == 6){
+			setActualFrame(1);
+			bossTick = 0;
+		}
+	}
 
-	public Fireball2 fireBall2()
-	{
-		FireBall2 fireBall2 = new FireBall2(this.xPos, this.yPos);
-		return fireBall2;
+	public int getAttackCd() {
+		return attackCd;
 	}
-	
-	public Thunder thunderBolt(Link Link)
-	{
-		 return Thunder thunder = new Thunder (Link.getXPos(), Link.getYPos());
+
+	public void setAttackCd(int attackCd) {
+		this.attackCd = attackCd;
 	}
-	
-	public void teleportation(Map map) // dunno
-	{
-		Random r1 = new Random();
-		Random r2 = new Random();
-		this.xPos = r1.nextInt(map.getXLimit);
-		this.yPos =r2.nextInt(map.getYlimit);
-	}
-	*/
-	// IA
+
 }
 
 

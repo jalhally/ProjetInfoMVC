@@ -34,14 +34,14 @@ public class Level{
 		decor = map.mapToListDecor(tableau);
 		monster = map.mapToListMonster(tableau);
 		link = new ArrayList<Link>();
-		link.add(new Link(3,18*15+10,30*15,2,2,"res/LinkRun",0));
+		link.add(new Link(3,18*15+10,30*15,4,2,"res/LinkRun",0));
 		link.add(new Link(3,240,200,2,1,"res/RedLinkRun",1));
 		
 		link.get(0).setGauntlet(true);
 		link.get(0).setNumberBomb(5);
 		link.get(0).setRangeBomb(4);
 		
-		monster.add(new Boss(5,7*40, 7*40,2,2,"res/RangedRun"));
+		monster.add(new Boss(5,7*40, 7*40,2,2,"res/boss"));
 		
 		bomb = new ArrayList<Bomb>();
 		arrow = new ArrayList<Arrow>();

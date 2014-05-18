@@ -7,6 +7,7 @@ public class Monster extends Character {
 	private boolean action = false;
 	private int cooldown = 40;
 	private int tick = 0;
+	private boolean spawner = false;
 
 	public Monster (int lifePoint, int xPos, int yPos, int speed,int direction,String name)
 	{
@@ -76,6 +77,14 @@ public class Monster extends Character {
 
 	public boolean getAction() {
 		return this.action;
+	}
+
+	public boolean getSpawner() {
+		return spawner;
+	}
+
+	public void setSpawner(boolean spawner) {
+		this.spawner = spawner;
 	}
 	
 }

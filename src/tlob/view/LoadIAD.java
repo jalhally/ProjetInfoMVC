@@ -45,6 +45,7 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/BomberRun",5));
 		dataIAD.add(new ImageAnimeDirection("res/BomberThrow",5));
 		dataIAD.add(new ImageAnimeDirection("res/Thunder",2,true));
+		dataIAD.add(new ImageAnimeDirection("res/boss",6,true));
 		dataIAD.add(new ImageAnimeDirection("res/BackgroundForest"));
 		dataIAD.add(new ImageAnimeDirection("res/LittleTree"));
 		dataIAD.add(new ImageAnimeDirection("res/LittleTreeObstacle"));
