@@ -435,12 +435,11 @@ public class GameController {
 				sound.playSound("gameOver");
 				k = 2;
 			}
-			
-			//for (int p = 0; p < level.getDecor().size(); p ++){
-				//if (level.getDecor().get(p).getClass() == SpawnerMonster.class)
-					//((SpawnerMonster)(level.getDecor().get(p))).spawnMonster(level.getMonster());	
-					// blabla my tick
-			//}
+
+			for (int p = 0; p < level.getDecor().size(); p ++){
+				if (level.getDecor().get(p).getClass() == SpawnerMonster.class)
+					((SpawnerMonster)(level.getDecor().get(p))).spawnMonster(level.getMonster());	
+			}
 			
 			if(interaction.getChangeLevel() == true)
 			{
