@@ -182,7 +182,11 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 			case '0':				
 				decor.add(new Floor(40*i,40*j,("res" + environment + "/Background")));
 				break;
-				
+			
+			case '.':
+				decor.add(new Floor(40*i,40*j,("res" + environment + "/Background")));
+				break;
+			
 			case '1':
 				if (environment == "/Forest"){
 					decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
@@ -363,7 +367,11 @@ decor.add(new Wall(40*i,40*j,null));*/
 					case '7':
 						monster.add(new MovingTrap(1,40*i,40*j,2,3,"res/Monster/Trap")); //Underground
 						break;
+					case '.':
+						monster.add(new Boss(5,i*40, j*40,2,2,"res/Monster/boss"));
+						break;
 						}
+
 					}
 	return monster;
 }

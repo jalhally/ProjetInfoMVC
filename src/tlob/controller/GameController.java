@@ -147,7 +147,7 @@ public class GameController {
 
 				}
 				else{
-					Map map = new Map(16,16,"3","3","1");
+					Map map = new Map(16,16,"3","3","3");
 					level.createLevel(map);
 					createGameController(level);
 					sound.soundEnd(sound.getAudioStream());
@@ -431,6 +431,12 @@ public class GameController {
 				sound.soundEnd(sound.getAudioStream());
 				sound.playSound("gameOver");
 				k = 2;
+			}
+			
+			for(int t = 0; t < monster.size();t++){
+				if(monster.get(t).getClass() == Boss.class && monster.get(t).getLifePoint() <= 0)
+					status = 6;
+					level.setStatus(status);
 			}
 
 			for (int p = 0; p < level.getDecor().size(); p ++){
