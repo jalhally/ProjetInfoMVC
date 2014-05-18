@@ -47,11 +47,13 @@ public class Jar extends Decor {
 		java.util.Random r=new java.util.Random( ) ; 
 		int random = r.nextInt(100);
 		int random2=r.nextInt(6);
+		
 		if(random%2 == 0) {
 			if(random2 == 0) {bonusType=1;}
 			else if(random2 == 1) {bonusType=2;}
 			else if(random2==2) {bonusType=3;}
 		}
+		
 		if(random%10==0) {
 			if(random2==0) {bonusType=7;}
 			else if(random2==1) {bonusType=8;}
