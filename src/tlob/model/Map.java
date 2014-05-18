@@ -269,12 +269,18 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 				decor.add(new Door(40*i,40*j,"res/2",false,0,0,1)); //Exit
 				break;
 
-/*case 'a':
-decor.add(new Wall(40*i,40*j,null));
-case 'b':
-decor.add(new Wall(40*i,40*j,null));
-case 'c':
-decor.add(new Wall(40*i,40*j,null));*/
+			case 'a':
+				decor.add(new Treasure(40*i,40*j,"res/TreasureChest1", 1 ));
+				break;
+				
+			case 'b':
+				decor.add(new Treasure(40*i,40*j,"res/TreasureChest1",2));
+				break;
+				
+			case 'c':
+				decor.add(new Treasure(40*i,40*j,"res/TreasureChest1",4));
+				break;
+				
 			case 'r':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
 				java.util.Random r=new java.util.Random( ) ; 
@@ -284,11 +290,7 @@ decor.add(new Wall(40*i,40*j,null));*/
 				break;
 				
 			case 'e':
-				decor.add(new Wall(40*i,40*j,null)); //Escalier
-				break;
-				
-			case 'b':
-				decor.add(new Wall(40*i,40*j,null)); //ChestBombPow
+				decor.add(new Floor(40*i,40*j,"res/2")); //Escalier
 				break;
 				
 			case 'h':
@@ -346,8 +348,11 @@ decor.add(new Wall(40*i,40*j,null));*/
 				else
 					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallDR"));
 				break;
-//case 't':
-//decor.add(new Wall(40*i,40*j,null));
+				
+			case 't':
+				decor.add(new Floor(40*i,40*j,"res/Tapis"));
+				break;
+				
 			case 'q':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
 				break;

@@ -25,6 +25,7 @@ public class LoadIAD {
 		dataIAD.add(new ImageAnimeDirection("res/Dungeon/DoorL"));
 		dataIAD.add(new ImageAnimeDirection("res/Dungeon/DoorD"));
 		dataIAD.add(new ImageAnimeDirection("res/Monster/fire"));
+		dataIAD.add(new ImageAnimeDirection("res/Tapis"));
 		dataIAD.add(new ImageAnimeDirection("res/store"));
 		dataIAD.add(new ImageAnimeDirection("res/store1"));
 		dataIAD.add(new ImageAnimeDirection("res/store2"));		
