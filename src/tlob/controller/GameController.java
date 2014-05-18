@@ -99,6 +99,7 @@ public class GameController {
 		Sound soundChoose = new Sound();
 		status = level.getStatus();
 		if (status == 0){
+			
 			if(sound.isFinished(sound.getAudioStream()))
 			{
 				sound.playSound("menu");
@@ -194,7 +195,6 @@ public class GameController {
 			
 			for(int i = 0; i < link.size(); i++){
 				
-				System.out.println(link.get(0).getSpeed());
 				
 				if(link.get(i).getLifePoint() <= 0){
 					status=6;
@@ -370,7 +370,6 @@ public class GameController {
 				for(int p = 0; p < bombDeflagration.size(); p++){
 					bombDeflagration.get(p).tick(2);
 					if(bombDeflagration.get(p).getPortee() < link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb()*4+2){
-						System.out.println(link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb() + " portee");
 						interaction.deflagrationAppear(bombDeflagration.get(p),
 								link.get(bombDeflagration.get(p).getPlayer()).getRangeBomb());
 						interaction.defInteraction(bombDeflagration.get(p));
@@ -408,7 +407,6 @@ public class GameController {
 		}
 		
 		else if(status == 2){
-			System.out.println(level.getMonster().size());
 			if (pausePressed && pressedOnce){
 				status = 5;
 				level.setStatus(status);

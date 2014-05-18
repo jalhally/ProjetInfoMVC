@@ -291,7 +291,6 @@ public class Panel extends JPanel{
 			}
 			
 			for(Monster monster : level.getMonster()) {
-				System.out.println((loadIAD.stringToIAD(monster.getName()).getImageAnime(monster)));
 				g.drawImage(loadIAD.stringToIAD(monster.getName()).getImageAnime(monster), monster.getXPos()+decX, monster.getYPos()+decY,null);
 			}
 			

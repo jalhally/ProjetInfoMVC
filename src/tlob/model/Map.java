@@ -15,7 +15,7 @@ public class Map {
 	private String level;
 	private String roomLine;
 	private String roomColumn;
-	private String environment ="/Forest";
+	private String environment ="/Desert";
 	
 	//view
 	/*
@@ -173,13 +173,13 @@ public char[][] loadRoom(){
 	
 public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 	ArrayList<Decor> decor = new ArrayList<Decor>(); 
-	
+		
 	for(int i = 0; i < map.length; i++){
 		for (int j = 0; j < map[i].length;j++)
 			
 			switch(map[i][j]){
-			case '0':
-				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
+			case '0':				
+				decor.add(new Floor(40*i,40*j,("res" + environment + "/Background")));
 				break;
 				
 			case '1':
@@ -213,27 +213,27 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 				
 			case '8':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,null,false,1,0,0)); //DoorUp
+				decor.add(new Door(40*i,40*j,"res/2",false,1,0,0)); //DoorUp
 				break;
 				
 			case '-':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,null,false,0,1,0)); //DoorRight
+				decor.add(new Door(40*i,40*j,"res/2",false,0,1,0)); //DoorRight
 				break;
 		
 			case '_':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,null,false,-1,0,0)); //DoorDown
+				decor.add(new Door(40*i,40*j,"res/2",false,-1,0,0)); //DoorDown
 				break;
 			
 			case ':':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,null,false,0,-1,0)); //DoorLeft
+				decor.add(new Door(40*i,40*j,"res/2",false,0,-1,0)); //DoorLeft
 				break;
 			
 			case '9':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,null,false,0,0,1)); //Exit
+				decor.add(new Door(40*i,40*j,"res/2",false,0,0,1)); //Exit
 				break;
 
 /*case 'a':
@@ -374,9 +374,8 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 		else if(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getLine() == 1)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '8';
 		
-		else if(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getLevel() == 1){
+		else if(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getLevel() == 1)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '9';
-			System.out.println(((Door)decor.get(i)).getLevel());}
 		
 		else if(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getColumn() == 1)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '-';

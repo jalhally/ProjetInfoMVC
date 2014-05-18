@@ -84,8 +84,7 @@ public class LoadIAD {
 	
 	public ImageAnimeDirection stringToIAD(String name){
 		for(int i = 0; i < dataIAD.size(); i++){
-			System.out.println(dataIAD.get(i).getName());
-			if(dataIAD.get(i).getName() == name){
+			if(dataIAD.get(i).getName().contentEquals(name)){
 				return dataIAD.get(i);
 			}
 		}

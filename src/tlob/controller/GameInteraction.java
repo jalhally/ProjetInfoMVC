@@ -938,7 +938,6 @@ public class GameInteraction {
 		}
 		else if(monster.getClass() == Boss.class){
 			if(monster.getLifePoint() < 3 && ((Boss) monster).getRage() == false){
-				System.out.println("je rage");
 				((Boss) monster).setAttackCd(40);
 				((Boss) monster).setBossTick(0);
 				monster.setCooldown(0);
@@ -950,7 +949,6 @@ public class GameInteraction {
 			else{
 				((Boss) monster).tickBoss(10);
 			}
-			System.out.println("tick boss: " + ((Boss) monster).getBossTick() +" tick cd: " + monster.getCooldown() + " actual frame: " + monster.getActualFrame());
 			monster.cdTick(1);
 			if(monster.getCooldown() == ((Boss) monster).getAttackCd()){
 				((Boss) monster).fireBall(fireBall, link.get(0));
@@ -1005,7 +1003,6 @@ public class GameInteraction {
 		while(caseOccupied((randomX+2)*40,(randomY+2)*40)){
 			randomX = r.nextInt(12);
 			randomY = r.nextInt(12);
-			System.out.println((randomX+2)*40 + " " + (randomY+2)*40);
 		}
 		monster.setXPos((randomX+2)*40);
 		monster.setYPos((randomY+2)*40);
