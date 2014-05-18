@@ -151,7 +151,7 @@ public class GameController {
 					level.createLevel(map);
 					createGameController(level);
 					sound.soundEnd(sound.getAudioStream());
-					sound.playSound("desert1");
+					sound.playSound("boss");
 					soundChoose.playSound("menuchoose");
 				}
 				level.setStatus(status);
@@ -434,9 +434,12 @@ public class GameController {
 			}
 			
 			for(int t = 0; t < monster.size();t++){
-				if(monster.get(t).getClass() == Boss.class && monster.get(t).getLifePoint() <= 0)
+				if(monster.get(t).getClass() == Boss.class && monster.get(t).getLifePoint() <= 0){
 					status = 6;
 					level.setStatus(status);
+					sound.soundEnd(sound.getAudioStream());
+					sound.playSound("endgame");
+				}
 			}
 
 			for (int p = 0; p < level.getDecor().size(); p ++){
@@ -460,35 +463,40 @@ public class GameController {
 			}
 			else{
 				if(sound.isFinished(sound.getAudioStream()))
-				{
-					if (map.getEnvironment() == "/Desert"){
-						int random = r.nextInt(2);
-						if (random == 0){
-							sound.playSound("desert");
+				{	
+					for(int i = 0;i<monster.size();i++){
+						if(monster.get(i).getClass() == Boss.class){
+							sound.playSound("Boss");
 						}
-						else if(random == 1){
-							sound.playSound("desert1");
+							
+						else if (map.getEnvironment() == "/Desert"){
+							int random = r.nextInt(2);
+							if (random == 0){
+								sound.playSound("desert");
+							}
+							else if(random == 1){
+								sound.playSound("desert1");
+							}
+						}
+						else if (map.getEnvironment() == "/Forest"){
+							int random = r.nextInt(2);
+							if (random == 0){
+								sound.playSound("forest1");
+							}
+							else if(random == 1){
+								sound.playSound("forest2");
+							}
+						}
+						else if (map.getEnvironment() == "/Dungeon"){
+							int random = r.nextInt(2);
+							if (random == 0){
+								sound.playSound("forest1");
+							}
+							else if(random == 1){
+								sound.playSound("forest2");
+							}
 						}
 					}
-					else if (map.getEnvironment() == "/Forest"){
-						int random = r.nextInt(2);
-						if (random == 0){
-							sound.playSound("forest1");
-						}
-						else if(random == 1){
-							sound.playSound("forest2");
-						}
-					}
-					else if (map.getEnvironment() == "/Dungeon"){
-						int random = r.nextInt(2);
-						if (random == 0){
-							sound.playSound("forest1");
-						}
-						else if(random == 1){
-							sound.playSound("forest2");
-						}
-					}
-					
 				}
 				
 				for(int i = 0; i < link.size(); i++){
