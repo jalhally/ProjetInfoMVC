@@ -166,12 +166,12 @@ public class Link extends Character {
 			
 			if(getPlayer() == 0) {
 				
-				setName("res/LinkArrow");
+				setName("res/Link/LinkArrow");
 			}
 			
 			else { 
 				
-				setName("res/RedLinkArrow");
+				setName("res/RedLink/RedLinkArrow");
 			
 			}
 			
