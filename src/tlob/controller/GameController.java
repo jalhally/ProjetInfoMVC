@@ -431,6 +431,15 @@ public class GameController {
 				sound.playSound("gameOver");
 				k = 2;
 			}
+			
+			for(int t = 0; t < monster.size();t++){
+				if(monster.get(t).getClass() == Boss.class && monster.get(t).getLifePoint() <= 0){
+					status = 6;
+					level.setStatus(status);
+					sound.soundEnd(sound.getAudioStream());
+					sound.playSound("endgame");
+				}
+			}
 
 			for (int p = 0; p < level.getDecor().size(); p ++){
 				if(level.getDecor().get(p).getClass() == SpawnerMonster.class){
@@ -453,8 +462,15 @@ public class GameController {
 			}
 			else{
 				if(sound.isFinished(sound.getAudioStream()))
-				{
-					if (map.getEnvironment() == "/Desert"){
+				{	
+					for(int i = 0;i<monster.size();i++){
+						if(monster.get(i).getClass() == Boss.class){
+							sound.playSound("Boss");
+							break;
+						}
+					}
+							
+					 if (map.getEnvironment() == "/Desert"){
 						int random = r.nextInt(2);
 						if (random == 0){
 							sound.playSound("desert");
@@ -470,19 +486,19 @@ public class GameController {
 						}
 						else if(random == 1){
 							sound.playSound("forest2");
-						}
+					}
 					}
 					else if (map.getEnvironment() == "/Dungeon"){
 						int random = r.nextInt(2);
 						if (random == 0){
-							sound.playSound("forest1");
+							sound.playSound("dungeon");
 						}
-						else if(random == 1){
-							sound.playSound("forest2");
+							else if(random == 1){
+							sound.playSound("dungeon1");
 						}
 					}
-					
 				}
+			
 				
 				for(int i = 0; i < link.size(); i++){
 							

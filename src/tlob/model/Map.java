@@ -182,17 +182,19 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 			case '0':				
 				decor.add(new Floor(40*i,40*j,("res" + environment + "/Background")));
 				break;
-				
+			
+			case '.':
+				decor.add(new Floor(40*i,40*j,("res" + environment + "/Background")));
+				break;
+			
 			case '1':
 				if (environment == "/Forest"){
 					decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
 					decor.add(new Wall(40*i,40*j,"res" + environment + "/Wall"));
 				}
 				else{
-					if (i ==0 && j == 0){	// haut gauche
+					if (i ==0 && j == 0)	// haut gauche
 						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallUL"));	
-						System.out.println(decor.size());
-					}
 					
 					else if (i == 14 && j == 0) // bas gauche
 						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallUR"));	
@@ -205,10 +207,6 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 					
 					else if (i == 0 && j !=0 ) // haut
 						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallL"));	
-					
-
-					
-
 					
 					else if ( i == 14 && j != 0) //bas
 						decor.add(new Wall(40*i,40*j,"res" + environment + "/WallR"));
@@ -294,35 +292,59 @@ decor.add(new Wall(40*i,40*j,null));*/
 				break;
 				
 			case 'h':
-				decor.add(new Wall(40*i,40*j,null)); //ButteHaut
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallU")); //ButteHaut
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallU"));
 				break;
 				
 			case 'j':
-				decor.add(new Wall(40*i,40*j,null)); //ButteGauche
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallL")); //ButteGauche
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallL"));
 				break;
 				
 			case 'k':
-				decor.add(new Wall(40*i,40*j,null)); //ButteDroite
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallR")); //ButteDroite
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallR"));
 				break;
 					
 			case 'z':
-				decor.add(new Wall(40*i,40*j,null)); //ButteBas
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallD")); //ButteBas
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallD"));
 				break;
 				
 			case 'u':
-				decor.add(new Wall(40*i,40*j,null)); //CoinHG
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallUL")); //CoinHG
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallUL"));
 				break;
 				
 			case 'i':
-				decor.add(new Wall(40*i,40*j,null)); //CoinHD
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallUR")); //CoinHD
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallUR"));
 				break;
 				
 			case 'o':
-				decor.add(new Wall(40*i,40*j,null)); //Coin"res/BackgroundForest"
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallDL"));//Coin"res/BackgroundForest"
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallDL"));
 				break;
 				
 			case 'p':
-				decor.add(new Wall(40*i,40*j,null)); //CoinBD
+				if (environment == "/Forest" || environment == "/Desert")
+					decor.add(new Wall(40*i,40*j,"res/Desert/WallDR")); //CoinBD
+				else
+					decor.add(new Wall(40*i,40*j,"res/Dungeon/WallDR"));
 				break;
 //case 't':
 //decor.add(new Wall(40*i,40*j,null));
@@ -369,7 +391,11 @@ decor.add(new Wall(40*i,40*j,null));*/
 					case '7':
 						monster.add(new MovingTrap(1,40*i,40*j,2,3,"res/Monster/Trap")); //Underground
 						break;
+					case '.':
+						monster.add(new Boss(1,i*40, j*40,2,2,"res/Monster/boss"));
+						break;
 						}
+
 					}
 	return monster;
 }

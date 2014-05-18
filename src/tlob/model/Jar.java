@@ -29,13 +29,13 @@ public class Jar extends Decor {
 		if(random%2==0) {
 			bonusType=9;
 		}
-		if(random%5==0) {
-			bonusType=0;
+		if(random%10==0) {
+			bonusType=3;
 		}
-		if(random%20==0) {
+		if(random%15==0) {
 			if(random2==0) {bonusType=7;}
 			else if(random2==1) {bonusType=8;}
-			else{bonusType=3;}
+			else{bonusType=0;}
 		}
 		if(bonusType>=0) {
 		bonus.add(new Bonus(x,y,imageBonus[bonusType],bonusType));
@@ -46,20 +46,20 @@ public class Jar extends Decor {
 		int bonusType=-1;
 		java.util.Random r=new java.util.Random( ) ; 
 		int random = r.nextInt(100);
-		int random2=r.nextInt(4);
+		int random2=r.nextInt(6);
+		
 		if(random%2 == 0) {
 			if(random2 == 0) {bonusType=1;}
 			else if(random2 == 1) {bonusType=2;}
-			else if(random2==2){bonusType=3;}
-			else {bonusType=4;}
+			else if(random2==2) {bonusType=3;}
 		}
-		if(random%8==0) {
-			bonusType=0;
-		}
-		if(random%20==0) {
+		
+		if(random%10==0) {
 			if(random2==0) {bonusType=7;}
 			else if(random2==1) {bonusType=8;}
-			
+			else if(random2==2 || random2==5) {bonusType=0;}
+			else if(random2==3) {bonusType=5;}
+			else if(random2==4) {bonusType=4;}
 		}
 		
 		if(bonusType>=0) {
