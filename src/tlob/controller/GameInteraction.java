@@ -61,6 +61,28 @@ public class GameInteraction {
 		}
 	}
 	
+	private int touchDoor(int x1, int y1, int x2, int y2){ 
+		if(Math.abs(x1-x2)<38 && Math.abs(y1-y2)<29){
+			if(x1-x2 < 0){
+				return 0; //GAUCHE
+			}
+			else{
+				return 1; //DROITE
+			}
+		}
+		else if(Math.abs(x1-x2)<29 && 38>Math.abs(y1-y2)){
+			if(y1-y2 < 0){
+				return 2; //HAUT
+			}
+			else{
+				return 3; //BAS
+			}
+		}
+		else{
+			return -1;
+		}
+	}
+	
 	private int touchDecorB(int x1, int y1, int x2, int y2){ 
 		if(Math.abs(x1-x2)<35 && Math.abs(y1-y2)<25){
 			if(x1-x2 < 0){
@@ -156,7 +178,7 @@ public class GameInteraction {
 		link.setU(1);
 		
 		for(int i = 0; i < decor.size(); i++){
-			if(touchDecor(link.getXPos(), link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) 
+			if(touchArrow(link.getXPos(), link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) 
 					!= -1 && decor.get(i).getClass() == Door.class){
 				int line = ((Door) decor.get(i)).getLine();
 				int column = ((Door) decor.get(i)).getColumn();
@@ -209,7 +231,7 @@ public class GameInteraction {
 				break;
 			}
 			
-			if(decor.get(i).getClass() != Floor.class){
+			if(decor.get(i).getClass() != Floor.class && decor.get(i).getClass() != Door.class ){
 				int a = touchDecor(link.getXPos(),link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos());
 				if(a == 0)
 					link.setR(0);
@@ -638,26 +660,31 @@ public class GameInteraction {
 		monster.setL(1);
 		monster.setD(1);
 		monster.setU(1);
-		if((monster.getClass() == Underground.class && ((Underground) monster).getUnderground() == false)|| monster.getClass() != MovingTrap.class){
-			for(int i = 0; i < this.monster.size(); i++){
-				if(this.monster.get(i) != monster 
-						&& (this.monster.get(i).getClass() == Underground.class && ((Underground) this.monster.get(i)).getUnderground() == true)
-						|| this.monster.get(i).getClass() == MovingTrap.class){
-					if(touchDecor(monster.getXPos()-monster.getSpeed(),monster.getYPos(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
-							&& monster.getDirection() == 0){
-						monster.setDirection(1);
-					}
-					if(touchDecor(monster.getXPos()+monster.getSpeed(),monster.getYPos(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
-							&& monster.getDirection() == 1){
-						monster.setDirection(0);
-					}
-					if(touchDecor(monster.getXPos(),monster.getYPos()-monster.getSpeed(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
-							&& monster.getDirection() == 2){
-						monster.setDirection(3);
-					}
-					if(touchDecor(monster.getXPos(),monster.getYPos()-monster.getSpeed(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
-							&& monster.getDirection() == 3){
-						monster.setDirection(2);
+		if(monster.getClass() != MovingTrap.class){
+			if(monster.getClass() == Underground.class && ((Underground) monster).getUnderground() == true){
+				
+			}
+			else{
+				for(int i = 0; i < this.monster.size(); i++){
+					if(this.monster.get(i) != monster 
+							&& (this.monster.get(i).getClass() == Underground.class && ((Underground) this.monster.get(i)).getUnderground() == true)
+							|| this.monster.get(i).getClass() == MovingTrap.class){
+						if(touchDecor(monster.getXPos()-monster.getSpeed(),monster.getYPos(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
+								&& monster.getDirection() == 0){
+							monster.setDirection(1);
+						}
+						if(touchDecor(monster.getXPos()+monster.getSpeed(),monster.getYPos(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
+								&& monster.getDirection() == 1){
+							monster.setDirection(0);
+						}
+						if(touchDecor(monster.getXPos(),monster.getYPos()-monster.getSpeed(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
+								&& monster.getDirection() == 2){
+							monster.setDirection(3);
+						}
+						if(touchDecor(monster.getXPos(),monster.getYPos()-monster.getSpeed(),this.monster.get(i).getXPos(),this.monster.get(i).getYPos()) != -1
+								&& monster.getDirection() == 3){
+							monster.setDirection(2);
+						}
 					}
 				}
 			}
@@ -987,14 +1014,16 @@ public class GameInteraction {
 
 		}
 		else if(monster.getClass() == Underground.class){
-			if(fireDirection(monster) != -1 && Math.abs(monster.getXPos() - link.get(0).getXPos()) < 80 && Math.abs(monster.getYPos() - link.get(0).getYPos()) < 80 && ((Underground) monster).getUnderground() == true){
+			if(fireDirection(monster) != -1 && Math.abs(monster.getXPos() - link.get(0).getXPos()) < 80 && Math.abs(monster.getYPos() - link.get(0).getYPos()) < 80 
+					&& ((Underground) monster).getUnderground() == true){
 				((Underground) monster).setUnderground(false);
 				monster.setInv(1);
 				monster.setActualFrame(1);
 				monster.setSpeed(2);
 				monster.setName("res/Monster/underground");
 			}
-			if(((Underground) monster).getUnderground() == false && Math.abs(monster.getXPos() - link.get(0).getXPos()) > 150 && Math.abs(monster.getYPos() - link.get(0).getYPos()) > 150){
+			if(((Underground) monster).getUnderground() == false && Math.abs(monster.getXPos() - link.get(0).getXPos()) > 140 && Math.abs(monster.getYPos() - link.get(0).getYPos()) > 140
+					&& monster.getXPos()%40 == 0 && monster.getYPos()%40 == 0){
 				((Underground) monster).setUnderground(true);
 				monster.setInvicible();
 				monster.setActualFrame(1);
