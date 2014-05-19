@@ -6,7 +6,7 @@ import java.util.List;
 public class Jar extends Decor {
 	
 	private String imageBonus[] ={"res/Heart","res/BombPlus","res/BombRange","res/ArrowPlus","res/SpeedBonus",
-			"res/Gauntlet2","res/Key","res/FireStaff","res/IceStaff","res/Rubis"};
+			"res/Gauntlet2","res/Key","res/FireStaff","res/IceStaff","res/Rubis","res/SpeedBonus"};
 	
 	
 	public Jar(int xPos, int yPos, String name) {
@@ -59,7 +59,7 @@ public class Jar extends Decor {
 			else if(random2==1) {bonusType=8;}
 			else if(random2==2 || random2==5) {bonusType=0;}
 			else if(random2==3) {bonusType=5;}
-			else if(random2==4) {bonusType=4;}
+			else if(random2==4) {bonusType=10;}
 		}
 		
 		if(bonusType>=0) {
