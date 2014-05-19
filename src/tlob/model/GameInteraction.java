@@ -16,8 +16,10 @@ public class GameInteraction {
 	private List<Thunder> thunder;
 	private Map map;
 	private boolean changeLevel = false;
+	private Level level;
 	
 	public GameInteraction(Level level){
+		this.level = level;
 		this.link = level.getLink();
 		this.decor = level.getDecor();
 		this.monster = level.getMonster();
@@ -155,7 +157,7 @@ public class GameInteraction {
 		
 		for(int i = 0; i < decor.size(); i++){
 			if(touchArrow(link.getXPos(), link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos()) 
-					!= -1 && decor.get(i).getClass() == Door.class){
+					!= -1 && decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getOpen()==true){
 				int line = ((Door) decor.get(i)).getLine();
 				int column = ((Door) decor.get(i)).getColumn();
 				int level = ((Door) decor.get(i)).getLevel();
@@ -191,6 +193,7 @@ public class GameInteraction {
 					link.setDirection(2);
 
 				}
+						
 				bonus.removeAll(bonus);
 				bomb.removeAll(bomb);
 				decor.removeAll(decor);
@@ -241,7 +244,18 @@ public class GameInteraction {
 				*/
 			}
 			
-			if(decor.get(i).getClass() != Floor.class && decor.get(i).getClass() != Door.class){
+			if(decor.get(i).getClass() != Floor.class){
+				if(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getOpen()==false){
+					int a = touchDecor(link.getXPos(),link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos());
+					if(a == 0)
+						link.setR(0);
+					if(a == 1)
+						link.setL(0);
+					if(a == 2)
+						link.setD(0);
+					if(a == 3)
+						link.setU(0);
+				}
 				int a = touchDecor(link.getXPos(),link.getYPos(),decor.get(i).getXPos(),decor.get(i).getYPos());
 				if(a == 0)
 					link.setR(0);
@@ -251,7 +265,8 @@ public class GameInteraction {
 					link.setD(0);
 				if(a == 3)
 					link.setU(0);
-				if(decor.get(i).getClass() == Treasure.class && ((Treasure) decor.get(i)).isBonusTaken() == true && a != -1){
+				if((decor.get(i).getClass() == Treasure.class && ((Treasure) decor.get(i)).isBonusTaken() == true)
+						||(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getOpen()==true) && a != -1){
 					link.setR(1);
 					link.setL(1);
 					link.setD(1);

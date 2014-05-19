@@ -246,27 +246,27 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 			
 			case '8':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorU",false,1,0,0)); //DoorUp
+				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorU",true,1,0,0)); //DoorUp
 				break;
 				
 			case '-':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorR",false,0,1,0)); //DoorRight
+				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorR",true,0,1,0)); //DoorRight
 				break;
 		
 			case '_':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorD",false,-1,0,0)); //DoorDown
+				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorD",true,-1,0,0)); //DoorDown
 				break;
 			
 			case ':':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorL",false,0,-1,0)); //DoorLeft
+				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorL",true,0,-1,0)); //DoorLeft
 				break;
 			
 			case '9':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,"res" + environment + "/DoorR",false,0,0,1)); //Exit
+				decor.add(new Door(40*i,40*j,"res" + environment + "/DoorR",true,0,0,1)); //Exit
 				break;
 
 			case 'a':
