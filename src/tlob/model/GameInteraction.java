@@ -265,8 +265,14 @@ public class GameInteraction {
 					link.setD(0);
 				if(a == 3)
 					link.setU(0);
-				if((decor.get(i).getClass() == Treasure.class && ((Treasure) decor.get(i)).isBonusTaken() == true)
-						||(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getOpen()==true) && a != -1){
+				if((decor.get(i).getClass() == Treasure.class && ((Treasure) decor.get(i)).isBonusTaken() == true) && a != -1){
+					link.setR(1);
+					link.setL(1);
+					link.setD(1);
+					link.setU(1);
+				}
+						
+				if((decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getOpen()==true) && a != -1){
 					link.setR(1);
 					link.setL(1);
 					link.setD(1);

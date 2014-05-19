@@ -152,6 +152,7 @@ public class GameController implements KeyListener{
 				}
 				else{
 					Map map = new Map(16,16,"1","3","1");
+					map.setEnvironment("/Forest");
 					level.createLevel(map);
 					createGameController(level);
 					link.add(new Link(3,7*40,13*40,2,2,"res/Link/LinkRun",0));
@@ -437,6 +438,7 @@ public class GameController implements KeyListener{
 				if(map.getRoomColumn().contentEquals("2")  && map.getLevel().contentEquals("2") && map.getRoomLine().contentEquals("2")){
 					if(level.getDecor().get(i).getClass() == Door.class){
 						((Door)(level.getDecor().get(i))).setOpen(false);
+						level.getDecor().get(i).setName("res/Desert/Obstacle3");
 					}					
 				}
 			}
@@ -445,6 +447,12 @@ public class GameController implements KeyListener{
 				for (int i =0;i<level.getDecor().size();i++){
 					if(level.getDecor().get(i).getClass() == Door.class){
 						((Door)(level.getDecor().get(i))).setOpen(true);
+						if(((Door)level.getDecor().get(i)).getLine() == 1){
+							level.getDecor().get(i).setName("res/Forest/DoorU");
+						}
+						if(((Door)level.getDecor().get(i)).getLevel() == 1){
+							level.getDecor().get(i).setName("res/Forest/DoorR");
+						}
 					}				
 				}
 			}
