@@ -14,26 +14,6 @@ public abstract class Item implements Tick{
 		this.name = name;
 	}
 	
-	//view
-	
-	/*
-	public void tick(ImageAnimeDirection image, int c) {
-		this.mytick++;
-		if(this.mytick == c) {
-			this.actualFrame++;
-			this.mytick = 0;
-			if(this.actualFrame == IAD.getFrames()+1)
-				this.actualFrame = 1;
-		}
-	}
-	
-	public int getC()
-	{ 
-		return c;
-	}
-	*/
-	
-	
 	public int getMyTick(){
 		return this.myTick;
 	}

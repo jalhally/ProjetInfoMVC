@@ -31,17 +31,6 @@ public abstract class  Character implements Tick{
 		this.name = name;
 	}
 	
-	/*
-	public void tick() {
-		this.mytick++;
-		if(this.mytick == 5) {
-			this.actualFrame++;
-			this.mytick = 0;
-			if(this.actualFrame == 6)
-				this.actualFrame = 1;
-		}
-	}
-	*/
 	public int getPlayer(){
 		return this.player;
 	}

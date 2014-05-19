@@ -17,19 +17,6 @@ public class Map {
 	private String roomColumn;
 	private String environment ="/Desert";
 	
-	//view
-	/*
-	Image """bigTree""" = Toolkit.getDefaultToolkit().getImage("res/LittleTree");
-	Image littleTree = Toolkit.getDefaultToolkit().getImage("res/LittleTree");
-	Image bg = Toolkit.getDefaultToolkit().getImage("res/BackgroundForest");
-	Image jar = Toolkit.getDefaultToolkit().getImage("res/Jar.png");
-	ImageAnimeDirection melee = new ImageAnimeDirection("res/MeleeRun",1);
-	Image rocks = Toolkit.getDefaultToolkit().getImage("res/Rocks");
-	Image rock = Toolkit.getDefaultToolkit().getImage("res/Rock");
-	Image root = Toolkit.getDefaultToolkit().getImage("res/Root");
-	*/
-	
-	
 	public Map(int length, int width, String level, String roomLine, String roomColumn)
 	{
 		this.length = length;
@@ -98,7 +85,7 @@ public class Map {
 	this.roomColumn = roomColumn;
 	}
 	
-	public char[][] loadMap(FileInputStream fis)// pas sur qu il faille mettre try catch
+	public char[][] loadMap(FileInputStream fis)
 	{
 		char[][] map = new char[length][width];
 		try{
@@ -170,7 +157,7 @@ public char[][] loadRoom(){
 }
 
 	
-public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
+public ArrayList<Decor> mapToListDecor(char[][] map) { 
 	ArrayList<Decor> decor = new ArrayList<Decor>();
 	String obstacles[]={"res" + environment + "/Obstacle1", "res" + environment 
 			+ "/Obstacle2","res" + environment + "/Obstacle3","res" + environment + "/Obstacle4"};
@@ -381,14 +368,12 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 	return decor;
 }
 
-	public ArrayList<Monster> mapToListMonster(char[][] map) { // changer les nulls
+	public ArrayList<Monster> mapToListMonster(char[][] map) {
 			
 		ArrayList<Monster> monster = new ArrayList<Monster>();
 		for (int i = 0; i < map.length; i++){
 			for (int j = 0; j < map[i].length;j++)
 				switch(map[i][j]){
-					//case 'l':
-						//decor.add(new Link(3,(...)));
 					case 'q':
 						monster.add(new Ranged(1,40*i,40*j,1,3,"res/Monster/RangedRun")); //Ranged
 						break;
@@ -544,7 +529,7 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 	return map;
 }
 
-	public void saveMap(char[][] map){ //oblige de mettre static sinon ca bug, pq?
+	public void saveMap(char[][] map){
 		FileOutputStream fos = null;
 		try{
 			fos = new FileOutputStream(new File("res/"+ level + "-" + roomLine + "-" + roomColumn + "copy.txt"));

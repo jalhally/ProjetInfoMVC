@@ -13,7 +13,6 @@ public class Bomber extends Monster {
 		setTime(40);
 	}
 	
-	//THROW c'est le setBomb de Link
 	public List<Bomb> setBomb(List<Bomb> liste)
 	{
 		int x,y;

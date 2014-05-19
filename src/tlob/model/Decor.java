@@ -60,12 +60,8 @@ public abstract class Decor implements Tick{
 		}
 	}
 
-
-
 	@Override
 	public void tick(int constante) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override

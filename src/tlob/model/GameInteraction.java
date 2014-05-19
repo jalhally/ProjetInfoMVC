@@ -16,10 +16,8 @@ public class GameInteraction {
 	private List<Thunder> thunder;
 	private Map map;
 	private boolean changeLevel = false;
-	private Level level;
 	
 	public GameInteraction(Level level){
-		this.level = level;
 		this.link = level.getLink();
 		this.decor = level.getDecor();
 		this.monster = level.getMonster();
@@ -233,15 +231,6 @@ public class GameInteraction {
 					link.setD(1);
 					link.setU(1);
 				}
-				/*
-				else if(open){
-					link.tick(5);
-					System.out.println("le bonus existe " + link.getTime());
-					if(link.getTime() == 10){
-						link.setName("res/Link/LinkRun");
-					}
-				}
-				*/
 			}
 			
 			if(decor.get(i).getClass() != Floor.class){
@@ -523,7 +512,6 @@ public class GameInteraction {
 					if(decor.get(i).getClass() == Jar.class && bombDef.getR() == 1 && bombDef.getPlayer() != -1){
 						bombDef.getRight().add(liste[1][j]);
 						bombDef.getRight().add(liste[1][j+1]);
-						//right.add(liste[1][j+2]);
 						if(link.size() == 1) {
 							
 							((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
@@ -545,7 +533,6 @@ public class GameInteraction {
 					if(decor.get(i).getClass() == Jar.class && bombDef.getU() == 1 && bombDef.getPlayer() != -1){
 						bombDef.getDown().add(liste[2][j]);
 						bombDef.getDown().add(liste[2][j+1]);
-						//down.add(liste[2][j+2]);
 						if(link.size() == 1) {
 							
 							((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());
@@ -569,7 +556,6 @@ public class GameInteraction {
 					if(decor.get(i).getClass() == Jar.class && bombDef.getD() == 1 && bombDef.getPlayer() != -1){
 						bombDef.getUp().add(liste[3][j]);
 						bombDef.getUp().add(liste[3][j+1]);
-						//up.add(liste[3][j+2]);
 						if(link.size() == 1) {
 							
 							((Jar) decor.get(i)).randomBonus(bonus, decor.get(i).getXPos(), decor.get(i).getYPos());

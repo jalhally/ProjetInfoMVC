@@ -11,27 +11,26 @@ import tlob.view.*;
 
 public class GameController implements KeyListener{
 	
-	boolean rightPressed = false;
-	boolean leftPressed = false;
-	boolean downPressed = false;
-	boolean upPressed = false;
-	boolean enterPressed = false;
-	boolean fireArrow = false;
-	boolean setBomb = false;
-	boolean useStaff = false;
-	boolean rightPressed2 = false;
-	boolean leftPressed2 = false;
-	boolean downPressed2 = false;
-	boolean upPressed2 = false;
-	boolean enterPressed2 = false;
-	boolean fireArrow2 = false;
-	boolean setBomb2 = false;
-	boolean useStaff2 = false;
-	boolean upPressedMenu = false;
-	boolean downPressedMenu = false;
-	boolean leftPressedMenu = false;
-	boolean rightPressedMenu = false;
-	boolean pausePressed = false;
+	private boolean rightPressed = false;
+	private boolean leftPressed = false;
+	private boolean downPressed = false;
+	private boolean upPressed = false;
+	private boolean enterPressed = false;
+	private boolean fireArrow = false;
+	private boolean setBomb = false;
+	private boolean useStaff = false;
+	private boolean rightPressed2 = false;
+	private boolean leftPressed2 = false;
+	private boolean downPressed2 = false;
+	private boolean upPressed2 = false;
+	private boolean fireArrow2 = false;
+	private boolean setBomb2 = false;
+	private boolean useStaff2 = false;
+	private boolean upPressedMenu = false;
+	private boolean downPressedMenu = false;
+	private boolean leftPressedMenu = false;
+	private boolean rightPressedMenu = false;
+	private boolean pausePressed = false;
 	private int w;
 	
 	java.util.Random r=new java.util.Random( ) ;

@@ -40,21 +40,18 @@ public class Bonus extends Decor {
 		case 5: //Gauntlet
 			l.setGauntlet(true);
 			break;
-		case 6: //Key
-			l.setKey(true);
-			break;
-		case 7: //FireStaff
+		case 6: //FireStaff
 			l.setStaff(0);
 			break;
-		case 8: //IceStaff
+		case 7: //IceStaff
 			l.setStaff(1);
 			break;
-		case 9: //Rupee
+		case 8: //Rupee
 			if(l.getNumberCoin()<999) {
 				l.setNumberCoin(l.getNumberCoin()+1);
 			}
 			break;
-		case 10: //Speed
+		case 9: //Speed
 			if(l.getSpeed()<maxSpeed) {
 				l.setSpeed(l.getSpeed()+1);
 			}

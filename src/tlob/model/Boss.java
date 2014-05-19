@@ -22,20 +22,14 @@ public class Boss extends Monster{
 	{
 		this.rage = rage;
 	}
-	
-	public void rage() // remplace le skinChange
-	{
-		setRage(true);
-	}
-	
-	
-	public List<FireBall> fireBall(List<FireBall> fireBall, Link link) // pas sur
+		
+	public List<FireBall> fireBall(List<FireBall> fireBall, Link link) 
 	{
 		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/Monster/fire", link.getXPos()+10, link.getYPos()+10,15*40,15*40));
 		return fireBall;
 	}
 	
-	public List<FireBall> fireBall2(List<FireBall> fireBall) // pas sur
+	public List<FireBall> fireBall2(List<FireBall> fireBall) 
 	{
 		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/Monster/fire", getXPos()+16, getYPos()+10,15*40,15*40));
 		fireBall.add(new FireBall(getXPos()+10, getYPos()+10, "res/Monster/fire", getXPos()+4, getYPos()+10,15*40,15*40));

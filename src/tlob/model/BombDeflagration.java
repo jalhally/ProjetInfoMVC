@@ -5,16 +5,6 @@ import java.util.ArrayList;
 public class BombDeflagration extends Item implements Tick{
 	
 	private int player;
-	
-	public BombDeflagration(int xPos, int yPos, String name,int player){
-		super(xPos,yPos, name); 
-		this.player = player;
-		
-	}
-	
-	//view
-	//Image brokenJar = Toolkit.getDefaultToolkit().getImage("res/ForestBrokenJar.png");
-	
 	private int U = 1; 
 	private int D = 1;
 	private int L = 1;
@@ -26,13 +16,20 @@ public class BombDeflagration extends Item implements Tick{
 	private int portee = 1;
 	private int myTick = 1;
 	
+	
+	public BombDeflagration(int xPos, int yPos, String name,int player){
+		super(xPos,yPos, name); 
+		this.player = player;
+		
+	}
+	
 	public int[][] listeExplosion(int rangeBomb){ //x,y = milieu de la case
 		up = new ArrayList<Integer>();
 		down = new ArrayList<Integer>();
 		left = new ArrayList<Integer>();
 		right = new ArrayList<Integer>();
-		int l[][] = new int[4][rangeBomb*4+2]; //avance par 10 pixels
-		for(int j = 0; j < rangeBomb*4+2;j++){ // 0 GAUCHE, 1 DROITE, 2 HAUT, 3 BAS
+		int l[][] = new int[4][rangeBomb*4+2];  //avance par 10 pixels
+		for(int j = 0; j < rangeBomb*4+2;j++){  // 0 GAUCHE, 1 DROITE, 2 HAUT, 3 BAS
 			l[0][j] = getXPos() - j*10;
 			l[1][j] = getXPos() + j*10;
 			l[2][j] = getYPos() - j*10;
@@ -44,18 +41,7 @@ public class BombDeflagration extends Item implements Tick{
 	public int getPlayer(){
 		return this.player;
 	}
-	//view 
-	
-	/*
-	public void tick(){
-		this.mytick++;
-		if(this.mytick == getC()) {
-			this.portee++;
-			mytick = 1;
-		}
-	}
-	*/
-	
+
 	public int getPortee(){
 		return this.portee;
 	}

@@ -5,8 +5,6 @@ import java.util.ArrayList;
 public class FireBall extends Item{
 	
 	private int pos = 0;
-	
-	//view
 	private int mytick = 1;
 	private ArrayList<int[]> listpos;
 	private int damage = 1;

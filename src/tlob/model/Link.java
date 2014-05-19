@@ -9,7 +9,6 @@ public class Link extends Character {
 	private int rangeBomb = 1;
 	private int numberArrow = 3;
 	private boolean gauntlet = false;
-	private boolean key = false;
 	private int staff=-1; //0=fire //1=ice
 	private int numberCoin = 0;
 	private int maxLife = 3;
@@ -79,17 +78,6 @@ public class Link extends Character {
 	public void setGauntlet(boolean gauntlet)
 	{
 		this.gauntlet = gauntlet;
-	}
-	
-	public boolean getKey()
-	{
-		return key;
-	}
-	
-	public void setKey(boolean key)
-	{
-		this.key = key;
-		
 	}
 	
 	public int getNumberCoin() {
