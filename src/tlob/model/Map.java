@@ -439,10 +439,13 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 		
 		else if(decor.get(i).getClass() == Hole.class)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '6';
-		/*
-		else if(decor.get(i).getClass() == MovingTrap.class)
-			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '7';
-		*/
+	
+		else if(decor.get(i).getClass() == SpawnerFireBall.class)
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '4';
+		
+		else if(decor.get(i).getClass() == SpawnerMonster.class)
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '3';
+		
 		else if(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getLine() == 1)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = '8';
 		
