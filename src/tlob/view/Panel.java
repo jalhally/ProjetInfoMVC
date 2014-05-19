@@ -59,6 +59,7 @@ public class Panel extends JPanel{
 		}
 		
 		else if (level.getStatus()==6){
+			g.drawImage(linkwin,0,0,null);
 			for(int i = 0; i < level.getLink().size(); i ++){
 				if (level.getLink().get(i).getLifePoint()<= 0){
 					if(i == 1){
@@ -69,7 +70,6 @@ public class Panel extends JPanel{
 					}						
 				}					
 			}
-			g.drawImage(linkwin,0,0,null);
 		}
 		
 		else if (level.getStatus() == 4){
@@ -124,6 +124,7 @@ public class Panel extends JPanel{
 				}
 			}
 			for(Decor decor : level.getDecor()) {
+				
 				if(decor.getClass() == Treasure.class){
 					g.drawImage(loadIAD.stringToIAD(decor.getName()).getImageAnime(decor), decor.getXPos()+decX, decor.getYPos()+decY,null);
 				}

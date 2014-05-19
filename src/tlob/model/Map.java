@@ -270,15 +270,18 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 				break;
 
 			case 'a':
-				decor.add(new Treasure(40*i,40*j,"res/TreasureChest1", 1 ));
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
+				decor.add(new Treasure(40*i,40*j,"res/TreasureChest", 1 ));
 				break;
 				
 			case 'b':
-				decor.add(new Treasure(40*i,40*j,"res/TreasureChest1",2));
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
+				decor.add(new Treasure(40*i,40*j,"res/TreasureChest",2));
 				break;
 				
 			case 'c':
-				decor.add(new Treasure(40*i,40*j,"res/TreasureChest1",4));
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
+				decor.add(new Treasure(40*i,40*j,"res/TreasureChest",4));
 				break;
 				
 			case 'r':
@@ -455,29 +458,50 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 		else if(decor.get(i).getClass() == Door.class && ((Door)decor.get(i)).getColumn() == -1)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = ':';
 		
+		//else if(decor.get(i).getClass() == Floor.class && ("res"+environment+"/WallUL").contentEquals(decor.
+			//	get(i).getName()))
+		//	map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'e';
 		
-		/*else if(decor.get(i).getClass() == Floor.class)
-		 * 
-		map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'e';
-		else if(decor.get(i).getClass() == Floor.class)
-		map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'b';
-		else if(decor.get(i).getClass() == Floor.class)
-		map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'h';
-		else if(decor.get(i).getClass() == Floor.class)
-		map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'j';
-		else if(decor.get(i).getClass() == Floor.class)
-		map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'k';
-		else if(decor.get(i).getClass() == Floor.class)
-		map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'z';
-		else if(decor.get(i).getClass() == Floor.class)
-		map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'u';
-		else if(decor.get(i).getClass() == Floor.class)
-		map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'i';
-		else if(decor.get(i).getClass() == Floor.class)
-		map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'o';
-		else if(decor.get(i).getClass() == Floor.class)
-		map[decor.get(i).getXPos()/40][decor.get(i).getYPos()/40] = 'p';
-		*/
+		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 2)
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'b';
+		
+		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 1)
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'a';
+		
+		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 4)
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'c';
+		
+		else if(decor.get(i).getClass() == Wall.class && ("res"+environment+"/WallU").contentEquals(decor.
+				get(i).getName()))
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'h';
+		
+		else if(decor.get(i).getClass() == Wall.class && ("res"+environment+"/WallL").contentEquals(decor.
+				get(i).getName()))
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'j';
+		
+		else if(decor.get(i).getClass() == Wall.class && ("res"+environment+"/WallR").contentEquals(decor.
+				get(i).getName()))
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'k';
+		
+		else if(decor.get(i).getClass() == Wall.class && ("res"+environment+"/WallD").contentEquals(decor.
+				get(i).getName()))
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'z';
+		
+		else if(decor.get(i).getClass() == Wall.class && ("res"+environment+"/WallUL").contentEquals(decor.
+				get(i).getName()))
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'u';
+		
+		else if(decor.get(i).getClass() == Wall.class && ("res"+environment+"/WallUR").contentEquals(decor.
+				get(i).getName()))
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'i';
+		
+		else if(decor.get(i).getClass() == Wall.class && ("res"+environment+"/WallDL").contentEquals(decor.
+				get(i).getName()))
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'o';
+		
+		else if(decor.get(i).getClass() == Wall.class && ("res"+environment+"/WallDR").contentEquals(decor.
+				get(i).getName()))
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'p';
 	}
 	for(int j = 0;j < monster.size();j++){
 		if(monster.get(j).getClass() == Melee.class)

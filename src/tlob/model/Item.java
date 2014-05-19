@@ -1,6 +1,6 @@
 package tlob.model;
 
-public class Item implements Tick{
+public abstract class Item implements Tick{
 	private int xPos;
 	private int yPos;
 	private String name;
