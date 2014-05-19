@@ -266,12 +266,17 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 			
 			case '9':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,"res/2",false,0,0,1)); //Exit
+				decor.add(new Door(40*i,40*j,"res" + environment + "/Background",false,0,0,1)); //Exit
 				break;
 
 			case 'a':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
 				decor.add(new Treasure(40*i,40*j,"res/TreasureChest", 1 ));
+				break;
+				
+			case 'w':
+				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
+				decor.add(new Treasure(40*i,40*j,"res/TreasureChest", 5 ));
 				break;
 				
 			case 'b':
@@ -470,6 +475,9 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 		
 		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 1)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'a';
+		
+		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 5)
+			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'w';
 		
 		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 4)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'c';
