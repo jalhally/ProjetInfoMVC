@@ -1,6 +1,6 @@
 package tlob.model;
 
-public class Character implements Tick{
+public abstract class  Character implements Tick{
 
 	protected int lifePoint;
 	protected int xPos;
@@ -22,7 +22,7 @@ public class Character implements Tick{
 	private int R = 1;
 	private int player = 0;
 	
-	public Character(int lifePoint, int xPos, int yPos, int speed, int direction, String name){
+	public  Character(int lifePoint, int xPos, int yPos, int speed, int direction, String name){
 		this.lifePoint =  lifePoint;
 		this.xPos = xPos;
 		this.yPos = yPos;

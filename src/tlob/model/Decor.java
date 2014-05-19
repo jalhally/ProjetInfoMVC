@@ -1,6 +1,6 @@
 package tlob.model;
 
-public class Decor implements Tick{
+public abstract class Decor implements Tick{
 	
 	protected int xPos;
 	protected int yPos;
