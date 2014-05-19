@@ -32,6 +32,7 @@ public class GameController implements KeyListener{
 	boolean leftPressedMenu = false;
 	boolean rightPressedMenu = false;
 	boolean pausePressed = false;
+	private int w;
 	
 	java.util.Random r=new java.util.Random( ) ;
 	
@@ -141,6 +142,7 @@ public class GameController implements KeyListener{
 				deleteCopy();
 				if(status == 1){
 					Map map = new Map(16,16,"0","0","0");
+					map.setEnvironment("/Forest");
 					level.createLevel(map);
 					createGameController(level);
 					link.add(new Link(3,1*40,1*40,2,1,"res/Link/LinkRun",0));
@@ -152,14 +154,14 @@ public class GameController implements KeyListener{
 				}
 				else{
 					Map map = new Map(16,16,"1","3","1");
-					map.setEnvironment("/Forest");
 					level.createLevel(map);
 					createGameController(level);
-					link.add(new Link(3,7*40,13*40,2,2,"res/Link/LinkRun",0));
+					link.add(new Link(3,7*40,13*40,3,2,"res/Link/LinkRun",0));
 
 					sound.soundEnd(sound.getAudioStream());
 					sound.playSound("desert1");
 					soundChoose.playSound("menuchoose");
+					w=0;
 				}
 				level.setStatus(status);
 				enterPressed = false;
@@ -187,7 +189,7 @@ public class GameController implements KeyListener{
 		}
 		
 		else if (status == 1){
-
+			
 			// mode multi
 			if(sound.isFinished(sound.getAudioStream()))
 			{
@@ -448,10 +450,10 @@ public class GameController implements KeyListener{
 					if(level.getDecor().get(i).getClass() == Door.class){
 						((Door)(level.getDecor().get(i))).setOpen(true);
 						if(((Door)level.getDecor().get(i)).getLine() == 1){
-							level.getDecor().get(i).setName("res/Forest/DoorU");
+							level.getDecor().get(i).setName("res" + map.getEnvironment() +"/DoorU");
 						}
 						if(((Door)level.getDecor().get(i)).getLevel() == 1){
-							level.getDecor().get(i).setName("res/Forest/DoorR");
+							level.getDecor().get(i).setName("res" + map.getEnvironment() + "/DoorR");
 						}
 					}				
 				}
@@ -462,6 +464,14 @@ public class GameController implements KeyListener{
 					level.setStatus(status);
 					sound.soundEnd(sound.getAudioStream());
 					sound.playSound("endgame");
+				}
+			}
+			
+			for(int t = 0; t < monster.size();t++){
+				if(monster.get(t).getClass() == Boss.class && w == 0){
+					sound.soundEnd(sound.getAudioStream());
+					sound.playSound("Boss");
+					w = 1;
 				}
 			}
 
@@ -512,7 +522,7 @@ public class GameController implements KeyListener{
 							sound.playSound("forest2");
 					}
 					}
-					else if (map.getEnvironment() == "/Dungeon"){
+					else if (map.getEnvironment().contentEquals("/Dungeon")){
 						int random = r.nextInt(2);
 						if (random == 0){
 							sound.playSound("dungeon");
@@ -885,7 +895,7 @@ public class GameController implements KeyListener{
 					}
 					else if(map.getLevel().contentEquals("3")){
 						sound.soundEnd(sound.getAudioStream());
-						sound.playSound("forest2");
+						sound.playSound("dungeon");
 						}
 					status = 2;
 					level.setStatus(status);
