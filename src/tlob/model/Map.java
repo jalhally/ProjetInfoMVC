@@ -246,27 +246,27 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 			
 			case '8':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorU",false,1,0,0)); //DoorUp
+				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorU",true,1,0,0)); //DoorUp
 				break;
 				
 			case '-':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorR",false,0,1,0)); //DoorRight
+				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorR",true,0,1,0)); //DoorRight
 				break;
 		
 			case '_':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorD",false,-1,0,0)); //DoorDown
+				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorD",true,-1,0,0)); //DoorDown
 				break;
 			
 			case ':':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorL",false,0,-1,0)); //DoorLeft
+				decor.add(new Door(40*i,40*j,"res"+ environment + "/DoorL",true,0,-1,0)); //DoorLeft
 				break;
 			
 			case '9':
 				decor.add(new Floor(40*i,40*j,"res" + environment + "/Background"));
-				decor.add(new Door(40*i,40*j,"res" + environment + "/Background",false,0,0,1)); //Exit
+				decor.add(new Door(40*i,40*j,"res" + environment + "/DoorR",true,0,0,1)); //Exit
 				break;
 
 			case 'a':
@@ -474,16 +474,20 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 			//	get(i).getName()))
 		//	map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'e';
 		
-		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 2)
+		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 2 &&
+				((Treasure)(decor.get(i))).isBonusTaken() == false)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'b';
 		
-		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 1)
+		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 1 &&
+				((Treasure)(decor.get(i))).isBonusTaken() == false)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'a';
 		
-		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 5)
+		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 5 &&
+				((Treasure)(decor.get(i))).isBonusTaken() == false)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'w';
 		
-		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 4)
+		else if(decor.get(i).getClass() == Treasure.class && ((Treasure)(decor.get(i))).getBonusType() == 4 &&
+				((Treasure)(decor.get(i))).isBonusTaken() == false)
 			map[decor.get(i).getYPos()/40][decor.get(i).getXPos()/40] = 'c';
 		
 		else if(decor.get(i).getClass() == Wall.class && ("res"+environment+"/WallU").contentEquals(decor.

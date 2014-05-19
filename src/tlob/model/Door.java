@@ -9,7 +9,7 @@ public class Door extends Decor{
 	
 	public Door(int xPos, int yPos, String name, boolean open,int line,int column, int level) {
 		super(xPos,yPos,name);
-		this.open =open;
+		this.open = open;
 		this.line = line;
 		this.column = column;
 		this.level = level;

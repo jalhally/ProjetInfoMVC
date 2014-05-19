@@ -423,13 +423,7 @@ public class GameController implements KeyListener{
 			else if (!pausePressed){
 				pressedOnce = true;
 			}
-			
-			/*
-			if(link.size()==2) {
-				link.remove(1);
-			}
-			*/
-			
+						
 			if (gameOver(link.get(0))){
 				status = 3;
 				level.setStatus(status);
@@ -439,7 +433,21 @@ public class GameController implements KeyListener{
 				sound.playSound("gameOver");
 				k = 2;
 			}
+			for (int i =0;i<level.getDecor().size();i++){
+				if(map.getRoomColumn().contentEquals("2")  && map.getLevel().contentEquals("2") && map.getRoomLine().contentEquals("2")){
+					if(level.getDecor().get(i).getClass() == Door.class){
+						((Door)(level.getDecor().get(i))).setOpen(false);
+					}					
+				}
+			}
 			
+			if (monster.size() == 0){
+				for (int i =0;i<level.getDecor().size();i++){
+					if(level.getDecor().get(i).getClass() == Door.class){
+						((Door)(level.getDecor().get(i))).setOpen(true);
+					}				
+				}
+			}
 			for(int t = 0; t < monster.size();t++){
 				if(monster.get(t).getClass() == Boss.class && monster.get(t).getLifePoint() <= 0){
 					status = 6;
@@ -544,7 +552,13 @@ public class GameController implements KeyListener{
 						}
 					}
 					if(setBomb){
-						if(bomb.size()< link.get(0).getNumberBomb()){
+						int bomb0 = 0;
+						for(Bomb b : bomb){
+							if(b.getPlayer() == 0){
+								bomb0++;
+							}
+						}
+						if(bomb0< link.get(0).getNumberBomb()){
 							link.get(0).setBomb(bomb);				
 						}
 						setBomb = false;
