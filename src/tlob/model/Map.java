@@ -505,7 +505,22 @@ public char[][] listToMap(List<Decor> decor, List<Monster> monster){
 	}
 	for(int j = 0;j < monster.size();j++){
 		if(monster.get(j).getClass() == Melee.class)
-			map[monster.get(j).getInitialYPos()/40][monster.get(j).getInitialXPos()/40] = 'd';		
+			map[monster.get(j).getInitialYPos()/40][monster.get(j).getInitialXPos()/40] = 'd';	
+		
+		else if(monster.get(j).getClass() == Ranged.class)
+			map[monster.get(j).getInitialYPos()/40][monster.get(j).getInitialXPos()/40] = 'q';		
+		
+		else if(monster.get(j).getClass() == Underground.class)
+			map[monster.get(j).getInitialYPos()/40][monster.get(j).getInitialXPos()/40] = 'f';		
+		
+		else if(monster.get(j).getClass() == Bomber.class)
+			map[monster.get(j).getInitialYPos()/40][monster.get(j).getInitialXPos()/40] = 's';	
+		
+		else if(monster.get(j).getClass() == Boss.class)
+			map[monster.get(j).getInitialYPos()/40][monster.get(j).getInitialXPos()/40] = '.';	
+		
+		else if(monster.get(j).getClass() == MovingTrap.class)
+			map[monster.get(j).getInitialYPos()/40][monster.get(j).getInitialXPos()/40] = '7';
 	}
 	return map;
 }
