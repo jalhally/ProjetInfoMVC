@@ -11,63 +11,10 @@ public class Ranged extends Monster {
 	
 	
 	public List<Arrow> fireArrow(List<Arrow> liste){
-		
-		//view
-		//tick(getIAD(),5);
-		//if(getActualFrame() == 6){
-			liste.add(new Arrow(xPos, yPos, "res/Arrow", direction, getPlayer()));
-		//}
-			setName("res/RangedRun");
+		liste.add(new Arrow(xPos, yPos, "res/Arrow", direction, getPlayer()));
+		setName("res/RangedRun");
 		return liste;
 		 
 	}
-	
-	/*
-	public void IARanged(Link Link)
-	{
-		while (this.xPos != Link.getXPos() || this.yPos != Link.getYPos() )
-		{
-			if (this.xPos < Link.getXPos() )
-			{
-				moveRight();
-				direction = 3;
-			}
-			
-			else if (this.xPos > Link.getXPos())
-			{
-				moveLeft();
-				direction =4;
-			}
-			
-			else if (this.yPos < Link.getYPos())
-			{
-				moveUp();
-				direction = 1;
-			}
-			
-			else if (this.yPos > Link.getYPos())
-			{
-				moveDown();
-				direction = 2;
-			}
-			else if (this.xPos == Link.getXPos() && this.yPos < Link.getYPos())  // attention aux decors
-			{
-				//fireArrow(1);
-			}
-			else if (this.xPos == Link.getXPos() && this.yPos > Link.getYPos())
-			{
-				//fireArrow(2);
-			}
-			else if (this.yPos == Link.getYPos() && this.xPos < Link.getXPos())
-			{
-				//fireArrow(3);
-			}
-			else if (this.yPos == Link.getYPos() && this.xPos < Link.getXPos())
-			{
-				//fireArrow(4);
-			}
-		}
-		
-	}
-*/
+
 }

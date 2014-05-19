@@ -33,9 +33,6 @@ public class SpawnerMonster extends Decor {
 				monster.add(new Ranged(1,this.xPos,this.yPos,1,3,"res/Monster/RangedRun"));
 				monster.get(monster.size()-1).setSpawner(true);
 				break;
-			//case 2:
-				//monster.add(new Underground(2,this.xPos,this.yPos,1,3,"res/melee"));
-				//break;
 			case 3:
 				monster.add(new Bomber(2,this.xPos,this.yPos,1,3,"res/Monster/BomberRun"));
 				monster.get(monster.size()-1).setSpawner(true);

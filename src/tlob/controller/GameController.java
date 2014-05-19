@@ -435,6 +435,12 @@ public class GameController implements KeyListener{
 				sound.playSound("gameOver");
 				k = 2;
 			}
+			
+			if(interaction.getChestOpen() == true){
+				interaction.setChestOpen(false);
+				soundChange.playSound("treasure");
+			}
+			
 			for (int i =0;i<level.getDecor().size();i++){
 				if(map.getRoomColumn().contentEquals("2")  && map.getLevel().contentEquals("2") && map.getRoomLine().contentEquals("2")){
 					if(level.getDecor().get(i).getClass() == Door.class){

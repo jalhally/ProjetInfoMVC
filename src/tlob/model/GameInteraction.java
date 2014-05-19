@@ -16,6 +16,7 @@ public class GameInteraction {
 	private List<Thunder> thunder;
 	private Map map;
 	private boolean changeLevel = false;
+	private boolean chestOpen = false;
 	
 	public GameInteraction(Level level){
 		this.link = level.getLink();
@@ -216,6 +217,7 @@ public class GameInteraction {
 				}
 				link.setName("res/Link/LinkOpen");
 				if(link.getActualFrame() != 3){
+					this.chestOpen = true;
 					link.tick(3,5);
 					link.setR(0);
 					link.setL(0);
@@ -1091,6 +1093,14 @@ public class GameInteraction {
 		}
 		monster.setXPos((randomX+2)*40);
 		monster.setYPos((randomY+2)*40);
+	}
+	
+	public boolean getChestOpen(){
+		return this.chestOpen;
+	}
+	
+	public void setChestOpen(boolean chestOpen){
+		this.chestOpen = chestOpen;
 	}
 	
 	private boolean caseOccupied(int xPos, int yPos){
