@@ -34,9 +34,8 @@ public class Level{
 		decor = map.mapToListDecor(tableau);
 		monster = map.mapToListMonster(tableau);
 		link = new ArrayList<Link>();
-		link.add(new Link(3,18*15+10,30*15,4,2,"res/Link/LinkRun",0));
-		link.add(new Link(3,240,200,2,1,"res/RedLink/RedLinkRun",1));
-		
+
+		/*
 		link.get(0).setGauntlet(true);
 		link.get(0).setNumberBomb(5);
 		link.get(0).setRangeBomb(4);
@@ -45,7 +44,7 @@ public class Level{
 		decor.add(new Treasure(8*40,12*40,"res/TreasureChest",0));
 		decor.add(new Treasure(6*40,12*40,"res/TreasureChest",1));
 		decor.add(new Treasure(10*40,12*40,"res/TreasureChest",2));
-		
+		*/
 		
 		bomb = new ArrayList<Bomb>();
 		arrow = new ArrayList<Arrow>();

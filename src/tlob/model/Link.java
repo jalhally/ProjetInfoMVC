@@ -5,13 +5,13 @@ import java.util.List;
 public class Link extends Character {
 	
 	private int frameArrow = 0;
-	private int numberBomb = 2;
-	private int rangeBomb = 2;
+	private int numberBomb = 1;
+	private int rangeBomb = 1;
 	private int numberArrow = 3;
 	private boolean gauntlet = false;
 	private boolean key = false;
 	private int staff=-1; //0=fire //1=ice
-	private int numberCoin = 999;
+	private int numberCoin = 0;
 	private int maxLife = 3;
 
 

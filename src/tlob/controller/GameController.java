@@ -1,13 +1,15 @@
 package tlob.controller;
 
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.util.List;
 
 import tlob.model.*;
 import tlob.view.*;
 
-public class GameController {
+public class GameController implements KeyListener{
 	
 	boolean rightPressed = false;
 	boolean leftPressed = false;
@@ -141,6 +143,8 @@ public class GameController {
 					Map map = new Map(16,16,"0","0","0");
 					level.createLevel(map);
 					createGameController(level);
+					link.add(new Link(3,1*40,1*40,2,1,"res/Link/LinkRun",0));
+					link.add(new Link(3,13*40,13*40,2,0,"res/RedLink/RedLinkRun",1));
 					sound.soundEnd(sound.getAudioStream());
 					sound.playSound("forest1");
 					soundChoose.playSound("menuchoose");
@@ -150,12 +154,14 @@ public class GameController {
 					Map map = new Map(16,16,"1","3","1");
 					level.createLevel(map);
 					createGameController(level);
+					link.add(new Link(3,7*40,13*40,2,2,"res/Link/LinkRun",0));
+
 					sound.soundEnd(sound.getAudioStream());
 					sound.playSound("desert1");
 					soundChoose.playSound("menuchoose");
 				}
 				level.setStatus(status);
-				setEnterPressed(false);
+				enterPressed = false;
 				k=1;
 
 			}
@@ -418,15 +424,17 @@ public class GameController {
 				pressedOnce = true;
 			}
 			
+			/*
 			if(link.size()==2) {
 				link.remove(1);
 			}
+			*/
 			
 			if (gameOver(link.get(0))){
 				status = 3;
 				level.setStatus(status);
-				setEnterPressed(false);
-				setFireArrow(false);
+				enterPressed = false;
+				fireArrow = false;
 				sound.soundEnd(sound.getAudioStream());
 				sound.playSound("gameOver");
 				k = 2;
@@ -704,7 +712,7 @@ public class GameController {
 					System.exit(-1);
 				}
 				
-				setEnterPressed(false);
+				enterPressed = false;
 			}
 		}	
 			
@@ -864,7 +872,7 @@ public class GameController {
 					
 					
 					
-				setEnterPressed(false);
+				enterPressed = false;
 			}
 		}
 	}
@@ -889,91 +897,135 @@ public class GameController {
 		return false;
 	}
 	
-	public void setRightPressed(boolean bool){
-		this.rightPressed = bool;
-	}
-	
-	public void setLeftPressed(boolean bool){
-		this.leftPressed = bool;
-	}
-	
-	public void setDownPressed(boolean bool){
-		this.downPressed = bool;
-	}
-	
-	public void setUpPressed(boolean bool){
-		this.upPressed = bool;
-	}
-	
-	public void setEnterPressed(boolean bool){
-		this.enterPressed = bool;
-	}
-	
-	public void setFireArrow(boolean bool){
-		this.fireArrow = bool;
-	}
-	
-	public void setSetBomb(boolean bool){
-		this.setBomb = bool;
-	}
-	
-	public void setUseStaff(boolean bool){
-		this.useStaff = bool;
-	}
-	
-	public void setRightPressed2(boolean bool){
-		this.rightPressed2 = bool;
-	}
-	
-	public void setLeftPressed2(boolean bool){
-		this.leftPressed2 = bool;
-	}
-	
-	public void setDownPressed2(boolean bool){
-		this.downPressed2 = bool;
-	}
-	
-	public void setUpPressed2(boolean bool){
-		this.upPressed2 = bool;
-	}
-	
-	public void setEnterPressed2(boolean bool){
-		this.enterPressed2 = bool;
-	}
-	
-	public void setFireArrow2(boolean bool){
-		this.fireArrow2 = bool;
-	}
-	
-	public void setSetBomb2(boolean bool){
-		this.setBomb2 = bool;
-	}
-	
-	public void setUseStaff2(boolean bool){
-		this.useStaff2 = bool;
-	}
-	
-	public void setUpPressedMenu(boolean bool){
-		this.upPressedMenu = bool;
-	}
-	
-	public void setDownPressedMenu(boolean bool){
-		this.downPressedMenu = bool;
-	}
-	
-	public void setLeftPressedMenu(boolean bool){
-		this.leftPressedMenu = bool;
-	}
-	
-	public void setRightPressedMenu(boolean bool){
-		this.rightPressedMenu = bool;
+	@Override
+	public void keyPressed(KeyEvent e) {
+	    int keyCode = e.getKeyCode();
+	    
+	    if (keyCode == KeyEvent.VK_D)
+	    	rightPressed= true;
+	    
+    	else if(keyCode == KeyEvent.VK_Q) {
+    		leftPressed = true;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_P)
+    		pausePressed= true;
+	    
+    	else if(keyCode == KeyEvent.VK_S) {
+    		downPressed= true;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_Z) {
+    		upPressed = true;
+    	}
+	    
+    	else if (keyCode == KeyEvent.VK_ENTER){
+    		enterPressed = true;
+    	}
+    	
+    	else if(keyCode == KeyEvent.VK_V){
+    		fireArrow = true;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_SPACE){
+    		setBomb = true;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_C) {
+    		useStaff = true;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_ESCAPE) {
+    		escapePressed = true;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_UP) {
+    		upPressed2 = true;
+    		upPressedMenu = true;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_RIGHT) {
+    		rightPressed2 = true;
+    		rightPressedMenu = true;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_LEFT) {
+    		leftPressed2 = true;
+    		leftPressedMenu = true;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_DOWN) {
+    		downPressed2 = true;
+    		downPressedMenu = true;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_U) {
+    		setBomb2 = true;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_I) {
+    		fireArrow2 = true;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_O) {
+    		useStaff2 = true;
+    	}
+	    
+	    
 	}
 
-	public void setPausePressed(boolean bool) {
-		this.pausePressed = bool;
+	@Override
+	public void keyReleased(KeyEvent e) {
+		//liste.get(0).setActualFrame(1);
+	    int keyCode = e.getKeyCode();
+	    if (keyCode == KeyEvent.VK_D){
+	    	rightPressed = false;
+	    }
+	    
+    	else if(keyCode == KeyEvent.VK_Q){
+    		leftPressed = false;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_ESCAPE) {
+    		escapePressed = false;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_P)
+    		pausePressed = false;
+	    
+    	else if(keyCode == KeyEvent.VK_S) {
+    		downPressed = false;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_Z) {
+    		upPressed = false;
+    	}
+	    
+	    if (keyCode == KeyEvent.VK_RIGHT){
+	    	rightPressed2 = false;
+    		rightPressedMenu = false;
+	    }
+	    
+    	else if(keyCode == KeyEvent.VK_LEFT){
+    		leftPressed2 = false;
+    		leftPressedMenu = false;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_DOWN) {
+    		downPressed2 = false;
+    		downPressedMenu = false;
+    	}
+	    
+    	else if(keyCode == KeyEvent.VK_UP) {
+    		upPressed2 = false;
+    		upPressedMenu = false;
+    	}
+	    
+		
 	}
 
-	public void setEscape(boolean bool) {
-		this.escapePressed = bool;
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		
 	}
 }

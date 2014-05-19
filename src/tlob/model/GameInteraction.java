@@ -1,9 +1,7 @@
-package tlob.controller;
+package tlob.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import tlob.model.*;
 import tlob.view.Sound;
 
 public class GameInteraction {

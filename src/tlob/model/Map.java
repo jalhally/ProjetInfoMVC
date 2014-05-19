@@ -270,15 +270,19 @@ public ArrayList<Decor> mapToListDecor(char[][] map) { // changer les nulls
 				break;
 
 			case 'a':
-				decor.add(new Treasure(40*i,40*j,"res/TreasureChest1", 1 ));
+				decor.add(new Treasure(40*i,40*j,"res/TreasureChest", 1 ));
 				break;
 				
 			case 'b':
-				decor.add(new Treasure(40*i,40*j,"res/TreasureChest1",2));
+				decor.add(new Treasure(40*i,40*j,"res/TreasureChest",2));
 				break;
 				
 			case 'c':
-				decor.add(new Treasure(40*i,40*j,"res/TreasureChest1",4));
+				decor.add(new Treasure(40*i,40*j,"res/TreasureChest",4));
+				break;
+				
+			case 'w':
+				decor.add(new Treasure(40*i,40*j,"res/TreasureChest",5));
 				break;
 				
 			case 'r':
