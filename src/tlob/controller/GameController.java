@@ -154,7 +154,7 @@ public class GameController implements KeyListener{
 					Map map = new Map(16,16,"1","3","1");
 					level.createLevel(map);
 					createGameController(level);
-					link.add(new Link(3,7*40,13*40,2,2,"res/Link/LinkRun",0));
+					link.add(new Link(3,7*40,13*40,6,2,"res/Link/LinkRun",0));
 
 					sound.soundEnd(sound.getAudioStream());
 					sound.playSound("desert1");
